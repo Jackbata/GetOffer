@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/rl"
+<RelativeLayout android:id="@+id/rl"
+                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+    >
 
-    <Button
-        android:text="点击"
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"/>
+    <com.up.lhm.getoffer.touchevent.CustomViewGroup
+        android:id="@+id/cg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.up.lhm.getoffer.touchevent.Customview
+            android:id="@+id/cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="50dp"
+            />
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="点击"/>
+
+    </com.up.lhm.getoffer.touchevent.CustomViewGroup>
+
 </RelativeLayout>

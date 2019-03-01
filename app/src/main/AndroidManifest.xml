@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.up.lhm.getoffer.EventDispatchActivity"/>
+        <activity android:name="com.up.lhm.getoffer.touchevent.EventDispatchActivity"/>
     </application>
 
 </manifest>

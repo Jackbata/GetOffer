@@ -1,19 +1,14 @@
 package com.up.lhm.getoffer;
 
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.OnItemTouchListener;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
 
 import com.up.lhm.getoffer.MyAdapter.OnItemClickListener;
 import com.up.lhm.getoffer.bean.DataList;
+import com.up.lhm.getoffer.touchevent.EventDispatchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
