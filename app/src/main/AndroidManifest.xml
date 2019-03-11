@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.up.lhm.getoffer.touchevent.EventDispatchActivity"/>
+        <activity android:name=".hashmap.HashMapActivity"/>
+
     </application>
 
 </manifest>

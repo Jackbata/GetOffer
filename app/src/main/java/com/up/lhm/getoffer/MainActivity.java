@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.up.lhm.getoffer.MyAdapter.OnItemClickListener;
 import com.up.lhm.getoffer.bean.DataList;
+import com.up.lhm.getoffer.hashmap.HashMapActivity;
 import com.up.lhm.getoffer.touchevent.EventDispatchActivity;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
      * 技能点列表
      */
     private List<DataList> mList = new ArrayList<>();
-    private String[] mDataList = {"事件分发机制", "可继续填充"};
+    private String[] mDataList = {"事件分发机制", "HashMap原理", "可继续填充"};
     private MyAdapter mAdapter;
 
     @Override
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             dataList.index = i;
             dataList.name = mDataList[i];
             mList.add(dataList);
+
         }
 
 
@@ -67,7 +69,16 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.setmOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                EventDispatchActivity.start( MainActivity.this, false);
+                switch (position) {
+                    case 0:
+                        EventDispatchActivity.start(MainActivity.this, false);
+                        break;
+                    case 1:
+                        HashMapActivity.start(MainActivity.this, false);
+                        break;
+                    default:
+                        break;
+                }
             }
         });
 
