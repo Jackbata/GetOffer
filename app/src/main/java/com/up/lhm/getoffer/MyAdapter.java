@@ -3,6 +3,7 @@ package com.up.lhm.getoffer;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,7 +23,7 @@ import java.util.List;
  * @function
  */
 
-class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
+class MyAdapter extends RecyclerView.Adapter<MyViewHolder>  {
     private final List<DataList> mList;
 
     public MyAdapter(List<DataList> list) {
@@ -34,7 +35,7 @@ class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.view_item, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.view_item_main, viewGroup, false);
         MyViewHolder viewHolder = new MyViewHolder(view);
 
         return viewHolder;
@@ -46,7 +47,7 @@ class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.item_tv.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mOnItemClickListener!=null){
+                if (mOnItemClickListener != null) {
                     mOnItemClickListener.onItemClick(i);
                 }
             }
@@ -58,9 +59,10 @@ class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         return mList.size();
     }
 
-    //自定义的ViewHolder，持有每个Item的的所有界面元素
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        public Button item_tv;
+        //自定义的ViewHolder，持有每个Item的的所有界面元素
+
+        public TextView item_tv;
 
         public MyViewHolder(View view) {
             super(view);
@@ -76,6 +78,6 @@ class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     }
 
     public interface OnItemClickListener {
-        void onItemClick(int  position);
+        void onItemClick(int position);
     }
 }

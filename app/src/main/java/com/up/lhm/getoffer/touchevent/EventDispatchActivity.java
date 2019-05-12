@@ -1,9 +1,15 @@
 package com.up.lhm.getoffer.touchevent;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings.System;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.LruCache;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +24,8 @@ import com.up.lhm.getoffer.R;
 import com.up.lhm.hmtools.system.IntentUtil;
 import com.up.lhm.hmtools.system.Log;
 
+import java.util.List;
+
 /**
  * @author lianghaimiao
  * @date 2019/3/1
@@ -30,15 +38,22 @@ public class EventDispatchActivity extends AppCompatActivity {
     private RelativeLayout mRl;
     private Customview mView;
     private CustomViewGroup mViewGroup;
+    private Cd mCd;
 
 
     public static void start(Context context, boolean finishSelf) {
-        Bundle args = new Bundle();
-        IntentUtil.redirect(context, EventDispatchActivity.class, finishSelf, args);
+
+        Intent intent = new Intent();
+        intent.setAction("android.intent.action.Atext");
+        PackageManager packageManager = context.getPackageManager();
+        ResolveInfo resolveInfo = packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY);
+        context.startActivity(intent);
+//        Bundle args = new Bundle();
+//        IntentUtil.redirect(context, EventDispatchActivity.class, finishSelf, args);
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable   Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dispatch);
         mRl = findViewById(R.id.rl);
@@ -46,6 +61,15 @@ public class EventDispatchActivity extends AppCompatActivity {
 
         mViewGroup = findViewById(R.id.cg);
         mView = findViewById(R.id.cv);
+
+        mCd = findViewById(R.id.cd);
+
+        mCd.setOntouListener(new OntouListener() {
+            @Override
+            public void setclick(String string) {
+                Log.d("cuevent","响应了事件"+string);
+            }
+        });
     }
 
     /**
@@ -109,7 +133,6 @@ public class EventDispatchActivity extends AppCompatActivity {
                         Log.d("事件分发", "mBtnview事件分发: ACTION_UP");
                         break;
                 }
-
                 return true;
             }
         });
