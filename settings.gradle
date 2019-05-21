@@ -1,1 +1,1 @@
-include ':app', ':myapplication', ':Annotationlibs', ':mylibrary'
+include ':app', ':myapplication', ':Annotationlibs', ':mylibrary', ':designpattern'
