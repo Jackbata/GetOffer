@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.up.lhm.annotationlibs.BindVieww;
 import com.up.lhm.annotationlibs.MyClass;
 import com.up.lhm.getoffer.MyAdapter.OnItemClickListener;
+import com.up.lhm.getoffer.arouter.ArouterMainActivity;
 import com.up.lhm.getoffer.bean.DataList;
 import com.up.lhm.getoffer.hashmap.HashMapActivity;
 import com.up.lhm.getoffer.mvp.activity.ViewActivity;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
      * 技能点列表
      */
     private List<DataList> mList = new ArrayList<>();
-    private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP", "可继续填充"};
+    private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP","Arouter", "可继续填充"};
     private MyAdapter mAdapter;
 
     @Override
@@ -116,6 +117,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 5:
                         ViewActivity.start(MainActivity.this, false);
+                        break;
+                    case 6:
+                        ArouterMainActivity.start(MainActivity.this, false);
                         break;
                     default:
                         break;

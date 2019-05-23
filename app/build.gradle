@@ -12,7 +12,10 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
-            annotationProcessorOptions { includeCompileClasspath = true }
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+
+            }
         }
     }
     buildTypes {
@@ -45,4 +48,5 @@ dependencies {
     annotationProcessor android.daggercompiler
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
 }

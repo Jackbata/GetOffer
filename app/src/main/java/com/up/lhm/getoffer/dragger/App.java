@@ -3,9 +3,9 @@ package com.up.lhm.getoffer.dragger;
 import android.app.Application;
 import android.content.Context;
 
+import com.up.lhm.getoffer.BuildConfig;
 import com.up.lhm.getoffer.dragger.component.ApplicationComponent;
 import com.up.lhm.getoffer.dragger.component.DaggerApplicationComponent;
-import com.up.lhm.getoffer.dragger.component.DaggerSwadmanComponent;
 
 
 /**
@@ -24,11 +24,8 @@ public class App extends Application {
         super.onCreate();
         mActivityComponent = DaggerApplicationComponent
                 .builder()
-                .swadmanComponent(
-                        DaggerSwadmanComponent
-                                .builder().build()
-                )
                 .build();
+
     }
 
     public static App getComponent(Context context) {

@@ -15,7 +15,7 @@ import dagger.Component;
  */
 
 @Singleton
-@Component(modules = EngineModel.class,dependencies = SwadmanComponent.class)
+@Component(modules = EngineModel.class)
 public interface ApplicationComponent {
     void inject(DraggerActivity draggerActivity);
 
