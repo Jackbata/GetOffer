@@ -41,6 +41,14 @@
         </activity>
         <activity android:name=".arouter.ArouterMainActivity">
         </activity>
+        <activity android:name=".arouter.testactivity.Test1Activity">
+        </activity>
+        <activity android:name=".arouter.testactivity.Test2Activity">
+        </activity>
+        <activity android:name=".arouter.testactivity.Test3Activity">
+        </activity>
+        <activity android:name=".arouter.testactivity.Test4Activity">
+        </activity>
     </application>
 
 </manifest>

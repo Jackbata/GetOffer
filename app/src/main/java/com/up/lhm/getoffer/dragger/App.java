@@ -3,7 +3,6 @@ package com.up.lhm.getoffer.dragger;
 import android.app.Application;
 import android.content.Context;
 
-import com.up.lhm.getoffer.BuildConfig;
 import com.up.lhm.getoffer.dragger.component.ApplicationComponent;
 import com.up.lhm.getoffer.dragger.component.DaggerApplicationComponent;
 
@@ -22,11 +21,17 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        getComponet();
+
+    }
+
+    private void getComponet() {
         mActivityComponent = DaggerApplicationComponent
                 .builder()
                 .build();
-
     }
+
 
     public static App getComponent(Context context) {
         return (App) context.getApplicationContext();

@@ -1,5 +1,6 @@
 package com.up.lhm.getoffer;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private List<DataList> mList = new ArrayList<>();
     private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP","Arouter", "可继续填充"};
     private MyAdapter mAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
