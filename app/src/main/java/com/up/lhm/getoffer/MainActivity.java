@@ -1,6 +1,5 @@
 package com.up.lhm.getoffer;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -10,15 +9,14 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.up.lhm.annotationlibs.BindVieww;
-import com.up.lhm.annotationlibs.MyClass;
 import com.up.lhm.getoffer.MyAdapter.OnItemClickListener;
 import com.up.lhm.getoffer.arouter.ArouterMainActivity;
 import com.up.lhm.getoffer.bean.DataList;
 import com.up.lhm.getoffer.dragger.DraggerActivity;
+import com.up.lhm.getoffer.greendao.GreendaoActivity;
 import com.up.lhm.getoffer.hashmap.HashMapActivity;
 import com.up.lhm.getoffer.mvp.activity.ViewActivity;
 import com.up.lhm.getoffer.notes.GetUrl;
@@ -29,9 +27,6 @@ import com.up.lhm.getoffer.viewscoller.ViewScollerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.BindViews;
 
 /**
  * @author lianghaimiao
@@ -52,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
      * 技能点列表
      */
     private List<DataList> mList = new ArrayList<>();
-    private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP","Arouter","dragger2", "可继续填充"};
+    private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP","Arouter","dragger2",
+            "greendao", "可继续填充"};
     private MyAdapter mAdapter;
 
 
@@ -126,6 +122,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 7:
                         DraggerActivity.start(MainActivity.this, false);
+                        break;
+                    case 8:
+                        GreendaoActivity.start(MainActivity.this, false);
                         break;
                     default:
                         break;

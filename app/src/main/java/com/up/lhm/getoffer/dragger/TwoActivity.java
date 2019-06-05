@@ -1,7 +1,7 @@
 package com.up.lhm.getoffer.dragger;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.up.lhm.getoffer.R;
 import com.up.lhm.getoffer.dragger.bean.Swadman;

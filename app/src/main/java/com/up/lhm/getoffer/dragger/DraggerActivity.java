@@ -1,18 +1,15 @@
 package com.up.lhm.getoffer.dragger;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-import com.up.lhm.getoffer.MainActivity;
 import com.up.lhm.getoffer.R;
 import com.up.lhm.getoffer.dragger.bean.Car;
-import com.up.lhm.getoffer.dragger.bean.Engine;
 import com.up.lhm.getoffer.dragger.bean.Worker;
 import com.up.lhm.hmtools.system.IntentUtil;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 public class DraggerActivity extends AppCompatActivity {
     @Inject

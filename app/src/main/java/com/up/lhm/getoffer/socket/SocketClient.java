@@ -2,12 +2,9 @@ package com.up.lhm.getoffer.socket;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.InetAddress;
 import java.net.Socket;
-import java.net.URL;
 
 public class SocketClient {
     // 搭建客户端

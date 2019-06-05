@@ -1,21 +1,10 @@
 package com.up.lhm.getoffer.arith;
 
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.util.ArrayMap;
-import android.util.SparseArray;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author lianghaimiao

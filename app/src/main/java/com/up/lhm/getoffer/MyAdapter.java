@@ -2,19 +2,15 @@ package com.up.lhm.getoffer;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.up.lhm.getoffer.MyAdapter.MyViewHolder;
 import com.up.lhm.getoffer.bean.DataList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

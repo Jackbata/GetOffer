@@ -1,7 +1,5 @@
 package com.up.lhm.getoffer.notes;
 
-import com.up.lhm.getoffer.arith.Test;
-
 import java.lang.reflect.Method;
 
 /**

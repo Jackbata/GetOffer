@@ -1,7 +1,5 @@
 package com.up.lhm.getoffer.notes;
 
-import com.up.lhm.getoffer.R;
-
 /**
  * @author lianghaimiao
  * @date 2019/5/11

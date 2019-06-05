@@ -1,7 +1,5 @@
 package com.up.lhm.getoffer.arith;
 
-import android.util.Log;
-
 /**
  * @author lianghaimiao
  * @date 2019/4/8

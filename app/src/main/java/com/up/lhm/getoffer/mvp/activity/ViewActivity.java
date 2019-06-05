@@ -12,7 +12,6 @@ import com.up.lhm.getoffer.mvp.base.BaseActivity;
 import com.up.lhm.hmtools.system.IntentUtil;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**

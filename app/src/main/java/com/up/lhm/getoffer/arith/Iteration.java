@@ -1,9 +1,5 @@
 package com.up.lhm.getoffer.arith;
 
-import java.util.HashSet;
-
-import static java.lang.System.gc;
-
 /**
  * @author lianghaimiao
  * @date 2019/4/9

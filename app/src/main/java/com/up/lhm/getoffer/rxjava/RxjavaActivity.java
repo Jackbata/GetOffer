@@ -1,7 +1,7 @@
 package com.up.lhm.getoffer.rxjava;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.up.lhm.getoffer.R;
 

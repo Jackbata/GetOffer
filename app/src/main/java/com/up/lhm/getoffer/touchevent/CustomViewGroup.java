@@ -1,8 +1,6 @@
 package com.up.lhm.getoffer.touchevent;
 
-import android.app.IntentService;
 import android.content.Context;
-import android.os.HandlerThread;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
