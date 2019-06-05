@@ -14,14 +14,15 @@ import javax.inject.Named;
 
 public class Car {
 
+
     private Engine mEngger;
 
     @Inject
-    public Car(@GEngine Engine engger) {
+    public Car(@Named(true?"GEngine":"BwwEngine") Engine engger) {
         this.mEngger = engger;
     }
 
     public void run() {
-        Log.d("car");
+     Log.d("c");
     }
 }

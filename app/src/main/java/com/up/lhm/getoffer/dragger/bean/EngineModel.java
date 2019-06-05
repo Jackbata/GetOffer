@@ -1,8 +1,8 @@
 package com.up.lhm.getoffer.dragger.bean;
 
-import android.view.ViewDebug.ExportedProperty;
 
 import com.up.lhm.getoffer.dragger.annotation.GEngine;
+
 
 import javax.inject.Named;
 
@@ -17,15 +17,18 @@ import dagger.Provides;
 @Module
 public class EngineModel {
 
+    //    @GEngine
     @Provides
-    @GEngine
+    @Named("GEngine")//设置每个待注入实例的关键词
     public Engine getEngineGson() {
         return new GsonEngine();
     }
 
+//    @com.up.lhm.getoffer.dragger.annotation.BwwEngine
     @Provides
-    @com.up.lhm.getoffer.dragger.annotation.BwwEngine
+    @Named("BwwEngine")
     public Engine getEngineBww() {
         return new BwwEngine();
     }
+
 }

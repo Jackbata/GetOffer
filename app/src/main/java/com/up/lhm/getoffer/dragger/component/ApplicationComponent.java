@@ -17,8 +17,8 @@ import dagger.Component;
 @Singleton
 @Component(modules = EngineModel.class)
 public interface ApplicationComponent {
-    void inject(DraggerActivity draggerActivity);
+    void inject(TwoActivity daggerActivity);
 
-    void inject(TwoActivity draggerActivity);
+    void inject(DraggerActivity draggerActivity);
 
 }
