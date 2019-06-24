@@ -38,8 +38,8 @@ android {
     greendao {
         //版本号，升级时可配置
         schemaVersion 1
-//        daoPackage 'com.qianmo.greendaotest.gen'
-//        targetGenDir 'src/main/java'
+//        daoPackage 'com.qianmo.greendaotest.gen' //设置DaoMaster.DaoSession,Dao包名
+//        targetGenDir 'src/main/java' //设置daoPackage所在的文件路径
     }
 }
 
