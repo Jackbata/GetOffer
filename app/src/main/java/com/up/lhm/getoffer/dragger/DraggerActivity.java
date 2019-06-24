@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.up.lhm.getoffer.App;
 import com.up.lhm.getoffer.R;
 import com.up.lhm.getoffer.dragger.bean.Car;
 import com.up.lhm.getoffer.dragger.bean.Worker;

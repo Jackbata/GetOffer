@@ -1,10 +1,14 @@
-package com.up.lhm.getoffer.dragger;
+package com.up.lhm.getoffer;
 
 import android.app.Application;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.up.lhm.getoffer.dragger.component.ApplicationComponent;
 import com.up.lhm.getoffer.dragger.component.DaggerApplicationComponent;
+import com.up.lhm.getoffer.greendao.bean.DaoMaster;
+import com.up.lhm.getoffer.greendao.bean.DaoMaster.DevOpenHelper;
+import com.up.lhm.getoffer.greendao.bean.DaoSession;
 
 
 /**
@@ -16,6 +20,7 @@ import com.up.lhm.getoffer.dragger.component.DaggerApplicationComponent;
 public class App extends Application {
 
     private ApplicationComponent mActivityComponent;
+    private static DaoSession mDaoSession;
 
 
     @Override
@@ -23,7 +28,7 @@ public class App extends Application {
         super.onCreate();
 
         getComponet();
-
+        initGreenDao();
     }
 
     private void getComponet() {
@@ -37,8 +42,18 @@ public class App extends Application {
         return (App) context.getApplicationContext();
     }
 
-    ApplicationComponent getActivityComponen() {
+    public ApplicationComponent getActivityComponen() {
         return mActivityComponent;
     }
 
+    private void initGreenDao() {
+        DevOpenHelper helper = new DevOpenHelper(this, "shop.db", null);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        DaoMaster daoMaster = new DaoMaster(db);
+        mDaoSession = daoMaster.newSession();
+    }
+
+    public static DaoSession getDaoInstant() {
+        return mDaoSession;
+    }
 }
