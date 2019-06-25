@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.up.lhm.getoffer.dragger.component.ApplicationComponent;
 import com.up.lhm.getoffer.dragger.component.DaggerApplicationComponent;
+import com.up.lhm.getoffer.greendao.MyOpenHelper;
 import com.up.lhm.getoffer.greendao.bean.DaoMaster;
-import com.up.lhm.getoffer.greendao.bean.DaoMaster.DevOpenHelper;
 import com.up.lhm.getoffer.greendao.bean.DaoSession;
 
 
@@ -47,7 +47,7 @@ public class App extends Application {
     }
 
     private void initGreenDao() {
-        DevOpenHelper helper = new DevOpenHelper(this, "shop.db", null);
+        MyOpenHelper helper = new MyOpenHelper(this, "shop.db", null);
         SQLiteDatabase db = helper.getWritableDatabase();
         DaoMaster daoMaster = new DaoMaster(db);
         mDaoSession = daoMaster.newSession();
