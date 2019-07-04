@@ -50,6 +50,7 @@
         <activity android:name=".arouter.testactivity.Test4Activity">
         </activity>
         <activity android:name=".greendao.GreendaoActivity"/>
+        <activity android:name=".jsbridge.JSActivity"/>
     </application>
 
 </manifest>

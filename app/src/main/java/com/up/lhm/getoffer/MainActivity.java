@@ -18,6 +18,7 @@ import com.up.lhm.getoffer.bean.DataList;
 import com.up.lhm.getoffer.dragger.DraggerActivity;
 import com.up.lhm.getoffer.greendao.GreendaoActivity;
 import com.up.lhm.getoffer.hashmap.HashMapActivity;
+import com.up.lhm.getoffer.jsbridge.JSActivity;
 import com.up.lhm.getoffer.mvp.activity.ViewActivity;
 import com.up.lhm.getoffer.notes.GetUrl;
 import com.up.lhm.getoffer.notes.TestAnnotate;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private List<DataList> mList = new ArrayList<>();
     private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP","Arouter","dragger2",
-            "greendao", "可继续填充"};
+            "greendao", "jsbridage","可继续填充"};
     private MyAdapter mAdapter;
 
 
@@ -125,6 +126,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 8:
                         GreendaoActivity.start(MainActivity.this, false);
+                        break;
+                    case 9:
+                        JSActivity.start(MainActivity.this, false);
                         break;
                     default:
                         break;
