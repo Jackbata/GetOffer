@@ -2,8 +2,8 @@ ext {
     androidMinSdkVersion = 21
     androidTargetSdkVersion = 28
     androidCompileSdkVersion = 28
-    versionCode =1
-    versionName ="1.0"
+    versionCode =2
+    versionName ="1.1"
 
 
     supportLibraryVersion = '28.0.0'
