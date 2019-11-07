@@ -11,11 +11,13 @@ import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.up.lhm.annotationlibs.BindVieww;
 import com.up.lhm.getoffer.MyAdapter.OnItemClickListener;
 import com.up.lhm.getoffer.arouter.ArouterMainActivity;
 import com.up.lhm.getoffer.bean.DataList;
 import com.up.lhm.getoffer.dragger.DraggerActivity;
+import com.up.lhm.getoffer.glide.GlideActivity;
 import com.up.lhm.getoffer.greendao.GreendaoActivity;
 import com.up.lhm.getoffer.hashmap.HashMapActivity;
 import com.up.lhm.getoffer.jsbridge.JSActivity;
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private List<DataList> mList = new ArrayList<>();
     private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP","Arouter","dragger2",
-            "greendao", "jsbridage","可继续填充"};
+            "greendao", "jsbridage","glide源码分析","可继续填充"};
     private MyAdapter mAdapter;
 
 
@@ -129,6 +131,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 9:
                         JSActivity.start(MainActivity.this, false);
+                        break;
+                    case 10:
+                        GlideActivity.start(MainActivity.this, false);
                         break;
                     default:
                         break;

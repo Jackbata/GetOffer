@@ -19,12 +19,14 @@ import butterknife.Unbinder;
 
  public  abstract class BaseActivity extends Activity implements IObverListener {
     private ObserverMan mObserverMan;
+    private Unbinder mBind;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Unbinder bind = ButterKnife.bind(this);
         setContentView(getLayoutId());
+        mBind = ButterKnife.bind(this);
+
         /**
          *注册
          */
