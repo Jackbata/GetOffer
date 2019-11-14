@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.up.lhm.getoffer.dragger.component.ApplicationComponent;
 import com.up.lhm.getoffer.dragger.component.DaggerApplicationComponent;
 import com.up.lhm.getoffer.greendao.MyOpenHelper;
@@ -29,6 +30,7 @@ public class App extends Application {
 
         getComponet();
         initGreenDao();
+        Fresco.initialize(getApplicationContext());
     }
 
     private void getComponet() {

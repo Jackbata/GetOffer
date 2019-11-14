@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private List<DataList> mList = new ArrayList<>();
     private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP","Arouter","dragger2",
-            "greendao", "jsbridage","glide源码分析","可继续填充"};
+            "greendao", "jsbridage","图片框架","可继续填充"};
     private MyAdapter mAdapter;
 
 
