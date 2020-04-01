@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.up.lhm.getoffer.MyAdapter.MyViewHolder;
@@ -58,7 +59,7 @@ class MyAdapter extends RecyclerView.Adapter<MyViewHolder>  {
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         //自定义的ViewHolder，持有每个Item的的所有界面元素
 
-        public TextView item_tv;
+        public Button item_tv;
 
         public MyViewHolder(View view) {
             super(view);

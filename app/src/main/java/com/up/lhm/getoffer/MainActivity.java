@@ -6,6 +6,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +23,7 @@ import com.up.lhm.getoffer.greendao.GreendaoActivity;
 import com.up.lhm.getoffer.hashmap.HashMapActivity;
 import com.up.lhm.getoffer.jsbridge.JSActivity;
 import com.up.lhm.getoffer.mvp.activity.ViewActivity;
+import com.up.lhm.getoffer.mvp.base.BaseActivity;
 import com.up.lhm.getoffer.notes.GetUrl;
 import com.up.lhm.getoffer.notes.TestAnnotate;
 import com.up.lhm.getoffer.threadpool.ThreadPoolsActivity;
@@ -34,7 +36,7 @@ import java.util.List;
 /**
  * @author lianghaimiao
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     /**
      * 编译时注解控件
      */
@@ -55,21 +57,11 @@ public class MainActivity extends AppCompatActivity {
     private MyAdapter mAdapter;
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initView();
-        initData();
-        initRv();
-        setListener();
-        SharedPreferences sp = this.getSharedPreferences("aa", Context.MODE_PRIVATE);
-        Editor edit = sp.edit();
-        edit.putBoolean("ss", true);
-        boolean commit = edit.commit();
-        edit.apply();
 
-        boolean ss = sp.getBoolean("ss", false);
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_main;
     }
 
     @TestAnnotate(index = 1, name = "李四")
@@ -78,18 +70,29 @@ public class MainActivity extends AppCompatActivity {
         mRv = findViewById(R.id.rv);
     }
 
-    private void initData() {
+     @Override
+     public void initData() {
+        initView();
+
+         initrvdata();
+
+         initRv();
+        setListener();
+
+
+    }
+
+    private void initrvdata() {
         for (int i = 0; i < mDataList.length; i++) {
             DataList dataList = new DataList();
             dataList.index = i;
             dataList.name = mDataList[i];
             mList.add(dataList);
         }
-
     }
 
     private void initRv() {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        GridLayoutManager linearLayoutManager = new GridLayoutManager(this,3);
         linearLayoutManager.setOrientation(OrientationHelper.VERTICAL);
         mRv.setLayoutManager(linearLayoutManager);
         mAdapter = new MyAdapter(mList);

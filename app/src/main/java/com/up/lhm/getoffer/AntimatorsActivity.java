@@ -12,6 +12,7 @@ import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
+import com.up.lhm.getoffer.mvp.base.BaseActivity;
 import com.up.lhm.hmtools.system.IntentUtil;
 
 /**
@@ -20,7 +21,7 @@ import com.up.lhm.hmtools.system.IntentUtil;
  * @function
  */
 
-public class AntimatorsActivity extends Activity {
+public class AntimatorsActivity extends BaseActivity {
 
     private TextView mTextView;
 
@@ -28,10 +29,14 @@ public class AntimatorsActivity extends Activity {
         Bundle args = new Bundle();
         IntentUtil.redirect(context, AntimatorsActivity.class, finishSelf, args);
     }
+
     @Override
-    protected void onCreate( @Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.animator_layout);
+    protected int getLayoutId() {
+        return R.layout.animator_layout;
+    }
+
+    @Override
+    public void initData() {
         mTextView = findViewById(R.id.tv);
         Animation a = new AlphaAnimation(0,100);
         Animation b = new ScaleAnimation(1,100,3,11);
