@@ -4,7 +4,11 @@ package com.up.lhm.getoffer.mvp.observer;
 import com.up.lhm.hmtools.system.Log;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * @author lianghaimiao
@@ -15,6 +19,7 @@ import java.util.List;
 public class ObserverMan implements IObserver, IObverListener {
 
     private List<IObserver> list = new ArrayList<IObserver>();
+    private List<IObserver> ulist = new ArrayList<IObserver>();
 
     @Override
     public void onCreade() {
@@ -36,25 +41,31 @@ public class ObserverMan implements IObserver, IObverListener {
         for (IObserver observer : list) {
             observer.onDestory();
         }
+
+        list.clear();
+        list.addAll(ulist);
     }
 
     @Override
     public void addListener(IObserver obj) {
-        boolean add = list.add(obj);
-        if (add) {
-            Log.d("mvptest", obj.toString() + "注册成功");
+        synchronized (list){
+            boolean add = list.add(obj);
+            ulist.add(obj);
+            if (add) {
+                Log.d("mvptest", obj.toString() + "注册成功");
+            }
         }
+
     }
 
     @Override
     public void removeListener(IObserver obj) {
-        for (int i = 0; i < list.size(); i++) {
-            if (obj == list.get(i)) {
-                IObserver remove = list.remove(i);
-                if (remove != null) {
-                    Log.d("mvptest", remove.toString() + "移除成功");
-                }
-                return;
+        Log.d("mvptest","removeListener--"+obj.getClass().getSimpleName() );
+        Iterator<IObserver> it = ulist.iterator();
+        while(it.hasNext()){
+            IObserver x = it.next();
+            if(x.equals(obj)){
+                it.remove();
             }
         }
     }

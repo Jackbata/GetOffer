@@ -30,6 +30,7 @@ public class AntimatorsActivity extends BaseActivity {
         IntentUtil.redirect(context, AntimatorsActivity.class, finishSelf, args);
     }
 
+
     @Override
     protected int getLayoutId() {
         return R.layout.animator_layout;

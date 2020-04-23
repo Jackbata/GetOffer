@@ -42,7 +42,6 @@ public class EventDispatchActivity extends AppCompatActivity {
 //        Bundle args = new Bundle();
 //        IntentUtil.redirect(context, EventDispatchActivity.class, finishSelf, args);
     }
-
     @Override
     protected void onCreate(@Nullable   Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,12 +54,12 @@ public class EventDispatchActivity extends AppCompatActivity {
 
         mCd = findViewById(R.id.cd);
 
-        mCd.setOntouListener(new OntouListener() {
-            @Override
-            public void setclick(String string) {
-                Log.d("cuevent","响应了事件"+string);
-            }
-        });
+        //        mCd.setOntouListener(new OntouListener() {
+//            @Override
+//            public void setclick(String string) {
+//                Log.d("cuevent","响应了事件"+string);
+//            }
+//        });
     }
 
     /**
@@ -78,6 +77,9 @@ public class EventDispatchActivity extends AppCompatActivity {
             case MotionEvent.ACTION_UP:
                 Log.d("事件分发", "activity---》dispatchTouchEvent事件分发: ACTION_UP");
                 break;
+            case MotionEvent.ACTION_CANCEL:
+                Log.d("事件分发", "activity---》dispatchTouchEvent: ACTION_CANCEL");
+                break;
         }
         return super.dispatchTouchEvent(ev);
     }
@@ -93,6 +95,9 @@ public class EventDispatchActivity extends AppCompatActivity {
                 break;
             case MotionEvent.ACTION_UP:
                 Log.d("事件分发", "activity---》onTouchEvent事件分发: ACTION_UP");
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                Log.d("事件分发", "activity---》onTouchEvent: ACTION_CANCEL");
                 break;
         }
         return super.onTouchEvent(event);

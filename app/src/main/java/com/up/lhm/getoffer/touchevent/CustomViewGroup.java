@@ -81,4 +81,9 @@ public class CustomViewGroup extends ViewGroup {
         return super.onTouchEvent(event);
     }
 
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        measureChildren(widthMeasureSpec, heightMeasureSpec);
+
+    }
 }

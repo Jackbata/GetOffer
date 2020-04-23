@@ -4,17 +4,22 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 
 import com.up.lhm.getoffer.R;
 import com.up.lhm.getoffer.mvp.observer.IObserver;
 import com.up.lhm.getoffer.mvp.observer.IObverListener;
 import com.up.lhm.getoffer.mvp.observer.ObserverMan;
+import com.up.lhm.getoffer.rxjava.RxjavaManager;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * @author lianghaimiao
@@ -22,9 +27,15 @@ import butterknife.Unbinder;
  * @function
  */
 
- public  abstract class BaseActivity extends Activity implements IObverListener {
+public abstract class BaseActivity extends Activity implements IObverListener {
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+    @BindView(R.id.base_content)
+    FrameLayout mBaseContent;
     private ObserverMan mObserverMan;
     private Unbinder mBind;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,13 +43,14 @@ import butterknife.Unbinder;
         setContentView(R.layout.activity_base);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        toolbar.setNavigationOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-            }});
-            FrameLayout content = findViewById(R.id.base_content);
-            View inflate = LayoutInflater.from(this).inflate(getLayoutId(),null,true);
+            }
+        });
+        FrameLayout content = findViewById(R.id.base_content);
+        View inflate = LayoutInflater.from(this).inflate(getLayoutId(), null, true);
         content.addView(inflate);
         mBind = ButterKnife.bind(this);
 
@@ -48,6 +60,13 @@ import butterknife.Unbinder;
         mObserverMan = new ObserverMan();
         initData();
         mObserverMan.onCreade();
+        mToolbar.setTitle(initTitle(""));
+
+    }
+
+    protected  String initTitle(String title){
+
+        return TextUtils.isEmpty(title)?getClass().getSimpleName():title;
     }
 
     protected abstract int getLayoutId();
