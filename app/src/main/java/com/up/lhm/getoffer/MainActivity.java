@@ -24,6 +24,7 @@ import com.up.lhm.getoffer.hashmap.HashMapActivity;
 import com.up.lhm.getoffer.jsbridge.JSActivity;
 import com.up.lhm.getoffer.mvp.activity.ViewActivity;
 import com.up.lhm.getoffer.mvp.base.BaseActivity;
+import com.up.lhm.getoffer.net.okhttp.OkhttpActivity;
 import com.up.lhm.getoffer.notes.GetUrl;
 import com.up.lhm.getoffer.notes.TestAnnotate;
 import com.up.lhm.getoffer.rxjava.RxjavaActivity;
@@ -54,7 +55,7 @@ public class MainActivity extends BaseActivity {
      */
     private List<DataList> mList = new ArrayList<>();
     private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP","Arouter","dragger2",
-            "greendao", "jsbridage","图片框架","rxjava","可继续填充"};
+            "greendao", "jsbridage","图片框架","rxjava","okhttp","可继续填充"};
     private MyAdapter mAdapter;
 
 
@@ -141,6 +142,9 @@ public class MainActivity extends BaseActivity {
                         break;
                         case 11:
                             RxjavaActivity.start(MainActivity.this, false);
+                        break;
+                    case 12:
+                        OkhttpActivity.start(MainActivity.this, false);
                         break;
                     default:
                         break;

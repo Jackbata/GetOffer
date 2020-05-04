@@ -55,6 +55,8 @@
         <activity android:name=".greendao.GreendaoActivity"/>
         <activity android:name=".jsbridge.JSActivity"/>
         <activity android:name=".glide.GlideActivity"/>
+        <activity android:name=".net.okhttp.OkhttpActivity"/>
+
     </application>
 
 </manifest>

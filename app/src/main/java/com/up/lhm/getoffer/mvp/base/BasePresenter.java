@@ -12,7 +12,7 @@ import java.lang.ref.WeakReference;
  * @function
  */
 public class BasePresenter<T extends IbaseView> implements IObserver {
-    T mview;
+   public T mview;
     public RxjavaManager rxjavaManager = new RxjavaManager();
     private WeakReference<T> mWeakReference;
 

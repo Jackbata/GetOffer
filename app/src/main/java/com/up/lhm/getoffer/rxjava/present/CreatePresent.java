@@ -95,7 +95,7 @@ public class CreatePresent extends BasePresenter<Rxjavaview>  {
             }
 
             @Override
-            public void onError(Throwable e) {j
+            public void onError(Throwable e) {
 
             }
 

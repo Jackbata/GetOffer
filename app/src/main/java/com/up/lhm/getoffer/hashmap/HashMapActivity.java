@@ -10,6 +10,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.up.lhm.getoffer.R;
+import com.up.lhm.getoffer.test.Ae;
+import com.up.lhm.getoffer.test.Be;
+import com.up.lhm.getoffer.test.Ce;
 import com.up.lhm.hmtools.system.IntentUtil;
 
 import java.util.ArrayList;
@@ -75,6 +78,12 @@ public class HashMapActivity extends Activity {
         ThreadLocal<String> threadLocal = new ThreadLocal<>();
         threadLocal.set("ss");
         threadLocal.get();
+
+        HashMap<String, Ae> stringAeHashMap = new HashMap<>();
+        stringAeHashMap.put("1",new Be());
+        stringAeHashMap.put("1",new Ae());
+        ArrayList<? extends Ae> list2 = new ArrayList<>();
+
     }
 
     private void initview() {
