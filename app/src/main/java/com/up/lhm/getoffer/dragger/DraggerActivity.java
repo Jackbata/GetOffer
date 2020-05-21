@@ -12,6 +12,9 @@ import com.up.lhm.hmtools.system.IntentUtil;
 
 import javax.inject.Inject;
 
+/**
+ * @author lianghaimiao
+ */
 public class DraggerActivity extends AppCompatActivity {
     @Inject
     Car car;

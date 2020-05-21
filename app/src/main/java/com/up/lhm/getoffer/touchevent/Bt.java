@@ -35,6 +35,7 @@ public class Bt extends View {
                 break;
             case MotionEvent.ACTION_MOVE:
                 Log.d("事件分发", "view---》dispatchTouchEvent事件分发: ACTION_MOVE");
+
                 break;
             case MotionEvent.ACTION_UP:
                 Log.d("事件分发", "view---》dispatchTouchEvent事件分发: ACTION_UP");
@@ -59,7 +60,11 @@ public class Bt extends View {
                 Log.d("事件分发", "view---》onTouchEvent事件分发: ACTION_UP");
                 break;
             case MotionEvent.ACTION_CANCEL:
+                //当view接收了down事件，但move事件被viewgroup拦截时，会执行该方法
+                //如果viewgroup当dispatchTouchEvent只拦截move事件，那么view最终仍会响应up事件
                 Log.d("事件分发", "view---》onTouchEvent: ACTION_CANCEL");
+                break;
+            default:
                 break;
         }
         return true;

@@ -1,8 +1,10 @@
 package com.up.lhm.getoffer.net.okhttp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,11 +32,12 @@ public class OkhttpActivity extends BaseActivity implements OkhttpView {
     TextView mResult;
     private OkhttpPresent mOkhttpPresent;
 
+
+
     public static void start(Context context, boolean b) {
         Bundle args = new Bundle();
         IntentUtil.redirect(context, OkhttpActivity.class, b, args);
     }
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_okhttp;
@@ -48,7 +51,6 @@ public class OkhttpActivity extends BaseActivity implements OkhttpView {
     @Override
     public void showResult(String result) {
                 mResult.setText(result);
-
     }
 
     @OnClick({R.id.get, R.id.post})
@@ -58,6 +60,7 @@ public class OkhttpActivity extends BaseActivity implements OkhttpView {
                 mOkhttpPresent.getRequst();
                 break;
             case R.id.post:
+                mOkhttpPresent.postRequst();
                 break;
             default:
                 break;

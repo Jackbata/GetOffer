@@ -1,6 +1,7 @@
 package com.up.lhm.getoffer;
 
 import android.app.Application;
+import android.app.Dialog;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -31,6 +32,7 @@ public class App extends Application {
         getComponet();
         initGreenDao();
         Fresco.initialize(getApplicationContext());
+
     }
 
     private void getComponet() {

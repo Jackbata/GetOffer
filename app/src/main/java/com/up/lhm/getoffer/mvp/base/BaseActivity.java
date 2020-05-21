@@ -14,12 +14,10 @@ import com.up.lhm.getoffer.R;
 import com.up.lhm.getoffer.mvp.observer.IObserver;
 import com.up.lhm.getoffer.mvp.observer.IObverListener;
 import com.up.lhm.getoffer.mvp.observer.ObserverMan;
-import com.up.lhm.getoffer.rxjava.RxjavaManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * @author lianghaimiao

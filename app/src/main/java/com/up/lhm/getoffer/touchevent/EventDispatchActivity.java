@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.up.lhm.getoffer.R;
+import com.up.lhm.hmtools.system.IntentUtil;
 import com.up.lhm.hmtools.system.Log;
 
 /**
@@ -25,7 +26,7 @@ import com.up.lhm.hmtools.system.Log;
 
 public class EventDispatchActivity extends AppCompatActivity {
 
-    private Button mBtn;
+    private Bt mBtn;
     private RelativeLayout mRl;
     private Customview mView;
     private CustomViewGroup mViewGroup;
@@ -53,7 +54,28 @@ public class EventDispatchActivity extends AppCompatActivity {
         mView = findViewById(R.id.cv);
 
         mCd = findViewById(R.id.cd);
+        mCd.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.d("事件分发", "ViewGroup---》setOnTouchListener: onTouch");
+                return true;
+            }
+        });
+        mBtn.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.d("事件分发", "view---》setOnTouchListener: onTouch");
 
+                return true;
+            }
+        });
+        mBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("事件分发", "view---》setOnClickListener: onClick");
+
+            }
+        });
         //        mCd.setOntouListener(new OntouListener() {
 //            @Override
 //            public void setclick(String string) {
@@ -80,6 +102,8 @@ public class EventDispatchActivity extends AppCompatActivity {
             case MotionEvent.ACTION_CANCEL:
                 Log.d("事件分发", "activity---》dispatchTouchEvent: ACTION_CANCEL");
                 break;
+            default:
+                break;
         }
         return super.dispatchTouchEvent(ev);
     }
@@ -99,7 +123,10 @@ public class EventDispatchActivity extends AppCompatActivity {
             case MotionEvent.ACTION_CANCEL:
                 Log.d("事件分发", "activity---》onTouchEvent: ACTION_CANCEL");
                 break;
+            default:
+                break;
         }
+
         return super.onTouchEvent(event);
     }
 

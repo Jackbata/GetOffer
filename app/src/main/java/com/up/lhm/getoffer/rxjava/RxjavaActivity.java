@@ -8,7 +8,6 @@ import android.widget.Button;
 import com.up.lhm.getoffer.R;
 import com.up.lhm.getoffer.mvp.base.BaseActivity;
 import com.up.lhm.getoffer.rxjava.Contract.Rxjavaview;
-import com.up.lhm.getoffer.rxjava.present.ComposePresent;
 import com.up.lhm.getoffer.rxjava.present.ConnectablePresent;
 import com.up.lhm.getoffer.rxjava.present.CreatePresent;
 import com.up.lhm.getoffer.rxjava.present.CustomOperatPresent;

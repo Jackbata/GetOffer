@@ -3,17 +3,13 @@ package com.up.lhm.getoffer.rxjava.present;
 import com.up.lhm.getoffer.mvp.base.BasePresenter;
 import com.up.lhm.getoffer.mvp.base.IbaseView;
 import com.up.lhm.getoffer.rxjava.Contract;
-import com.up.lhm.getoffer.rxjava.Contract.Rxjavaview;
 import com.up.lhm.hmtools.system.Log;
 
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
-import io.reactivex.Scheduler;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 import io.reactivex.observables.ConnectableObservable;
 import io.reactivex.schedulers.Schedulers;
 

@@ -1,8 +1,5 @@
 package com.up.lhm.getoffer.jsbridge;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -14,8 +11,10 @@ import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.up.lhm.getoffer.R;
-import com.up.lhm.getoffer.greendao.GreendaoActivity;
 import com.up.lhm.hmtools.system.IntentUtil;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 @SuppressLint("SetJavaScriptEnabled") 

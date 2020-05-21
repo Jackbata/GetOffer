@@ -1,18 +1,20 @@
 package com.up.lhm.getoffer.hashmap;
 
 import android.app.Activity;
+import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.ArrayMap;
 import android.util.Log;
+import android.util.SparseArray;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.up.lhm.getoffer.R;
 import com.up.lhm.getoffer.test.Ae;
 import com.up.lhm.getoffer.test.Be;
-import com.up.lhm.getoffer.test.Ce;
 import com.up.lhm.hmtools.system.IntentUtil;
 
 import java.util.ArrayList;
@@ -53,6 +55,8 @@ public class HashMapActivity extends Activity {
         HashMap<String, Integer> hm1 = new HashMap<>();
         HashMap<String, Integer> hm = new HashMap<>(1);
         hm.put("", 11);
+        hm.get("");
+
         Integer integer = hm.get("");
         Log.d("测试", integer + "");
 
@@ -66,6 +70,8 @@ public class HashMapActivity extends Activity {
 
         LinkedList<Integer> objects = new LinkedList<>();
         objects.add(1);
+        SparseArray<String> stringSparseArray = new SparseArray<>();
+        stringSparseArray.put(1,"e");
 
         LinkedHashMap<Object, Object> map = new LinkedHashMap<>();
         map.put(null, null);
@@ -74,11 +80,15 @@ public class HashMapActivity extends Activity {
 
         Hashtable<String, String> stringStringHashtable = new Hashtable<>();
         stringStringHashtable.put("q", "q");
+        stringStringHashtable.get("q");
 
         ThreadLocal<String> threadLocal = new ThreadLocal<>();
         threadLocal.set("ss");
         threadLocal.get();
 
+        ArrayMap<String, String> stringStringArrayMap = new ArrayMap<>();
+        stringStringArrayMap.put("3","ee");
+        stringStringArrayMap.get("3");
         HashMap<String, Ae> stringAeHashMap = new HashMap<>();
         stringAeHashMap.put("1",new Be());
         stringAeHashMap.put("1",new Ae());

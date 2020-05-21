@@ -6,9 +6,6 @@ import com.up.lhm.hmtools.system.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  * @author lianghaimiao
