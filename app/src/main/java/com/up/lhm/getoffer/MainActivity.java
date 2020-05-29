@@ -1,5 +1,7 @@
 package com.up.lhm.getoffer;
 
+import com.google.gson.Gson;
+
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.OrientationHelper;
@@ -8,12 +10,15 @@ import android.widget.TextView;
 
 import com.up.lhm.annotationlibs.BindVieww;
 import com.up.lhm.getoffer.MyAdapter.OnItemClickListener;
+import com.up.lhm.getoffer.aidl.AIDLActivity;
 import com.up.lhm.getoffer.arouter.ArouterMainActivity;
 import com.up.lhm.getoffer.bean.DataList;
 import com.up.lhm.getoffer.dragger.DraggerActivity;
 import com.up.lhm.getoffer.glide.GlideActivity;
 import com.up.lhm.getoffer.greendao.GreendaoActivity;
 import com.up.lhm.getoffer.hashmap.HashMapActivity;
+import com.up.lhm.getoffer.image.ImageActivity;
+import com.up.lhm.getoffer.ipc.IpcActivity;
 import com.up.lhm.getoffer.jsbridge.JSActivity;
 import com.up.lhm.getoffer.mvp.activity.ViewActivity;
 import com.up.lhm.getoffer.mvp.base.BaseActivity;
@@ -24,6 +29,7 @@ import com.up.lhm.getoffer.rxjava.RxjavaActivity;
 import com.up.lhm.getoffer.threadpool.ThreadPoolsActivity;
 import com.up.lhm.getoffer.touchevent.EventDispatchActivity;
 import com.up.lhm.getoffer.viewscoller.ViewScollerActivity;
+import com.up.lhm.getoffer.webview.WebviewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +54,8 @@ public class MainActivity extends BaseActivity {
      */
     private List<DataList> mList = new ArrayList<>();
     private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP","Arouter","dragger2",
-            "greendao", "jsbridage","图片框架","rxjava","okhttp","可继续填充"};
+            "greendao", "jsbridage","图片框架","rxjava","okhttp","跳转第三方应用","webview","图片适配","AIDL",
+            "可继续填充"};
     private MyAdapter mAdapter;
 
 
@@ -138,6 +145,18 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 12:
                         OkhttpActivity.start(MainActivity.this, false);
+                        break;
+                    case 13:
+                        IpcActivity.start(MainActivity.this, false);
+                        break;
+                    case 14:
+                        WebviewActivity.start(MainActivity.this, false);
+                        break;
+                    case 15:
+                        ImageActivity.start(MainActivity.this, false);
+                        break;
+                    case 16:
+                        AIDLActivity.start(MainActivity.this, false);
                         break;
                     default:
                         break;

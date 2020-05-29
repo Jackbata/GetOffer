@@ -3,6 +3,7 @@ package com.up.lhm.getoffer.mvp.base;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -27,21 +28,19 @@ import butterknife.Unbinder;
 
 public abstract class BaseActivity extends Activity implements IObverListener {
     @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+   public Toolbar mToolbar;
     @BindView(R.id.base_content)
     FrameLayout mBaseContent;
     private ObserverMan mObserverMan;
     private Unbinder mBind;
-
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setNavigationOnClickListener(new OnClickListener() {
+         mToolbar = findViewById(R.id.toolbar);
+        mToolbar.setNavigationOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -59,8 +58,13 @@ public abstract class BaseActivity extends Activity implements IObverListener {
         initData();
         mObserverMan.onCreade();
         mToolbar.setTitle(initTitle(""));
-
+        setLinister();
+        customTitle();
     }
+
+    protected  void customTitle(){};
+
+    protected  void setLinister(){};
 
     protected  String initTitle(String title){
 

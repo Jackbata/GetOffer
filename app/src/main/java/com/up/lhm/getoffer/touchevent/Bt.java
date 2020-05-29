@@ -67,7 +67,7 @@ public class Bt extends View {
             default:
                 break;
         }
-        return true;
+        return super.onTouchEvent(event);
     }
 //
 //    @Override

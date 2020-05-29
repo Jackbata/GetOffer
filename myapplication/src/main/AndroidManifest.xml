@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <service android:name=".AidlService">
+            <intent-filter>
+                <action android:name="com.up.lhm.myapplication.AidlService"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

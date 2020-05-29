@@ -62,7 +62,7 @@ public class Cd2 extends RelativeLayout {
                 Log.d("事件分发", "ViewGroup2---》onInterceptTouchEvent事件分发: ACTION_CANCEL");
                 break;
         }
-        return false;
+        return super.onInterceptTouchEvent(event);
     }
 
     @Override
@@ -81,7 +81,7 @@ public class Cd2 extends RelativeLayout {
                 Log.d("事件分发", "ViewGroup2---》onTouchEvent: ACTION_CANCEL");
                 break;
         }
-        return true;
+        return super.onTouchEvent(event);
     }
 
 //    @Override

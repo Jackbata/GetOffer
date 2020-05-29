@@ -1,5 +1,7 @@
 package com.up.lhm.getoffer.arith;
 
+import java.io.Serializable;
+
 /**
  * @author lianghaimiao
  * @date 2019/3/31

@@ -38,6 +38,8 @@ public class OkhttpActivity extends BaseActivity implements OkhttpView {
         Bundle args = new Bundle();
         IntentUtil.redirect(context, OkhttpActivity.class, b, args);
     }
+
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_okhttp;

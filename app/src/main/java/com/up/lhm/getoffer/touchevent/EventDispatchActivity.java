@@ -54,28 +54,28 @@ public class EventDispatchActivity extends AppCompatActivity {
         mView = findViewById(R.id.cv);
 
         mCd = findViewById(R.id.cd);
-        mCd.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Log.d("事件分发", "ViewGroup---》setOnTouchListener: onTouch");
-                return true;
-            }
-        });
-        mBtn.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Log.d("事件分发", "view---》setOnTouchListener: onTouch");
-
-                return true;
-            }
-        });
-        mBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("事件分发", "view---》setOnClickListener: onClick");
-
-            }
-        });
+//        mCd.setOnTouchListener(new OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                Log.d("事件分发", "ViewGroup---》setOnTouchListener: onTouch");
+//                return true;
+//            }
+//        });
+//        mBtn.setOnTouchListener(new OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                Log.d("事件分发", "view---》setOnTouchListener: onTouch");
+//
+//                return true;
+//            }
+//        });
+//        mBtn.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d("事件分发", "view---》setOnClickListener: onClick");
+//
+//            }
+//        });
         //        mCd.setOntouListener(new OntouListener() {
 //            @Override
 //            public void setclick(String string) {

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="send"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="41dp" />
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@+id/send"
+        android:id="@+id/get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="136dp" />
+    <Button
+        app:layout_constraintTop_toBottomOf="@+id/get"
+        android:id="@+id/custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取服务器自定义数据"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="136dp" />
+    <Button
+    app:layout_constraintTop_toBottomOf="@+id/custom"
+    android:id="@+id/sendcustom"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="发送自定义数据"
+    tools:layout_editor_absoluteX="57dp"
+    tools:layout_editor_absoluteY="136dp" />
+</android.support.constraint.ConstraintLayout>
