@@ -53,12 +53,12 @@ public class MainActivity extends BaseActivity {
      * 技能点列表
      */
     private List<DataList> mList = new ArrayList<>();
-    private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP","Arouter","dragger2",
-            "greendao", "jsbridage","图片框架","rxjava","okhttp","跳转第三方应用","webview","图片适配","AIDL",
+    private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP", "Arouter",
+            "dragger2",
+            "greendao", "jsbridage", "图片框架", "rxjava", "okhttp", "跳转第三方应用", "webview", "图片适配",
+            "AIDL",
             "可继续填充"};
     private MyAdapter mAdapter;
-
-
 
 
     @Override
@@ -72,13 +72,13 @@ public class MainActivity extends BaseActivity {
         mRv = findViewById(R.id.rv);
     }
 
-     @Override
-     public void initData() {
+    @Override
+    public void initData() {
         initView();
 
-         initrvdata();
+        initrvdata();
 
-         initRv();
+        initRv();
         setListener();
 
 
@@ -94,7 +94,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initRv() {
-        GridLayoutManager linearLayoutManager = new GridLayoutManager(this,3);
+        GridLayoutManager linearLayoutManager = new GridLayoutManager(this, 3);
         linearLayoutManager.setOrientation(OrientationHelper.VERTICAL);
         mRv.setLayoutManager(linearLayoutManager);
         mAdapter = new MyAdapter(mList);
@@ -140,8 +140,8 @@ public class MainActivity extends BaseActivity {
                     case 10:
                         GlideActivity.start(MainActivity.this, false);
                         break;
-                        case 11:
-                            RxjavaActivity.start(MainActivity.this, false);
+                    case 11:
+                        RxjavaActivity.start(MainActivity.this, false);
                         break;
                     case 12:
                         OkhttpActivity.start(MainActivity.this, false);

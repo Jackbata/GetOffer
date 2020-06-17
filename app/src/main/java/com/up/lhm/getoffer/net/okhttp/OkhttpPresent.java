@@ -36,7 +36,6 @@ public class OkhttpPresent extends BasePresenter<OkhttpActivity> implements Cont
         public boolean handleMessage(Message msg) {
             for(;;){
                 Log.d("handlerdelay","what="+msg.what);
-
             }
         }
     });

@@ -4,11 +4,13 @@ package com.up.lhm.getoffer.hashmap;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Log;
+import android.util.LruCache;
 import android.util.SparseArray;
 import android.widget.Button;
 import android.widget.ListAdapter;
@@ -64,6 +66,7 @@ public class HashMapActivity extends Activity {
 //        testData();
 //        initData();
     }
+
 
     private void testData() {
 
