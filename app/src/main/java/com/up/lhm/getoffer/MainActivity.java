@@ -175,4 +175,17 @@ public class MainActivity extends BaseActivity {
 
         return "";
     }
+
+    public String dev() {
+        //dev第一次提交远程分支
+        //dev第2次提交远程分支
+        //dev第3次提交远程分支
+        // dev第4次提交远程分支
+        //master第1次提交远程分支
+
+
+        return "";
+    }
+
+
 }
