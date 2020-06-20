@@ -170,20 +170,16 @@ public class MainActivity extends BaseActivity {
     public String geturl() {
         return "";
     }
-    public String master() {
-        return "";
-    }
+
     public String dev() {
         //dev第一次提交远程分支
         //dev第2次提交远程分支
         //dev第3次提交远程分支
+        // dev第4次提交远程分支
         //master第1次提交远程分支
 
         return "";
     }
-    public String fetch() {
-        //featch 第一次提交
-        return "";
-    }
+
 
 }
