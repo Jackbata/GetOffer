@@ -177,7 +177,7 @@ public class MainActivity extends BaseActivity {
         //dev第2次提交远程分支
         //dev第3次提交远程分支
         // dev第4次提交远程分支
-       // dev第5次提交远程分支
+        // dev第5次提交远程分支
         // dev第6次提交远程分支
         // dev第7次提交远程分支
         // dev第8次提交远程分支
@@ -186,6 +186,7 @@ public class MainActivity extends BaseActivity {
 
         return "master";
     }
+
     public String featch() {
         //featch第一次提交远程分支
         //featch第er次提交远程分支
@@ -199,4 +200,7 @@ public class MainActivity extends BaseActivity {
         return "";
     }
 
+    public void fix() {
+       System.out.println("错误代码");
+    }
 }
