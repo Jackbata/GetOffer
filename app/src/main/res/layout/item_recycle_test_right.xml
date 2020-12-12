@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="right">
+
+    <ImageView
+        android:id="@+id/en_iv"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_liang_small" />
+    <TextView
+        android:layout_toStartOf="@+id/en_iv"
+        android:id="@+id/tv_right_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="right"
+        android:textColor="@color/v000000"
+        tools:text="边右边右边右边右右边右边右边右边右边" />
+
+
+
+
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package com.up.lhm.getoffer.recycle;
+package com.up.lhm.getoffer.recycle.base;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
@@ -49,4 +49,5 @@ public class TopSmoothLayoutManager extends LinearLayoutManager {
         }
 
     }
+
 }

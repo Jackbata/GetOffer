@@ -12,8 +12,16 @@
         android:layout_margin="20dp"
         android:text="下一题" />
 
+    <TextView
+        android:id="@+id/tv_progre"
+        android:layout_width="300dp"
+        android:layout_height="6dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="70dp"
+        android:background="@color/vf0b500" />
 
-    <android.support.v7.widget.RecyclerView
+    <com.up.lhm.getoffer.recycle.base.NoScrollRecycleView
         android:id="@+id/english_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,4 +39,5 @@
         android:layout_margin="20dp"
         android:textColor="@color/vff5855"
         tools:text="提示语" />
+
 </RelativeLayout>
