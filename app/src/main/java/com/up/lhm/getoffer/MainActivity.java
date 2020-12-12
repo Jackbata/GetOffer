@@ -25,7 +25,9 @@ import com.up.lhm.getoffer.mvp.base.BaseActivity;
 import com.up.lhm.getoffer.net.okhttp.OkhttpActivity;
 import com.up.lhm.getoffer.notes.GetUrl;
 import com.up.lhm.getoffer.notes.TestAnnotate;
+import com.up.lhm.getoffer.recycle.RecyclerviewActivity;
 import com.up.lhm.getoffer.rxjava.RxjavaActivity;
+import com.up.lhm.getoffer.systemview.SystemViewActivity;
 import com.up.lhm.getoffer.threadpool.ThreadPoolsActivity;
 import com.up.lhm.getoffer.touchevent.EventDispatchActivity;
 import com.up.lhm.getoffer.viewscoller.ViewScollerActivity;
@@ -56,8 +58,7 @@ public class MainActivity extends BaseActivity {
     private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP", "Arouter",
             "dragger2",
             "greendao", "jsbridage", "图片框架", "rxjava", "okhttp", "跳转第三方应用", "webview", "图片适配",
-            "AIDL",
-            "可继续填充"};
+            "AIDL", "系统组件","recycleview","可继续填充"};
     private MyAdapter mAdapter;
 
 
@@ -157,6 +158,12 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 16:
                         AIDLActivity.start(MainActivity.this, false);
+                        break;
+                    case 17:
+                        SystemViewActivity.start(MainActivity.this, false);
+                        break;
+                    case 18:
+                        RecyclerviewActivity.start(MainActivity.this, false);
                         break;
                     default:
                         break;

@@ -55,12 +55,15 @@ public abstract class BaseActivity extends Activity implements IObverListener {
          *注册
          */
         mObserverMan = new ObserverMan();
+        initBaseView();
         initData();
         mObserverMan.onCreade();
         mToolbar.setTitle(initTitle(""));
         setLinister();
         customTitle();
     }
+
+    protected void initBaseView() {}
 
     protected  void customTitle(){};
 
