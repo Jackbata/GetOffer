@@ -3,6 +3,7 @@ package com.up.lhm.getoffer.recycle
 import android.animation.ValueAnimator
 import android.content.Context
 import android.os.Bundle
+import android.renderscript.Sampler
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View

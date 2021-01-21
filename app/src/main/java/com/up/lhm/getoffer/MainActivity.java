@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.up.lhm.annotationlibs.BindVieww;
 import com.up.lhm.getoffer.MyAdapter.OnItemClickListener;
 import com.up.lhm.getoffer.aidl.AIDLActivity;
+import com.up.lhm.getoffer.apm.ApmActivity;
 import com.up.lhm.getoffer.arouter.ArouterMainActivity;
 import com.up.lhm.getoffer.bean.DataList;
 import com.up.lhm.getoffer.dragger.DraggerActivity;
@@ -58,7 +59,7 @@ public class MainActivity extends BaseActivity {
     private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP", "Arouter",
             "dragger2",
             "greendao", "jsbridage", "图片框架", "rxjava", "okhttp", "跳转第三方应用", "webview", "图片适配",
-            "AIDL", "系统组件","recycleview","可继续填充"};
+            "AIDL", "系统组件","recycleview","APM性能监测","可继续填充"};
     private MyAdapter mAdapter;
 
 
@@ -164,6 +165,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 18:
                         RecyclerviewActivity.start(MainActivity.this, false);
+                        break;
+                    case 19:
+                        ApmActivity.start(MainActivity.this, false);
                         break;
                     default:
                         break;

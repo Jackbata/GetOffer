@@ -56,6 +56,7 @@
         <activity android:name=".aidl.AIDLActivity"/>
         <activity android:name=".systemview.SystemViewActivity"/>
         <activity android:name=".recycle.RecyclerviewActivity"/>
+        <activity android:name=".apm.ApmActivity"/>
     </application>
 
 </manifest>
