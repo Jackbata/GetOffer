@@ -52,10 +52,10 @@ class RecyclerviewActivity : BaseActivity() {
             when (i % 3) {
                 0 -> text = "第 $i 题：I want to sleep I want to sleep I want to sleepI want to sleepI want to sleepI want to sleep"
                 1 -> text = "第 $i 题：sleepI want to sleep"
-                else ->text = "第 $i 题：I want to sleep I want to sleep I want to sleepI "
+                else -> text = "第 $i 题：I want to sleep I want to sleep I want to sleepI "
             }
 
-            recycleTestBean.content = if (i==9) "第 $i 题：I want to sleep I want to sleep I want to  to sleep I want to sleepI want to sleepI want to sleepI want to sleepsleep I want to sleepI want to sleepI want to sleepI want to sleep" else text
+            recycleTestBean.content = if (i == 9) "第 $i 题：I want to sleep I want to sleep I want to  to sleep I want to sleepI want to sleepI want to sleepI want to sleepsleep I want to sleepI want to sleepI want to sleepI want to sleep" else text
             recycleTestBean.isleft = i % 2 == 0
             recycleTestBean.id = i
             recycleTestBean.isRead = i == 0
@@ -69,39 +69,53 @@ class RecyclerviewActivity : BaseActivity() {
 
 
     override fun setLinister() {
+        var index = 1
         btnNext!!.setOnClickListener(View.OnClickListener {
-            val size = mList!!.size - 1
-            if (curr >= size) {
-                val firsthand = mList!![curr]
-                firsthand?.isRead = false
-                mAdapter?.notifyDataSetChanged()
-                Log.d("demo测试", "curr=$curr,已经到最后一条")
-                return@OnClickListener
-            }
+//            nexttopic()
+            index += 2
+            setScore(false, index)
 
-            val firstVisibleItemPosition = linearLayoutManager!!.findFirstVisibleItemPosition()
-            val findLastCompletelyVisibleItemPosition = linearLayoutManager?.findLastCompletelyVisibleItemPosition()
-            val next = firstVisibleItemPosition + 1
-
-            if (findLastCompletelyVisibleItemPosition == size || firstVisibleItemPosition == size) {
-                ToastUtils.showShort("不用滑了，已经到底了")
-            } else {
-                //滑动到下一条
-                curr = firstVisibleItemPosition
-                mRecycle?.smoothScrollToPosition(next)
-                mRecycle?.postDelayed({ getHint() }, 500)
-            }
-
-            val firsthand = mList!![curr]
-            firsthand?.isRead = false
-            if (++curr <= size) {
-                val recycleTestBean = mList!![curr]
-                recycleTestBean.isRead = true
-                mAdapter?.notifyDataSetChanged()
-            }
-            startTime()
 
         })
+    }
+
+    fun setScore(isshow: Boolean, score: Int) {
+        btnNext?.postDelayed({
+            Log.d("setScore", "isshow=$isshow,score=${score}")
+        }, 5000)
+    }
+
+    private fun nexttopic() {
+        val size = mList!!.size - 1
+        if (curr >= size) {
+            val firsthand = mList!![curr]
+            firsthand?.isRead = false
+            mAdapter?.notifyDataSetChanged()
+            Log.d("demo测试", "curr=$curr,已经到最后一条")
+            return
+        }
+
+        val firstVisibleItemPosition = linearLayoutManager!!.findFirstVisibleItemPosition()
+        val findLastCompletelyVisibleItemPosition = linearLayoutManager?.findLastCompletelyVisibleItemPosition()
+        val next = firstVisibleItemPosition + 1
+
+        if (findLastCompletelyVisibleItemPosition == size || firstVisibleItemPosition == size) {
+            ToastUtils.showShort("不用滑了，已经到底了")
+        } else {
+            //滑动到下一条
+            curr = firstVisibleItemPosition
+            mRecycle?.smoothScrollToPosition(next)
+            mRecycle?.postDelayed({ getHint() }, 500)
+        }
+
+        val firsthand = mList!![curr]
+        firsthand?.isRead = false
+        if (++curr <= size) {
+            val recycleTestBean = mList!![curr]
+            recycleTestBean.isRead = true
+            mAdapter?.notifyDataSetChanged()
+        }
+        startTime()
     }
 
 
@@ -123,26 +137,26 @@ class RecyclerviewActivity : BaseActivity() {
         }
     }
 
-    fun startTime(){
-        var toast=true
-        val animation: ObjectAnimator = ObjectAnimator.ofFloat( tv_progre, "scaleX", 1f, 0f)
+    fun startTime() {
+        var toast = true
+        val animation: ObjectAnimator = ObjectAnimator.ofFloat(tv_progre, "scaleX", 1f, 0f)
         //设置播放时间
         //设置播放时间
         animation.duration = 10000
-        tv_progre.pivotX=0f
-        animation.interpolator=LinearInterpolator()
+        tv_progre.pivotX = 0f
+        animation.interpolator = LinearInterpolator()
         animation.start()
 
         animation.addUpdateListener {
-            if (it.currentPlayTime>=5000&&toast){
-                toast=false
+            if (it.currentPlayTime >= 5000 && toast) {
+                toast = false
                 ToastUtils.showLong("5秒了")
             }
-            if (it.currentPlayTime>=8000){
+            if (it.currentPlayTime >= 8000) {
                 ToastUtils.showLong("结束了")
-                animation.currentPlayTime=0
+                animation.currentPlayTime = 0
             }
-            Log.d("demo测试",  "it.currentPlayTime=${it.currentPlayTime}")
-           }
+            Log.d("demo测试", "it.currentPlayTime=${it.currentPlayTime}")
+        }
     }
 }

@@ -60,4 +60,14 @@ public class App extends Application {
     public static DaoSession getDaoInstant() {
         return mDaoSession;
     }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+    }
 }
