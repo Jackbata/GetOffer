@@ -3,21 +3,21 @@ package com.up.lhm.getoffer.apm.apmutil;
 
 import android.app.ActivityManager;
 import android.content.Context;
-import android.os.Debug;
 import android.os.Process;
 import android.text.format.Formatter;
 
 import com.up.lhm.hmtools.system.Log;
 
 import java.io.RandomAccessFile;
+import java.text.DecimalFormat;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Usage:
- *  Sampler.getInstance().init(getApplicationContext(), 100L);
- *  Sampler.getInstance().start();
+ * Sampler.getInstance().init(getApplicationContext(), 100L);
+ * Sampler.getInstance().start();
  */
 public class Sampler implements Runnable {
 
@@ -59,21 +59,26 @@ public class Sampler implements Runnable {
 
     @Override
     public void run() {
-//        double cpu = sampleCPU();
-//        double mem = sampleMemory();
-          getMeminfo();
-//        NGLog.d("Sampler", "CPU: " + cpu + "%" + "    Memory: " + mem + "MB");
+        getMeminfo();
     }
 
     private void getMeminfo() {
-        String freeMem = formateFileSize(MemUtils.getFreeMem());
-        String totalMem = formateFileSize(MemUtils.getTotalMem());
-        String systemAvaialbeMemorySize = getSystemAvaialbeMemorySize();
-       MemUtils.getPSS(mContext, Process.myPid());
-        MemUtils.getPrivDirty(mContext, Process.myPid());
-        double mem = sampleMemory();
 
-        Log.d("Sampler", "pidmem: " + mem + "MB"+"  freeMem："+freeMem + "MB"+";totalMem"+totalMem+" pid:"+Process.myPid() + "systemAvaialbeMemorySize："+systemAvaialbeMemorySize);
+        DecimalFormat df2 = new DecimalFormat("0.00");
+
+        ActivityManager.MemoryInfo memoryInfo = MemUtils.getSystemAvaialbeMemorySize(mContext);
+        //手机剩余可用
+        long memSize = memoryInfo.availMem;
+        String availMemStr = formateFileSize(memSize);
+
+        //RAM总内存
+        long totalMem = MemUtils.getTotalMem();
+
+        //app当前进程占用内存
+        double useMemStr = MemUtils.sampleMemory(mContext,Process.myPid() );
+
+        String format = df2.format((totalMem - memSize / (1024 * 1024D)) / totalMem * 100D);
+        String totalMemStr = df2.format(totalMem / 1024D);
     }
 
     private double sampleCPU() {
@@ -107,47 +112,13 @@ public class Sampler implements Runnable {
             lastAppCpuTime = appTime;
         } catch (Exception e) {
             e.printStackTrace();
-            Log.d("Sampler", "e="+e.toString());
 
         }
         return sampleValue;
     }
 
-    private double sampleMemory() {
-        double mem = 0.0D;
-        try {
-            // 统计进程的内存信息 totalPss
-            final Debug.MemoryInfo[] memInfo = activityManager.getProcessMemoryInfo(new int[]{Process.myPid()});
-            if (memInfo.length > 0) {
-                // TotalPss = dalvikPss + nativePss + otherPss, in KB
-                final int totalPss = memInfo[0].getTotalPss();
-                if (totalPss >= 0) {
-                    // Mem in MB
-                    mem = totalPss / 1024.0D;
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.d("Sampler", "e="+e.toString());
-        }
-        return mem;
-    }
-    //获得系统可用内存信息
-    private String getSystemAvaialbeMemorySize() {
-        //获得MemoryInfo对象
-        ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
-        //获得系统可用内存，保存在MemoryInfo对象上
-        activityManager.getMemoryInfo(memoryInfo);
-        long memSize = memoryInfo.availMem;
-
-        //字符类型转换
-        String availMemStr = formateFileSize(memSize);
-
-        return availMemStr;
-    }
     //调用系统函数，字符串转换 long -String KB/MB
-    private String formateFileSize(long size){
+    private String formateFileSize(long size) {
         return Formatter.formatFileSize(mContext, size);
     }
-
-    }
+}
