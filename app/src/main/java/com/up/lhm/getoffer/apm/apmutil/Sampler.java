@@ -65,21 +65,26 @@ public class Sampler implements Runnable {
     private void getMeminfo() {
 
         DecimalFormat df2 = new DecimalFormat("0.00");
-
         ActivityManager.MemoryInfo memoryInfo = MemUtils.getSystemAvaialbeMemorySize(mContext);
         //手机剩余可用
         long memSize = memoryInfo.availMem;
-        String availMemStr = formateFileSize(memSize);
-
         //RAM总内存
-        long totalMem = MemUtils.getTotalMem();
-
+        long totalMem = memoryInfo.totalMem;
+        //内存使用率
+        String useRate = df2.format((totalMem - memSize)/(double)totalMem*100D);
         //app当前进程占用内存
-        double useMemStr = MemUtils.sampleMemory(mContext,Process.myPid() );
+        double useMemStr = MemUtils.sampleMemory(mContext,Process.myPid());
 
-        String format = df2.format((totalMem - memSize / (1024 * 1024D)) / totalMem * 100D);
-        String totalMemStr = df2.format(totalMem / 1024D);
+        String availMemStr = formateFileSize(memSize);
+        String totalMemStr = formateFileSize(totalMem);
+
+        Log.d("Sampler", "pidusemem: " + useMemStr + "M--" + "availMemStr：" + availMemStr + "--" + "totalMemStr：" + totalMemStr + "GB" + "--内存使用率：" + useRate + "%" + "--curpid：" + Process.myPid());
     }
+    //调用系统函数，字符串转换 long -String KB/MB
+    private String formateFileSize(long size) {
+        return Formatter.formatFileSize(mContext, size);
+    }
+
 
     private double sampleCPU() {
         long cpuTime;
@@ -112,13 +117,11 @@ public class Sampler implements Runnable {
             lastAppCpuTime = appTime;
         } catch (Exception e) {
             e.printStackTrace();
+            Log.d("Sampler", "e=" + e.toString());
 
         }
         return sampleValue;
     }
 
-    //调用系统函数，字符串转换 long -String KB/MB
-    private String formateFileSize(long size) {
-        return Formatter.formatFileSize(mContext, size);
-    }
+
 }
