@@ -27,8 +27,8 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.os.Debug;
 import android.os.Debug.MemoryInfo;
-
-import com.up.lhm.hmtools.system.Log;
+import android.text.format.Formatter;
+import android.util.Log;
 
 import java.lang.reflect.Method;
 import java.text.DecimalFormat;
@@ -133,6 +133,7 @@ public class MemUtils {
         value[0] = pidMemoryInfo.nativePrivateDirty;
         value[1] = pidMemoryInfo.dalvikPrivateDirty;
         value[2] = pidMemoryInfo.getTotalPrivateDirty();
+        Log.d("Sampler", "TotalPrivateDirty="+ Formatter.formatFileSize(context, pidMemoryInfo.getTotalPrivateDirty()));
 
         return value;
     }
@@ -157,6 +158,8 @@ public class MemUtils {
             value[0] = pidMemoryInfo.nativePss;
             value[1] = pidMemoryInfo.dalvikPss;
             value[2] = pidMemoryInfo.getTotalPss();
+            Log.d("Sampler", "TotalPss="+ Formatter.formatFileSize(context, pidMemoryInfo.getTotalPss()));
+
         } else {
             value[0] = 0;
             value[1] = 0;
@@ -230,7 +233,6 @@ public class MemUtils {
 
         return memoryInfo;
     }
-
     /**
      * 获取当前进程的内存使用大小
      * @return
@@ -244,10 +246,10 @@ public class MemUtils {
             final MemoryInfo[] memInfo = activityManager.getProcessMemoryInfo(new int[]{pid});
             if (memInfo.length > 0) {
                 // TotalPss = dalvikPss + nativePss + otherPss, in KB
-//                final int totalPss = memInfo[0].getTotalPss();
-                final int privateClean = memInfo[0].getTotalPrivateClean();
-                final int privateDirty = memInfo[0].getTotalPrivateDirty();
-                final  int totalPss=privateDirty+privateClean;
+                final int totalPss = memInfo[0].getTotalPss();
+//                final int privateClean = memInfo[0].getTotalPrivateClean();
+//                final int privateDirty = memInfo[0].getTotalPrivateDirty();
+//                final  int totalPss=privateDirty+privateClean;
                 if (totalPss >= 0) {
                     // Mem in MB
 
@@ -260,5 +262,23 @@ public class MemUtils {
             Log.d("Sampler", "e="+e.toString());
         }
         return mem;
+    }
+
+    /**
+     * jvm分配给app的内存的使用情况
+     */
+    public static void getRunTimeInfo() {
+        DecimalFormat df2 = new DecimalFormat("0.00");
+        Runtime runtime = Runtime.getRuntime();
+        //向jvm申请到的内存
+        double totalMemory = runtime.totalMemory()/(1024*1024D);
+        //申请到而未使用到部分内存
+        double freeMemory = runtime.freeMemory()/(1024*1024D);
+        //实际使用到内存
+        double userMemory =( runtime.totalMemory()- runtime.freeMemory())/(1024*1024D);
+
+        double maxMemory = runtime.maxMemory()/(1024*1024D);
+        double appRate=totalMemory/maxMemory*100D;
+        Log.d("Sampler", "userMemory: " + df2.format(userMemory) + "M--totalMemory：" +  df2.format(totalMemory)+"M--maxMemory：" +  df2.format(maxMemory)+"M--appRate："+df2.format(appRate)+"%");
     }
 }

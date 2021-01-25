@@ -5,8 +5,8 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.os.Process;
 import android.text.format.Formatter;
+import android.util.Log;
 
-import com.up.lhm.hmtools.system.Log;
 
 import java.io.RandomAccessFile;
 import java.text.DecimalFormat;
@@ -60,6 +60,7 @@ public class Sampler implements Runnable {
     @Override
     public void run() {
         getMeminfo();
+        MemUtils.getRunTimeInfo();
     }
 
     private void getMeminfo() {
@@ -77,14 +78,8 @@ public class Sampler implements Runnable {
 
         String availMemStr = formateFileSize(memSize);
         String totalMemStr = formateFileSize(totalMem);
-
         Log.d("Sampler", "pidusemem: " + useMemStr + "M--" + "availMemStr：" + availMemStr + "--" + "totalMemStr：" + totalMemStr + "GB" + "--内存使用率：" + useRate + "%" + "--curpid：" + Process.myPid());
     }
-    //调用系统函数，字符串转换 long -String KB/MB
-    private String formateFileSize(long size) {
-        return Formatter.formatFileSize(mContext, size);
-    }
-
 
     private double sampleCPU() {
         long cpuTime;
@@ -123,5 +118,8 @@ public class Sampler implements Runnable {
         return sampleValue;
     }
 
-
+    //调用系统函数，字符串转换 long -String KB/MB
+    private String formateFileSize(long size) {
+        return Formatter.formatFileSize(mContext, size);
+    }
 }
