@@ -78,7 +78,7 @@ public class Sampler implements Runnable {
         //内存使用率
         String useRate = df2.format((totalMem - memSize)/(double)totalMem*100D);
         //app当前进程占用内存
-        double useMemStr = MemUtils.sampleMemory(mContext,Process.myPid());
+        String useMemStr = MemUtils.sampleMemory(mContext,Process.myPid());
 
         String availMemStr = formateFileSize(memSize);
         String totalMemStr = formateFileSize(totalMem);
