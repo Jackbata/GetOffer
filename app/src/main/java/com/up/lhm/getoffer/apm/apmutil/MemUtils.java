@@ -25,8 +25,10 @@ package com.up.lhm.getoffer.apm.apmutil;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.os.Build;
 import android.os.Debug;
 import android.os.Debug.MemoryInfo;
+import android.os.Process;
 import android.text.format.Formatter;
 import android.util.Log;
 
@@ -237,33 +239,39 @@ public class MemUtils {
      * 获取当前进程的内存使用大小
      * @return
      */
-    public static double sampleMemory(Context context,int pid) {
-        double mem = 0.0D;
+    public static String sampleMemory(Context context,int pid){
+        String mem = "0.0";
         try {
-            ActivityManager   activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+            Debug.MemoryInfo memInfo = null;
+            //28 为Android P
+            if (Build.VERSION.SDK_INT > 28) {
+                // 统计进程的内存信息 totalPss
+                memInfo = new Debug.MemoryInfo();
+                Debug.getMemoryInfo(memInfo);
+            } else {
+                ActivityManager  activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
 
-            // 统计进程的内存信息 totalPss
-            final MemoryInfo[] memInfo = activityManager.getProcessMemoryInfo(new int[]{pid});
-            if (memInfo.length > 0) {
-                // TotalPss = dalvikPss + nativePss + otherPss, in KB
-                final int totalPss = memInfo[0].getTotalPss();
-//                final int privateClean = memInfo[0].getTotalPrivateClean();
-//                final int privateDirty = memInfo[0].getTotalPrivateDirty();
-//                final  int totalPss=privateDirty+privateClean;
-                if (totalPss >= 0) {
-                    // Mem in MB
+                //As of Android Q, for regular apps this method will only return information about the memory info for the processes running as the caller's uid;
+                // no other process memory info is available and will be zero. Also of Android Q the sample rate allowed by this API is significantly limited, if called faster the limit you will receive the same data as the previous call.
 
-                    DecimalFormat df = new DecimalFormat("#.00");
-                    mem = Double.parseDouble(df.format(totalPss / 1024.0D));
+                Debug.MemoryInfo[] memInfos = activityManager.getProcessMemoryInfo(new int[]{
+                    Process.myPid()});
+                if (memInfos != null && memInfos.length > 0) {
+                    memInfo = memInfos[0];
                 }
             }
+            int totalPss = memInfo.getTotalPss();
+            if (totalPss >= 0) {
+                // Mem in MB
+                DecimalFormat df = new DecimalFormat("#.00");
+                mem = df.format(totalPss / 1024.0D);
+            }
         } catch (Exception e) {
-            e.printStackTrace();
             Log.d("Sampler", "e="+e.toString());
+            e.printStackTrace();
         }
         return mem;
     }
-
     /**
      * jvm分配给app的内存的使用情况
      */

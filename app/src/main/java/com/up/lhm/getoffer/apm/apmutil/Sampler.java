@@ -71,6 +71,10 @@ public class Sampler implements Runnable {
         long memSize = memoryInfo.availMem;
         //RAM总内存
         long totalMem = memoryInfo.totalMem;
+
+        boolean lowMemory = memoryInfo.lowMemory;
+        long threshold = memoryInfo.threshold;
+
         //内存使用率
         String useRate = df2.format((totalMem - memSize)/(double)totalMem*100D);
         //app当前进程占用内存
