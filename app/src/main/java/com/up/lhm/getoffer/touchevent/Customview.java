@@ -31,13 +31,13 @@ public class Customview extends View {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("事件分发", "view---》dispatchTouchEvent事件分发: ACTION_DOWN");
+                Log.d("事件分发", "Customview---》dispatchTouchEvent事件分发: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d("事件分发", "view---》dispatchTouchEvent事件分发: ACTION_MOVE");
+                Log.d("事件分发", "Customview---》dispatchTouchEvent事件分发: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d("事件分发", "view---》dispatchTouchEvent事件分发: ACTION_UP");
+                Log.d("事件分发", "Customview---》dispatchTouchEvent事件分发: ACTION_UP");
                 break;
         }
         return super.dispatchTouchEvent(ev);
@@ -47,13 +47,13 @@ public class Customview extends View {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("事件分发", "view---》onTouchEvent事件分发: ACTION_DOWN");
+                Log.d("事件分发", " Customview view---》onTouchEvent事件分发: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d("事件分发", "view---》onTouchEvent事件分发: ACTION_MOVE");
+                Log.d("事件分发", "Customview---》onTouchEvent事件分发: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d("事件分发", "view---》onTouchEvent事件分发: ACTION_UP");
+                Log.d("事件分发", "Customview---》onTouchEvent事件分发: ACTION_UP");
                 break;
         }
         return super.onTouchEvent(event);

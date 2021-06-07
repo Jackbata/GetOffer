@@ -141,43 +141,43 @@ public class EventDispatchActivity extends AppCompatActivity {
             public void onClick(View v) {
             }
         });
-
-        mBtn.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        Log.d("事件分发", "mBtnview事件分发: ACTION_DOWN");
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        Log.d("事件分发", "mBtnview事件分发: ACTION_MOVE");
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        Log.d("事件分发", "mBtnview事件分发: ACTION_UP");
-                        break;
-                }
-                return true;
-            }
-        });
-
-        mView.setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        Log.d("事件分发", "view事件分发: ACTION_DOWN");
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        Log.d("事件分发", "view事件分发: ACTION_MOVE");
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        Log.d("事件分发", "view事件分发: ACTION_UP");
-                        break;
-                }
-
-                return true;
-            }
-        });
+//
+//        mBtn.setOnTouchListener(new OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                switch (event.getAction()) {
+//                    case MotionEvent.ACTION_DOWN:
+//                        Log.d("事件分发", "mBtnview事件分发: ACTION_DOWN");
+//                        break;
+//                    case MotionEvent.ACTION_MOVE:
+//                        Log.d("事件分发", "mBtnview事件分发: ACTION_MOVE");
+//                        break;
+//                    case MotionEvent.ACTION_UP:
+//                        Log.d("事件分发", "mBtnview事件分发: ACTION_UP");
+//                        break;
+//                }
+//                return true;
+//            }
+//        });
+//
+//        mView.setOnTouchListener(new OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                switch (event.getAction()) {
+//                    case MotionEvent.ACTION_DOWN:
+//                        Log.d("事件分发", "view事件分发: ACTION_DOWN");
+//                        break;
+//                    case MotionEvent.ACTION_MOVE:
+//                        Log.d("事件分发", "view事件分发: ACTION_MOVE");
+//                        break;
+//                    case MotionEvent.ACTION_UP:
+//                        Log.d("事件分发", "view事件分发: ACTION_UP");
+//                        break;
+//                }
+//
+//                return true;
+//            }
+//        });
         mView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

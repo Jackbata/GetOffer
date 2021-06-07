@@ -31,17 +31,17 @@ public class Bt extends View {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("事件分发", "view---》dispatchTouchEvent事件分发: ACTION_DOWN");
+                Log.d("事件分发", "Bt---》dispatchTouchEvent事件分发: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d("事件分发", "view---》dispatchTouchEvent事件分发: ACTION_MOVE");
+                Log.d("事件分发", "Bt---》dispatchTouchEvent事件分发: ACTION_MOVE");
 
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d("事件分发", "view---》dispatchTouchEvent事件分发: ACTION_UP");
+                Log.d("事件分发", "Bt---》dispatchTouchEvent事件分发: ACTION_UP");
                 break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d("事件分发", "view---》dispatchTouchEvent: ACTION_CANCEL");
+                Log.d("事件分发", "Bt---》dispatchTouchEvent: ACTION_CANCEL");
                 break;
         }
         return super.dispatchTouchEvent(ev);
@@ -51,18 +51,18 @@ public class Bt extends View {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("事件分发", "view---》onTouchEvent事件分发: ACTION_DOWN");
-                break;
+                Log.d("事件分发", "Bt---》onTouchEvent事件分发: ACTION_DOWN");
+                return false;
             case MotionEvent.ACTION_MOVE:
-                Log.d("事件分发", "view---》onTouchEvent事件分发: ACTION_MOVE");
+                Log.d("事件分发", "Bt---》onTouchEvent事件分发: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d("事件分发", "view---》onTouchEvent事件分发: ACTION_UP");
+                Log.d("事件分发", "Bt---》onTouchEvent事件分发: ACTION_UP");
                 break;
             case MotionEvent.ACTION_CANCEL:
                 //当view接收了down事件，但move事件被viewgroup拦截时，会执行该方法
                 //如果viewgroup当dispatchTouchEvent只拦截move事件，那么view最终仍会响应up事件
-                Log.d("事件分发", "view---》onTouchEvent: ACTION_CANCEL");
+                Log.d("事件分发", "Bt---》onTouchEvent: ACTION_CANCEL");
                 break;
             default:
                 break;
