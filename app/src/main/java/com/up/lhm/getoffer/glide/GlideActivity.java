@@ -2,6 +2,7 @@ package com.up.lhm.getoffer.glide;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -10,14 +11,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.up.lhm.getoffer.R;
 import com.up.lhm.getoffer.mvp.activity.Contract.Xview;
 import com.up.lhm.getoffer.mvp.base.BaseActivity;
+import com.up.lhm.getoffer.utils.ClipBitmapUtils;
 import com.up.lhm.hmtools.system.IntentUtil;
 
+import com.up.lhm.hmtools.system.Log;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -103,22 +105,36 @@ public class GlideActivity extends BaseActivity implements Xview {
     }
 
     private void setGlide() {
-        String url = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3632677651,3179755979&fm=26&gp=0.jpg";
-        //动图
-//        String url = "http://p1.pstatp.com/large/166200019850062839d3";
+//        String url = "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3632677651,3179755979&fm=26&gp=0.jpg";
+//        //动图
+////        String url = "http://p1.pstatp.com/large/166200019850062839d3";
+//
+//        SimpleTarget target = new SimpleTarget<Bitmap>() {
+//            @Override
+//            public void onResourceReady(Bitmap resource,
+//                    GlideAnimation<? super Bitmap> glideAnimation) {
+//                mIvGlide.setImageBitmap(resource);
+//            }
+//        };
+//
+//        Glide.with(this)
+//                .load(url)
+//                .asBitmap()
+//                .into(mIvGlide);
 
-        SimpleTarget target = new SimpleTarget<Bitmap>() {
+        Bitmap  src = new ClipBitmapUtils().getBitmap(this, R.drawable.default_glide);
+
+        //解决加载bitmap后，bitmap被回收
+        Bitmap bitmap2 = Bitmap.createBitmap(src);
+        Glide.with(this).load(src).into(mIvGlide);
+        mIvGlide.postDelayed(new Runnable() {
             @Override
-            public void onResourceReady(Bitmap resource,
-                    GlideAnimation<? super Bitmap> glideAnimation) {
-                mIvGlide.setImageBitmap(resource);
+            public void run() {
+                Log.d("GlideActivity","开始回收bitmap bitmap2"+bitmap2.toString()+"src="+src.toString());
+                src.recycle();
             }
-        };
+        }, 2000);
 
-        Glide.with(this)
-                .load(url)
-                .asBitmap()
-                .into(mIvGlide);
     }
 
 

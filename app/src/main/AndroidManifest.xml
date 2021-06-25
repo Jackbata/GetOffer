@@ -3,6 +3,7 @@
     package="com.up.lhm.getoffer">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".App"
@@ -57,6 +58,8 @@
         <activity android:name=".systemview.SystemViewActivity"/>
         <activity android:name=".recycle.RecyclerviewActivity"/>
         <activity android:name=".apm.ApmActivity"/>
+        <activity android:name=".camera.CameraActivity"/>
+        <activity android:name=".camera.CameraActivity2"/>
     </application>
 
 </manifest>
