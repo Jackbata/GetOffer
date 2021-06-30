@@ -2,8 +2,20 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'walle'//参考文档：https://www.jianshu.com/p/1c7f135831a4?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation
 
 android {
+    signingConfigs {
+
+        release {
+            //v1SigningEnabled true
+            //v2SigningEnabled true
+            keyAlias 'android'
+            keyPassword '111111'
+            storeFile file('getoffers.jks')
+            storePassword '111111'
+        }
+    }
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
     defaultConfig {
         applicationId "com.up.lhm.getoffer"
@@ -30,6 +42,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -43,8 +56,18 @@ android {
 //        daoPackage 'com.qianmo.greendaotest.gen' //设置DaoMaster.DaoSession,Dao包名
 //        targetGenDir 'src/main/java' //设置daoPackage所在的文件路径
     }
-}
 
+
+
+}
+walle {
+    // 指定渠道包的输出路径
+    apkOutputFolder = new File("${project.buildDir}/output/channels/")
+    // 定制渠道包的APK的文件名称
+    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk'
+    // 渠道配置文件
+    channelFile = new File("${project.getProjectDir()}/channel")
+}
 dependencies {
     def android = rootProject.ext.android
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -85,6 +108,8 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxjava:2.0.1'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    //walle
+    implementation 'com.meituan.android.walle:library:1.1.6'
 }
 repositories {
     mavenCentral()
