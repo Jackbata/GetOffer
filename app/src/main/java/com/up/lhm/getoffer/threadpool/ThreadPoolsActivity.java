@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.up.lhm.getoffer.R;
+import com.up.lhm.getoffer.test.Ae;
 import com.up.lhm.hmtools.system.IntentUtil;
 
 import java.util.LinkedList;
@@ -23,6 +24,8 @@ import java.util.concurrent.TimeUnit;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author lianghaimiao
@@ -77,8 +80,36 @@ public class ThreadPoolsActivity extends Activity {
       @Override
       public void onClick(View v) {
 
+        threadLocal();
+
+        lock();
+
       }
     });
+  }
+
+  private void lock() {
+    ReentrantLock reentrantLock = new ReentrantLock();
+    reentrantLock.lock();
+    reentrantLock.unlock();
+
+    Condition condition = reentrantLock.newCondition();
+    try {
+      condition.await();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    condition.signal();
+    condition.signalAll();
+  }
+
+  private void threadLocal() {
+    ThreadLocal<Ae> threadLocal = new ThreadLocal<>();
+    Ae ae = new Ae();
+
+    threadLocal.set(ae);
+    threadLocal.get();
+    threadLocal.remove();
   }
 
   private void testThread() {
@@ -106,4 +137,33 @@ public class ThreadPoolsActivity extends Activity {
       Log.d("线程池", "当前线程名字" + Thread.currentThread());
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
