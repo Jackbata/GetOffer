@@ -12,6 +12,8 @@ import android.util.ArrayMap;
 import android.util.Log;
 import android.util.LruCache;
 import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -29,6 +31,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
@@ -49,6 +52,8 @@ public class HashMapActivity extends Activity {
 
     @BindView(R.id.arraylist)
     Button mArraylist;
+    @BindView(R.id.btn)
+    Button btn;
     private ListView mListView;
     private ListAdapter mAdapter;
 
@@ -65,8 +70,47 @@ public class HashMapActivity extends Activity {
 //        initview();
 //        testData();
 //        initData();
+findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        SparseArray<String> stringSparseArray = new SparseArray<>();
+        int[] mKeys = new int[10];
+        int i2 = binarySearch2(mKeys, mKeys.length, 4);
+         stringSparseArray.put(4,"555");
+         stringSparseArray.put(3,"355");
+         stringSparseArray.put(6,"655");
+        int i4 = stringSparseArray.indexOfKey(4);
+        int i3 = stringSparseArray.indexOfKey(3);
+        int i6 = stringSparseArray.indexOfKey(6);
+        Log.d("binarySearch2","i3="+i3+" ；i4="+i4+" ；i6="+i6+" ; res="+i2+"; ~res="+(~i2));
+
+//        int[] mKeys = new int[10];
+//        for (int i = 0; i < 8; i++) {
+//        int r=    binarySearch2(mKeys, mKeys.length, i);
+//        Log.d("binarySearch2","ordata="+i+" ; res="+r+" ;res1="+(~r));
+//        }
+    }
+});
     }
 
+    public  int binarySearch2(int[] array, int size, int value) {
+        int lo = 0;
+        int hi = size - 1;
+
+        while (lo <= hi) {
+            final int mid = (lo + hi) >>> 1;
+            final int midVal = array[mid];
+
+            if (midVal < value) {
+                lo = mid + 1;
+            } else if (midVal > value) {
+                hi = mid - 1;
+            } else {
+                return mid;  // value found
+            }
+        }
+        return ~lo;  // value not present
+    }
 
     private void testData() {
 
@@ -98,14 +142,27 @@ public class HashMapActivity extends Activity {
         Integer integer = hm.get("");
         Log.d("测试", integer + "");
 
-        LinkedHashMap<Object, Object> map = new LinkedHashMap<>();
+        LinkedHashMap<Object, Object> map = new LinkedHashMap<Object, Object>(1,1,true);
         map.put(null, null);
+        map.put("q", "q");
+        map.put(1, "q");
+        map.get("3");
+
+        //  public final Iterator<Map.Entry<K,V>> iterator() {
+        //            return new LinkedEntryIterator();
+        //        }
+        Set<Entry<Object, Object>> entries = map.entrySet();
+        entries.iterator();
         ConcurrentHashMap<String, String> concurrentHashMap = new ConcurrentHashMap<>();
         concurrentHashMap.put("q", "q");
+        concurrentHashMap.get("3");
+
+
 
         Hashtable<String, String> stringStringHashtable = new Hashtable<>();
         stringStringHashtable.put("q", "q");
         stringStringHashtable.get("q");
+
 
         ArrayMap<String, String> stringStringArrayMap = new ArrayMap<>();
         stringStringArrayMap.put("3", "ee");
@@ -114,6 +171,7 @@ public class HashMapActivity extends Activity {
         HashMap<String, Ae> stringAeHashMap = new HashMap<>();
         stringAeHashMap.put("1", new Be());
         stringAeHashMap.put("1", new Ae());
+        stringAeHashMap.remove("1");
 
         SparseArray<String> stringSparseArray = new SparseArray<>();
         stringSparseArray.put(1, "e");
@@ -145,18 +203,28 @@ public class HashMapActivity extends Activity {
         super.onNewIntent(intent);
     }
 
-    @OnClick(R.id.arraylist)
-    public void onViewClicked() {
-        listExpection();
-    }
+//    @OnClick({R.id.arraylist,R.id.btn})
+//    public void onViewClicked(View v) {
+//        switch (v.getId()){
+//          case  R.id.arraylist:
+//            listExpection();
+//            break;
+//            case  R.id.btn:
+//                SparseArray<String> stringSparseArray = new SparseArray<>();
+//                stringSparseArray.put(8, "e");
+//                break;
+//        }
+//
+//    }
     private void listExpection() {
 
+        ArrayList<Integer> list = new ArrayList<>();
 
-//        for (Integer item:list) {
-//            if (item==3){
-//                list.remove(item);
-//            }
-//        }
+        for (Integer item:list) {
+            if (item==3){
+                list.remove(item);
+            }
+        }
 
         copywritearrlist();
 
@@ -170,6 +238,7 @@ public class HashMapActivity extends Activity {
             copyOnWriteArrayList.add(i+"");
         }
         copyOnWriteArrayList.get(1);
+        copyOnWriteArrayList.remove(1);
         Iterator<String> iterator2 = copyOnWriteArrayList.iterator();
         while (iterator2.hasNext()){
             String next = iterator2.next();
@@ -179,20 +248,39 @@ public class HashMapActivity extends Activity {
     }
 
     private void arrlistdemo() {
+       //ArrayList Iterator
         ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             list.add(i*10);
             list.add(1,2);
         }
-        LinkedList<String> string = new LinkedList<>();
-        string.add("3");
-        Iterator<String> iterator1 = string.iterator();
         Iterator<Integer> iterator = list.listIterator();
+
+        Iterator<Integer> iterator2 = list.iterator();
+        iterator2.remove();
+
         while(iterator.hasNext()){
             if(iterator.next()==30){
                 iterator.remove();
             }
         }
+
+        //LinkedList Iterator
+        LinkedList<String> string = new LinkedList<>();
+        string.add("3");
+        string.get(1);
+        string.remove(1);
+
+        Iterator<String> iterator1 = string.iterator();
+        Iterator<String> iterator12 = string.listIterator();
+        while(iterator1.hasNext()){
+            if(iterator1.next()=="3"){
+                iterator1.remove();
+            }
+        }
+
+
+
     }
 
 }

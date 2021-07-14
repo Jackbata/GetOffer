@@ -21,6 +21,12 @@ public class ImageLoader {
             protected int sizeOf(String key, Bitmap value) {
                 return value.getByteCount();
             }
+
+          @Override
+          protected void entryRemoved(boolean evicted, String key, Bitmap oldValue,
+              Bitmap newValue) {
+            super.entryRemoved(evicted, key, oldValue, newValue);
+          }
         };
     }
 
