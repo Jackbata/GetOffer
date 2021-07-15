@@ -37,10 +37,12 @@ public class SingletonL {
 
   //静态单例
   static class SingletonLe{
+
     private SingletonLe(){}
     public static SingletonLe getInstance(){
       return INSTANCE.instance;
     }
+
      static class INSTANCE{
       private INSTANCE(){}
       private static final SingletonLe instance=new SingletonLe();
