@@ -9,6 +9,10 @@ import com.example.compon.designpattern.creational.observer.Observable;
 import com.example.compon.designpattern.creational.observer.Observer1;
 import com.example.compon.designpattern.creational.observer.Observer2;
 import com.example.compon.designpattern.creational.observer.Observer3;
+import com.example.compon.designpattern.creational.strategy.DoStrategy;
+import com.example.compon.designpattern.creational.strategy.Strange1;
+import com.example.compon.designpattern.creational.strategy.Strange2;
+import com.example.compon.designpattern.creational.strategy.Strange3;
 import com.example.compon.designpattern.creational.template.TemplateChild1;
 import com.example.compon.designpattern.creational.template.TemplateChild2;
 import java.util.ArrayList;
@@ -51,5 +55,11 @@ public class Client {
     Observer2 observer2 = new Observer2(observable);
     Observer3 observer3 = new Observer3(observable);
     observable.setData(123);
+
+    //4.策略模式
+    DoStrategy doStrategy = new DoStrategy();
+    doStrategy.setStrategy(new Strange1(),2,4);
+    doStrategy.setStrategy(new Strange2(),2,4);
+    doStrategy.setStrategy(new Strange3(),2,4);
   }
 }
