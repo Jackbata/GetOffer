@@ -10,6 +10,7 @@ import com.up.lhm.getoffer.mvp.base.BasePresenter;
 import com.up.lhm.getoffer.net.url.BaseUrl;
 import com.up.lhm.hmtools.system.Log;
 
+import java.lang.ref.WeakReference;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -32,10 +33,12 @@ public class OkhttpPresent extends BasePresenter<OkhttpActivity> implements Cont
 
     private final OkHttpClient mOkHttpClient;
     private android.os.Handler mHandler=new Handler(new Handler.Callback() {
+//        WeakReference<OkhttpActivity> mWeakReference= new WeakReference<OkhttpActivity>;
+
         @Override
         public boolean handleMessage(Message msg) {
             for(;;){
-                Log.d("handlerdelay","what="+msg.what);
+//                Log.d("handlerdelay","what="+msg.what);
             }
         }
     });
@@ -71,12 +74,12 @@ public class OkhttpPresent extends BasePresenter<OkhttpActivity> implements Cont
                     Bundle bundle = new Bundle();
                     bundle.putString("mes",s);
                     msg.setData(bundle);
-//                    mHandler.sendMessage( getMessage(2));
-//                    mHandler.sendMessageDelayed(getMessage(3000),3000);
-//                    mHandler.sendMessageDelayed( getMessage(4000),4000);
-//                    mHandler.sendMessageDelayed( getMessage(5000),5000);
-//                    mHandler.sendMessage( getMessage(6));
-//                    mHandler.sendMessageDelayed( getMessage(6000),6000);
+                        mHandler.sendMessage( getMessage(2));
+                    mHandler.sendMessageDelayed(getMessage(3000),3000);
+                    mHandler.sendMessageDelayed( getMessage(4000),4000);
+                    mHandler.sendMessageDelayed( getMessage(5000),5000);
+                    mHandler.sendMessage( getMessage(6));
+                    mHandler.sendMessageDelayed( getMessage(6000),6000);
                     mHandler.sendMessageDelayed( getMessage(7000),7000);
                     mHandler.sendMessage( getMessage(8));
                 }
@@ -138,5 +141,12 @@ public class OkhttpPresent extends BasePresenter<OkhttpActivity> implements Cont
                 Log.d("okhttppresent",response.body().string());
             }
         });
+    }
+    static class  Myhandle extends Handler{
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
     }
 }

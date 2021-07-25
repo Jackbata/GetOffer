@@ -24,7 +24,7 @@ import java.util.ArrayList;
  */
 public class Client {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Throwable {
     //1.模版方法
     TemplateChild1 templateChild1 = new TemplateChild1();
     TemplateChild2 templateChild2 = new TemplateChild2();
@@ -61,5 +61,18 @@ public class Client {
     doStrategy.setStrategy(new Strange1(),2,4);
     doStrategy.setStrategy(new Strange2(),2,4);
     doStrategy.setStrategy(new Strange3(),2,4);
+
+    gettry();
+  }
+
+  private static void gettry()throws Throwable {
+    try{
+      System.out.println("try");
+     int q=3;
+     int d=q/0;
+    }catch (Throwable e){
+      System.out.println("catch");
+    }
+
   }
 }
