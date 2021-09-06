@@ -7,4 +7,7 @@ package com.libs.mathlib.letc;
  */
 public class LetcTest {
 
+  public static void main(String[] args) {
+
+  }
 }
