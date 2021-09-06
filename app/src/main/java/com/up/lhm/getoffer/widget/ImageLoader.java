@@ -27,6 +27,11 @@ public class ImageLoader {
               Bitmap newValue) {
             super.entryRemoved(evicted, key, oldValue, newValue);
           }
+
+          @Override
+          public void trimToSize(int maxSize) {
+            super.trimToSize(maxSize);
+          }
         };
     }
 

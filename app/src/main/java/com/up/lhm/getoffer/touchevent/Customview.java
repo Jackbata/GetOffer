@@ -29,6 +29,7 @@ public class Customview extends View {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        getParent().requestDisallowInterceptTouchEvent(true);
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 Log.d("事件分发", "Customview---》dispatchTouchEvent事件分发: ACTION_DOWN");

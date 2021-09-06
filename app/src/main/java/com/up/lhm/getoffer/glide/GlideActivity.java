@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.ViewTarget;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.up.lhm.getoffer.R;
 import com.up.lhm.getoffer.mvp.activity.Contract.Xview;
@@ -126,7 +127,7 @@ public class GlideActivity extends BaseActivity implements Xview {
 
         //解决加载bitmap后，bitmap被回收
         Bitmap bitmap2 = Bitmap.createBitmap(src);
-        Glide.with(this).load(src).into(mIvGlide);
+         Glide.with(this).load(src).into(mIvGlide);
         mIvGlide.postDelayed(new Runnable() {
             @Override
             public void run() {

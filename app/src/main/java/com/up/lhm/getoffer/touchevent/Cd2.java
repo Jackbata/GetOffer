@@ -30,16 +30,16 @@ public class Cd2 extends RelativeLayout {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("事件分发", "ViewGroup2---》dispatchTouchEvent事件分发: ACTION_DOWN");
+                Log.d("事件分发", "Cd2---》dispatchTouchEvent事件分发: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d("事件分发", "ViewGroup2---》dispatchTouchEvent事件分发: ACTION_MOVE");
-                break;
+                Log.d("事件分发", "Cd2---》dispatchTouchEvent事件分发: ACTION_MOVE");
+               break;
             case MotionEvent.ACTION_UP:
-                Log.d("事件分发", "ViewGroup2---》dispatchTouchEvent事件分发: ACTION_UP");
+                Log.d("事件分发", "Cd2---》dispatchTouchEvent事件分发: ACTION_UP");
                 break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d("事件分发", "ViewGroup2---》dispatchTouchEvent: ACTION_CANCEL");
+                Log.d("事件分发", "Cd2---》dispatchTouchEvent: ACTION_CANCEL");
                 break;
         }
         return super.dispatchTouchEvent(ev);
@@ -50,16 +50,16 @@ public class Cd2 extends RelativeLayout {
     public boolean onInterceptTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("事件分发", "ViewGroup2---》onInterceptTouchEvent事件分发: ACTION_DOWN");
-                break;
+                Log.d("事件分发", "Cd2---》onInterceptTouchEvent事件分发: ACTION_DOWN");
+               break;
             case MotionEvent.ACTION_MOVE:
-                Log.d("事件分发", "ViewGroup2---》onInterceptTouchEvent事件分发: ACTION_MOVE");
+                Log.d("事件分发", "Cd2---》onInterceptTouchEvent事件分发: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d("事件分发", "ViewGroup2---》onInterceptTouchEvent事件分发: ACTION_UP");
+                Log.d("事件分发", "Cd2---》onInterceptTouchEvent事件分发: ACTION_UP");
                 break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d("事件分发", "ViewGroup2---》onInterceptTouchEvent事件分发: ACTION_CANCEL");
+                Log.d("事件分发", "Cd2---》onInterceptTouchEvent事件分发: ACTION_CANCEL");
                 break;
         }
         return super.onInterceptTouchEvent(event);
@@ -69,19 +69,19 @@ public class Cd2 extends RelativeLayout {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("事件分发", "ViewGroup2---》onTouchEvent事件分发: ACTION_DOWN");
+                Log.d("事件分发", "Cd2---》onTouchEvent事件分发: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d("事件分发", "ViewGroup2---》onTouchEvent事件分发: ACTION_MOVE");
+                Log.d("事件分发", "Cd2---》onTouchEvent事件分发: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d("事件分发", "ViewGroup2---》onTouchEvent事件分发: ACTION_UP");
+                Log.d("事件分发", "Cd2---》onTouchEvent事件分发: ACTION_UP");
                 break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d("事件分发", "ViewGroup2---》onTouchEvent: ACTION_CANCEL");
+                Log.d("事件分发", "Cd2---》onTouchEvent: ACTION_CANCEL");
                 break;
         }
-        return super.onTouchEvent(event);
+        return true;
     }
 
 //    @Override

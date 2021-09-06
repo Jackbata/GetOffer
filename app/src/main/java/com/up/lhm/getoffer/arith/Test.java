@@ -1,12 +1,15 @@
 package com.up.lhm.getoffer.arith;
 
 import android.util.SparseArray;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.Stack;
 
 /**
  * @author lianghaimiao
@@ -19,10 +22,15 @@ public class Test {
     public static void main(String[] args) {
 //        testnode();
 //
-//        ArrayList<String> strings = new ArrayList<>();
-//        strings.add("w");
-//        LinkedList<String> LinkedList = new LinkedList<>();
-//        LinkedList.add("s");
+        String s="dd";
+        getd(s);
+
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add(2,"w");
+        LinkedList<String> LinkedList = new LinkedList<>();
+        LinkedList.add("s");
+        LinkedList.add(1,"s");
+        LinkedList.get(1);
 //
 //        ArrayMap<String, String> arrayMap = new ArrayMap<>();
 //        arrayMap.put("test", "aa");
@@ -63,7 +71,26 @@ public class Test {
         int b=i;
     }
 
-     public static int binarySearch2(int[] array, int size, int value) {
+    private static boolean getd(String s) {
+        Stack<Character> stack = new Stack<>();
+
+        int length = s.length();
+        for (int i = 0; i <length ; i++) {
+            char lest = s.charAt(i);
+            if (lest=='('||lest=='{'||lest=='['){
+                stack.push(lest);
+            }else {
+                if (stack.isEmpty()) return false;
+                Character pop = stack.pop();
+                if (lest=='('&&pop!=')') return false;
+                if (lest=='{'&&pop!='}') return false;
+                if (lest=='['&&pop!=']') return false;
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    public static int binarySearch2(int[] array, int size, int value) {
         int lo = 0;
         int hi = size - 1;
 
@@ -109,6 +136,7 @@ public class Test {
         }
         return prev;
     }
+
     @Override
     public int hashCode() {
         return super.hashCode();
@@ -123,4 +151,5 @@ public class Test {
     public String toString() {
         return super.toString();
     }
+
 }

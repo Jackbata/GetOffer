@@ -48,8 +48,14 @@ public class EventDispatchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dispatch);
         mRl = findViewById(R.id.rl);
-        mBtn = findViewById(R.id.btn);
-
+        mBtn = findViewById(R.id.btn1);
+        mBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCd.setX(111);
+                mCd.requestLayout();
+            }
+        });
         mViewGroup = findViewById(R.id.cg);
         mView = findViewById(R.id.cv);
 
@@ -136,11 +142,11 @@ public class EventDispatchActivity extends AppCompatActivity {
     }
 
     private void viewTouch() {
-        mBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+//        mBtn.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//            }
+//        });
 //
 //        mBtn.setOnTouchListener(new OnTouchListener() {
 //            @Override

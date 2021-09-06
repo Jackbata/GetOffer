@@ -2,6 +2,7 @@ package com.up.lhm.getoffer.touchevent;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -48,18 +49,27 @@ public class Bt extends View {
     }
 
     @Override
+    public void setOnClickListener(@Nullable OnClickListener l) {
+        super.setOnClickListener(l);
+    }
+
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+//                getParent().requestDisallowInterceptTouchEvent(true);
                 Log.d("事件分发", "Bt---》onTouchEvent事件分发: ACTION_DOWN");
-                return false;
+                return true;
             case MotionEvent.ACTION_MOVE:
+//                                getParent().requestDisallowInterceptTouchEvent(true);
+
                 Log.d("事件分发", "Bt---》onTouchEvent事件分发: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
                 Log.d("事件分发", "Bt---》onTouchEvent事件分发: ACTION_UP");
                 break;
             case MotionEvent.ACTION_CANCEL:
+
                 //当view接收了down事件，但move事件被viewgroup拦截时，会执行该方法
                 //如果viewgroup当dispatchTouchEvent只拦截move事件，那么view最终仍会响应up事件
                 Log.d("事件分发", "Bt---》onTouchEvent: ACTION_CANCEL");
@@ -67,6 +77,7 @@ public class Bt extends View {
             default:
                 break;
         }
+//        return true;
         return super.onTouchEvent(event);
     }
 //

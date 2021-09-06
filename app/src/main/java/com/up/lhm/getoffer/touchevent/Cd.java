@@ -1,6 +1,7 @@
 package com.up.lhm.getoffer.touchevent;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
@@ -30,16 +31,16 @@ public class Cd extends RelativeLayout {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("事件分发", "ViewGroup---》dispatchTouchEvent事件分发: ACTION_DOWN");
+                Log.d("事件分发", "Cd---》dispatchTouchEvent事件分发: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d("事件分发", "ViewGroup---》dispatchTouchEvent事件分发: ACTION_MOVE");
+                Log.d("事件分发", "Cd---》dispatchTouchEvent事件分发: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d("事件分发", "ViewGroup---》dispatchTouchEvent事件分发: ACTION_UP");
-                break;
+                Log.d("事件分发", "Cd---》dispatchTouchEvent事件分发: ACTION_UP");
+               break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d("事件分发", "ViewGroup---》dispatchTouchEvent: ACTION_CANCEL");
+                Log.d("事件分发", "Cd---》dispatchTouchEvent: ACTION_CANCEL");
                 break;
         }
         return super.dispatchTouchEvent(ev);
@@ -50,16 +51,16 @@ public class Cd extends RelativeLayout {
     public boolean onInterceptTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("事件分发", "ViewGroup---》onInterceptTouchEvent事件分发: ACTION_DOWN");
+                Log.d("事件分发", "Cd---》onInterceptTouchEvent事件分发: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d("事件分发", "ViewGroup---》onInterceptTouchEvent事件分发: ACTION_MOVE");
+                Log.d("事件分发", "Cd---》onInterceptTouchEvent事件分发: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d("事件分发", "ViewGroup---》onInterceptTouchEvent事件分发: ACTION_UP");
+                Log.d("事件分发", "Cd---》onInterceptTouchEvent事件分发: ACTION_UP");
                 break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d("事件分发", "ViewGroup---》onInterceptTouchEvent事件分发: ACTION_CANCEL");
+                Log.d("事件分发", "Cd---》onInterceptTouchEvent事件分发: ACTION_CANCEL");
                 break;
         }
         return super.onInterceptTouchEvent(event);
@@ -69,16 +70,16 @@ public class Cd extends RelativeLayout {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d("事件分发", "ViewGroup---》onTouchEvent事件分发: ACTION_DOWN");
+                Log.d("事件分发", "Cd---》onTouchEvent事件分发: ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d("事件分发", "ViewGroup---》onTouchEvent事件分发: ACTION_MOVE");
+                Log.d("事件分发", "Cd---》onTouchEvent事件分发: ACTION_MOVE");
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d("事件分发", "ViewGroup---》onTouchEvent事件分发: ACTION_UP");
+                Log.d("事件分发", "Cd---》onTouchEvent事件分发: ACTION_UP");
                 break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d("事件分发", "ViewGroup---》onTouchEvent: ACTION_CANCEL");
+                Log.d("事件分发", "Cd---》onTouchEvent: ACTION_CANCEL");
                 break;
         }
 
@@ -87,12 +88,24 @@ public class Cd extends RelativeLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        requestLayout();
-        invalidate();
-        postInvalidate();
+        Log.d("事件分发", "Cd---》onMeasure");
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
-//    @Override
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        Log.d("事件分发", "Cd---》onLayout");
+
+        super.onLayout(changed, l, t, r, b);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {        Log.d("事件分发", "Cd---》onDraw");
+
+        super.onDraw(canvas);
+    }
+
+    //    @Override
 //    public boolean onInterceptTouchEvent(MotionEvent ev) {
 //        Log.d("cuevent", "viewgroup--onInterceptTouchEvent--" + getString(ev.getAction()));
 //        if (mOntouListener != null) {

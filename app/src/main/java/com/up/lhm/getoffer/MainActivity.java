@@ -1,5 +1,6 @@
 package com.up.lhm.getoffer;
 
+import android.util.Log;
 import com.google.gson.Gson;
 
 import android.support.v7.widget.DividerItemDecoration;
@@ -33,6 +34,7 @@ import com.up.lhm.getoffer.rxjava.RxjavaActivity;
 import com.up.lhm.getoffer.systemview.SystemViewActivity;
 import com.up.lhm.getoffer.threadpool.ThreadPoolsActivity;
 import com.up.lhm.getoffer.touchevent.EventDispatchActivity;
+import com.up.lhm.getoffer.utils.ScreenDisplayUtil;
 import com.up.lhm.getoffer.viewscoller.ViewScollerActivity;
 import com.up.lhm.getoffer.webview.WebviewActivity;
 
@@ -85,8 +87,9 @@ public class MainActivity extends BaseActivity {
 
     initRv();
     setListener();
-
-
+    int displayHeight = ScreenDisplayUtil.INSTANCE.getDisplayHeight(this);
+    int getDisplayWidth = ScreenDisplayUtil.INSTANCE.getDisplayWidth(this);
+    Log.d("MainActivity","displayHeight= "+displayHeight+",getDisplayWidth"+getDisplayWidth);
   }
 
   private void initrvdata() {
@@ -95,6 +98,9 @@ public class MainActivity extends BaseActivity {
       dataList.index = i;
       dataList.name = mDataList[i];
       mList.add(dataList);
+      String a = "e";
+      a.hashCode();
+      a.equals("d");
     }
   }
 

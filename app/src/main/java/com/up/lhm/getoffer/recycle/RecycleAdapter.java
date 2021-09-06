@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.up.lhm.getoffer.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author barry
@@ -44,6 +45,12 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.FollowRe
         }
 
         return new FollowReadViewHolder(inflate, i);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull FollowReadViewHolder holder, int position,
+        @NonNull List<Object> payloads) {
+        super.onBindViewHolder(holder, position, payloads);
     }
 
     @Override

@@ -16,12 +16,16 @@ import com.up.lhm.getoffer.greendao.bean.Shop;
 import com.up.lhm.getoffer.greendao.dao.ShopDao;
 import com.up.lhm.hmtools.system.IntentUtil;
 
+import com.up.lhm.hmtools.system.Log;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author Barry
@@ -51,7 +55,9 @@ public class GreendaoActivity extends AppCompatActivity {
     private int i;
 
     private ShopDao mShopDao;
+    private ExecutorService executorService;
 
+    private static volatile Boolean isUP=false;
     public static void start(Context context, boolean finishSelf) {
         Bundle args = new Bundle();
         IntentUtil.redirect(context, GreendaoActivity.class, finishSelf, args);
@@ -63,26 +69,33 @@ public class GreendaoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_greendao);
         ButterKnife.bind(this);
         initData();
+//        executorService = Executors.newCachedThreadPool();
+        executorService = Executors.newSingleThreadExecutor();
+//        executorService = Executors.newFixedThreadPool(2);
+        executorService.execute(new Mvent(null));
     }
     private void initData() {
         shops = new ArrayList<>();
         mShopDao = new ShopDao();
         shops = mShopDao.queryShop();
-        adapter = new ShopListAdapter(this, shops);
-        mListView.setAdapter(adapter);
+//        adapter = new ShopListAdapter(this, shops);
+//        mListView.setAdapter(adapter);
     }
     @OnClick({R.id.btn_add, R.id.btn_delete, R.id.btn_edit, R.id.btn_query})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_add:
-                Shop shop = new Shop();
-                shop.setType(Shop.TYPE_CART);
-                shop.setAddress("广东深圳");
-                shop.setImage_url("https://img.alicdn.com/bao/uploaded/i2/TB1N4V2PXXXXXa.XFXXXXXXXXXX_!!0-item_pic.jpg_640x640q50.jpg");
-                shop.setPrice("19.40");
-                shop.setSell_num(15263);
-                shop.setName("正宗梅菜扣肉 聪厨梅干菜扣肉 家宴常备方便菜虎皮红烧肉 2盒包邮" + i++);
-                mShopDao.insertShop(shop);
+                for (int j = 0; j < 235; j++) {
+                    Shop shop = new Shop();
+                    shop.setType(Shop.TYPE_CART);
+                    shop.setAddress("广东深圳");
+                    shop.setImage_url(
+                        "https://img.alicdn.com/bao/uploaded/i2/TB1N4V2PXXXXXa.XFXXXXXXXXXX_!!0-item_pic.jpg_640x640q50.jpg");
+                    shop.setPrice("19.40");
+                    shop.setSell_num(15263);
+                    shop.setName("正宗梅菜扣肉 聪厨梅干菜扣肉 家宴常备方便菜虎皮红烧肉 2盒包邮" + i++);
+                    executorService.execute(new Mvent(shop));
+                }
                 break;
             case R.id.btn_delete:
                 if (!shops.isEmpty()) {
@@ -105,5 +118,43 @@ public class GreendaoActivity extends AppCompatActivity {
                     break;
         }
         initData();
+    }
+    class Mvent implements Runnable{
+        Shop mshop=null;
+        public Mvent(Shop shop){
+            mshop=shop;
+        }
+
+        @Override
+        public void run() {
+            if (mshop!=null){
+                mShopDao.insertShop(mshop);
+            }
+            List<Shop> shops = mShopDao.queryShop();
+            if (isUP){
+                Log.d("GreendaoActivity","thread="+Thread.currentThread().getName()+"上报中");
+                return;
+            }else {
+                if (mshop==null||(shops!=null && shops.size()>=10)){
+                    isUP=true;
+                    Log.d("GreendaoActivity","thread="+Thread.currentThread().getName()+"GreendaoActivity"+"上报数据 size="+shops.size());
+                    mShopDao.getDao().deleteInTx(shops);
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    isUP=false;
+                }
+            }
+
+            List<Shop> shop2 = mShopDao.queryShop();
+            Long id =-1L;
+            if (mshop!=null){
+                 id = mshop.getId();
+            }
+
+            Log.d("GreendaoActivity","thread="+Thread.currentThread().getName()+"剩余数据 shop2="+shop2.size()+" id = "+id);
+        }
     }
 }

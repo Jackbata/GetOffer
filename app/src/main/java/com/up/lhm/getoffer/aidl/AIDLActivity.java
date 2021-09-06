@@ -46,6 +46,12 @@ public class AIDLActivity extends BaseActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        unbindService();
+    }
+
+    @Override
     public void initData() {
         Intent intent = new Intent("com.up.lhm.myapplication.AidlService");
         intent.setPackage("com.up.lhm.myapplication");

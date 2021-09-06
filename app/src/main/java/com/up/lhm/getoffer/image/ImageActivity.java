@@ -16,6 +16,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * @author barry
@@ -44,6 +47,9 @@ public class ImageActivity extends BaseActivity {
         }
         MyListAdapter adapter = new MyListAdapter(this, mlist);
         mListview.setAdapter(adapter);
+        EventBus.getDefault().post("d");
+        EventBus.getDefault().postSticky("d");
+        new StringBuffer();
     }
 
     @Override
@@ -51,5 +57,17 @@ public class ImageActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode= ThreadMode.MAIN_ORDERED)
+    public void event(String a){
+
     }
 }

@@ -19,7 +19,9 @@ public class ShopDao implements IDao<Shop>{
     public ShopDao() {
         mShopDao = App.getDaoInstant().getShopDao();
     }
-
+    public com.up.lhm.getoffer.greendao.bean.ShopDao getDao (){
+        return mShopDao;
+    }
     @Override
     public void insertShop(Shop shop) {
         mShopDao.insertOrReplace(shop);
@@ -28,12 +30,12 @@ public class ShopDao implements IDao<Shop>{
     @Override
     public void deleteShop(long id) {
         mShopDao.deleteByKey(id);
-
     }
 
     @Override
     public void updateShop(Shop shop) {
         mShopDao.update(shop);
+        mShopDao.deleteByKeyInTx();
     }
 
     @Override

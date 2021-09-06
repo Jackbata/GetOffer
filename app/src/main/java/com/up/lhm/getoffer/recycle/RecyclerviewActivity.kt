@@ -4,6 +4,8 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.os.Bundle
 import android.renderscript.Sampler
+import android.support.v7.util.DiffUtil
+import android.support.v7.util.DiffUtil.Callback
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -84,6 +86,8 @@ class RecyclerviewActivity : BaseActivity() {
         btnNext?.postDelayed({
             Log.d("setScore", "isshow=$isshow,score=${score}")
         }, 5000)
+
+
     }
 
     private fun nexttopic() {
@@ -95,6 +99,28 @@ class RecyclerviewActivity : BaseActivity() {
             Log.d("demo测试", "curr=$curr,已经到最后一条")
             return
         }
+        val calculateDiff = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+            override fun getOldListSize(): Int {
+                TODO("Not yet implemented")
+            }
+
+            override fun getNewListSize(): Int {
+                TODO("Not yet implemented")
+            }
+
+            override fun areItemsTheSame(p0: Int, p1: Int): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun areContentsTheSame(p0: Int, p1: Int): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? {
+                return super.getChangePayload(oldItemPosition, newItemPosition)
+            }
+        }, true)
+        calculateDiff.dispatchUpdatesTo(mAdapter!!)
 
         val firstVisibleItemPosition = linearLayoutManager!!.findFirstVisibleItemPosition()
         val findLastCompletelyVisibleItemPosition = linearLayoutManager?.findLastCompletelyVisibleItemPosition()
@@ -127,7 +153,6 @@ class RecyclerviewActivity : BaseActivity() {
         val findLastCompletelyVisibleItemPosition = linearLayoutManager!!.findLastCompletelyVisibleItemPosition()
         tv_hint.text = "第一个条目：$firstVisibleItemPosition;第一个完全展示：$findFirstCompletelyVisibleItemPosition ，最后一个：${findLastVisibleItemPosition},最后一个完全展示：${findLastCompletelyVisibleItemPosition}"
         Log.d("demo测试", "firstVisibleItemPosition=$firstVisibleItemPosition;findFirstCompletelyVisibleItemPosition=$findFirstCompletelyVisibleItemPosition,findLastVisibleItemPosition=${findLastVisibleItemPosition},findLastCompletelyVisibleItemPosition=${findLastCompletelyVisibleItemPosition}")
-
     }
 
     companion object {

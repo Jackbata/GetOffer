@@ -28,7 +28,7 @@ public class Quick extends BaseOrder {
   private int getIndex(int[] arr, int low, int high) {
     int temp=arr[low];
 
-    if (low<high){
+    while (low<high){
       while (low<high&&arr[high]>=temp) high--;
       if (low<high) arr[low]=arr[high];
       while (low<high&&arr[low]<=temp) low++;

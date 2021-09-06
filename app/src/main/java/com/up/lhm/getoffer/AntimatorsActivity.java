@@ -1,10 +1,14 @@
 package com.up.lhm.getoffer;
 
+import android.animation.IntEvaluator;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.BounceInterpolator;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
@@ -40,10 +44,37 @@ public class AntimatorsActivity extends BaseActivity {
         Animation a = new AlphaAnimation(0,100);
         Animation b = new ScaleAnimation(1,100,3,11);
         Animation c = new RotateAnimation(0,100);
+        c.setInterpolator(new BounceInterpolator());
+
         Animation d = new TranslateAnimation(1,2,3,33);
-        mTextView.startAnimation(a);
+        mTextView.startAnimation(d);
         ObjectAnimator.ofFloat(mTextView, "rotationX", 0.0F, 360.0F)
                 .setDuration(500)
                 .start();
+
+
+        ValueAnimator animator = ValueAnimator.ofInt(0,400);
+        animator.setDuration(1000);
+        animator.setInterpolator(new BounceInterpolator());
+        animator.setEvaluator(new IntEvaluator());
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int curValue = (int)animation.getAnimatedValue();
+                Log.d("qijian","curValue:"+curValue);
+            }
+        });
+
+        animator.start();
+
+//        mTextView.setTranslationX();
+        ObjectAnimator bjectAnimator = ObjectAnimator.ofFloat(mTextView,"alpha",1,0,1);
+        animator.setDuration(2000);
+        animator.start();
+
+
     }
+
+
+
 }

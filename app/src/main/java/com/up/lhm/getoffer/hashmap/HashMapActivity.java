@@ -114,9 +114,12 @@ findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
 
     private void testData() {
 
+
         //set
         HashSet<Object> hashSet = new HashSet<>();
         LinkedHashSet<String> strings1 = new LinkedHashSet<>();
+        strings1.add("dd");
+
         hashSet.add(12);
         TreeSet<String> treeset = new  TreeSet<String>();
         treeset.add("33");
@@ -147,6 +150,7 @@ findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
         map.put("q", "q");
         map.put(1, "q");
         map.get("3");
+        map.remove("3");
 
         //  public final Iterator<Map.Entry<K,V>> iterator() {
         //            return new LinkedEntryIterator();

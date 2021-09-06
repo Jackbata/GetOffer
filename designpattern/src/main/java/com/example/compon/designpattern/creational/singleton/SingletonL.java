@@ -43,7 +43,7 @@ public class SingletonL {
       return INSTANCE.instance;
     }
 
-     static class INSTANCE{
+    private static class INSTANCE{
       private INSTANCE(){}
       private static final SingletonLe instance=new SingletonLe();
      }
