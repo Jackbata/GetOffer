@@ -9,6 +9,7 @@ import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
+import com.libs.jetpacks.JetpackActivity;
 import com.up.lhm.annotationlibs.BindVieww;
 import com.up.lhm.getoffer.MyAdapter.OnItemClickListener;
 import com.up.lhm.getoffer.aidl.AIDLActivity;
@@ -64,7 +65,7 @@ public class MainActivity extends BaseActivity {
   private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP", "Arouter",
       "dragger2",
       "greendao", "jsbridage", "图片框架", "rxjava", "okhttp", "跳转第三方应用", "webview", "图片适配",
-      "AIDL", "系统组件", "recycleview", "APM性能监测", "前后摄像头", "前后摄像头2", "可继续填充"};
+      "AIDL", "系统组件", "recycleview", "APM性能监测", "前后摄像头", "前后摄像头2", "jetpack","可继续填充"};
   private MyAdapter mAdapter;
 
 
@@ -183,6 +184,9 @@ public class MainActivity extends BaseActivity {
             break;
           case 21:
             CameraActivity2.start(MainActivity.this, false);
+            break;
+          case 22:
+            JetpackActivity.start(MainActivity.this, false);
             break;
           default:
             break;
