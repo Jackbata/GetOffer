@@ -108,6 +108,8 @@ dependencies {
     implementation 'com.facebook.fresco:webpsupport:0.12.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.0.1'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     //walle
     implementation 'com.meituan.android.walle:library:1.1.6'

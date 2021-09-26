@@ -1,5 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.jakewharton.butterknife'
+//apply plugin: 'com.jsik.component-register'
+
+//if(ext.runAsApp){    //通过插件监听运行模式，是运行组件还是app
+//    apply from: rootProject.file('dependence.gradle')
+//}
 
 android {
     compileSdkVersion 28

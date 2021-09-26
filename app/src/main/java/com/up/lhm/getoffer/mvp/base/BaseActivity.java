@@ -26,7 +26,7 @@ import butterknife.Unbinder;
  * @function
  */
 
-public abstract class BaseActivity extends Activity implements IObverListener {
+public abstract class BaseActivity extends AppCompatActivity implements IObverListener {
     @BindView(R.id.toolbar)
    public Toolbar mToolbar;
     @BindView(R.id.base_content)

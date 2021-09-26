@@ -96,7 +96,6 @@ findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
     public  int binarySearch2(int[] array, int size, int value) {
         int lo = 0;
         int hi = size - 1;
-
         while (lo <= hi) {
             final int mid = (lo + hi) >>> 1;
             final int midVal = array[mid];
@@ -139,12 +138,12 @@ findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
         HashMap<String, Integer> hm1 = new HashMap<>();
         Set<String> strings = hm1.keySet();
         HashMap<String, Integer> hm = new HashMap<>(1);
-        hm.put("", 11);
+        hm1.put("", 11);
         hm.get("");
 
         Integer integer = hm.get("");
         Log.d("测试", integer + "");
-
+       "".equals("w");
         LinkedHashMap<Object, Object> map = new LinkedHashMap<Object, Object>(1,1,true);
         map.put(null, null);
         map.put("q", "q");

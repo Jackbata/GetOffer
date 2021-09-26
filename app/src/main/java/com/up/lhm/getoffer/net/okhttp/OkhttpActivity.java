@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,11 +17,18 @@ import com.up.lhm.hmtools.system.IntentUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Stack;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -77,11 +85,16 @@ public class OkhttpActivity extends BaseActivity implements OkhttpView {
     private void retrofit() {
         //步骤4:创建Retrofit对象
 //        RestAdapter.Builder builder = new RestAdapter.Builder();
+        Stack<String> stack =   new Stack<String>();
+        List<Integer> list = new ArrayList<Integer>();
+        list.contains(1);
 
+        String pop = stack.pop();
         Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://fanyi.youdao.com/") // 设置 网络请求 Url
             .addConverterFactory(GsonConverterFactory.create()) //设置使用Gson解析(记得加入依赖)
 //            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(new OkHttpClient())
             .build();
 
@@ -90,7 +103,14 @@ public class OkhttpActivity extends BaseActivity implements OkhttpView {
 
         //对 发送请求 进行封装(设置需要翻译的内容)
         Call<Translation1> call = request.getCall("I love you");
+      String d = "";
+        d.equals("2");
+        TextUtils.equals("","");
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("3");
 
+        StringBuffer stringBuffer1 = new StringBuffer();
+        stringBuffer1.append("3");
         //步骤6:发送网络请求(异步)
         call.enqueue(new Callback<Translation1>() {
 

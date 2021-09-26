@@ -90,7 +90,7 @@ public class MainActivity extends BaseActivity {
     int displayHeight = ScreenDisplayUtil.INSTANCE.getDisplayHeight(this);
     int getDisplayWidth = ScreenDisplayUtil.INSTANCE.getDisplayWidth(this);
     Log.d("MainActivity","displayHeight= "+displayHeight+",getDisplayWidth"+getDisplayWidth);
-  }
+ }
 
   private void initrvdata() {
     for (int i = 0; i < mDataList.length; i++) {

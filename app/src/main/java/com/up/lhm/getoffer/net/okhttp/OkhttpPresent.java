@@ -47,7 +47,7 @@ public class OkhttpPresent extends BasePresenter<OkhttpActivity> implements Cont
     super(view);
     mOkHttpClient = new OkHttpClient.Builder()
         .build();
-//        mOkHttpClient.newBuilder().build();
+        mOkHttpClient.newBuilder().build();
 //        httpurlconnection();
 
   }
