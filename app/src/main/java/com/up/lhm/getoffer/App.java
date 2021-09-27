@@ -1,10 +1,12 @@
 package com.up.lhm.getoffer;
 
+import android.app.Activity;
 import android.app.Application;
 import android.app.Dialog;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import android.os.Bundle;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.up.lhm.getoffer.dragger.component.ApplicationComponent;
 import com.up.lhm.getoffer.dragger.component.DaggerApplicationComponent;
@@ -31,8 +33,43 @@ public class App extends Application {
         getComponet();
         initGreenDao();
         Fresco.initialize(getApplicationContext());
+       new Application.ActivityLifecycleCallbacks(){
 
+           @Override
+           public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
 
+           }
+
+           @Override
+           public void onActivityStarted(Activity activity) {
+
+           }
+
+           @Override
+           public void onActivityResumed(Activity activity) {
+
+           }
+
+           @Override
+           public void onActivityPaused(Activity activity) {
+
+           }
+
+           @Override
+           public void onActivityStopped(Activity activity) {
+
+           }
+
+           @Override
+           public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+
+           }
+
+           @Override
+           public void onActivityDestroyed(Activity activity) {
+
+           }
+       };
     }
 
     private void getComponet() {
