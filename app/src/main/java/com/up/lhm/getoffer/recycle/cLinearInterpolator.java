@@ -1,11 +1,8 @@
 package com.up.lhm.getoffer.recycle;
 
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.view.animation.BaseInterpolator;
+import androidx.annotation.RequiresApi;
 import android.view.animation.LinearInterpolator;
 
-import com.up.lhm.getoffer.mvp.base.BaseActivity;
 import com.up.lhm.hmtools.system.Log;
 
 /**

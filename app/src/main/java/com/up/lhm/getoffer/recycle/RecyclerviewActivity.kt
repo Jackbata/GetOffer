@@ -4,10 +4,10 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.os.Bundle
 import android.renderscript.Sampler
-import android.support.v7.util.DiffUtil
-import android.support.v7.util.DiffUtil.Callback
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.DiffUtil.Callback
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
@@ -31,8 +31,8 @@ import java.util.*
  */
 class RecyclerviewActivity : BaseActivity() {
     private var btnNext: Button? = null
-    private var mRecycle: RecyclerView? = null
-    private var linearLayoutManager: LinearLayoutManager? = null
+    private var mRecycle: androidx.recyclerview.widget.RecyclerView? = null
+    private var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager? = null
     private var mAdapter: RecycleAdapter? = null
     private var mList: ArrayList<RecycleTestBean>? = null
     private var curr: Int = 0

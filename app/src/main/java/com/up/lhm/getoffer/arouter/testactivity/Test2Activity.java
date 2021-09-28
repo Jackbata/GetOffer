@@ -1,7 +1,7 @@
 package com.up.lhm.getoffer.arouter.testactivity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;

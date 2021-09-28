@@ -4,18 +4,22 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import com.libs.jetpacks.lifecycle.Java8CustomLifecycle;
+import com.libs.jetpacks.viewmodel.CustomViewModel;
 
 /**
  * @Description:
  * @Author: 肖邦
  * @CreateDate: 2021/9/26 5:45 PM
  */
-public class JetpackActivity extends AppCompatActivity {
+public class JetpackActivity extends AppCompatActivity  {
   String TAG ="Java8CustomLifecycle"+ this.getClass().getSimpleName();
 
   public static void start(Activity context, Boolean finshSelf) {
@@ -32,6 +36,20 @@ public class JetpackActivity extends AppCompatActivity {
     setContentView(R.layout.activity_jetpack);
     Log.d(TAG, "onCreate: ");
     Lifecycle();
+    viewmodel();
+  }
+
+  private void viewmodel() {
+    CustomViewModel customViewModel = new ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(CustomViewModel.class);
+
+    LiveData<Integer> integerLiveData = customViewModel.getcurrData();
+    integerLiveData.observe(this, new Observer<Integer>() {
+      @Override
+      public void onChanged(Integer integer) {
+        Log.d(TAG, "CustomViewModel onChanged: integer="+integer);
+      }
+    });
+    customViewModel.getData();
 
   }
 

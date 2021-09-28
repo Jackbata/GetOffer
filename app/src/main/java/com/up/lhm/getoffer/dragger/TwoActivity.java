@@ -1,7 +1,7 @@
 package com.up.lhm.getoffer.dragger;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.up.lhm.getoffer.App;
 import com.up.lhm.getoffer.R;
