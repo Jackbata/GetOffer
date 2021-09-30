@@ -1,8 +1,12 @@
 package com.libs.jetpacks.viewmodel;
 
+import android.app.Application;
 import android.util.Log;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
 /**
@@ -10,12 +14,25 @@ import androidx.lifecycle.ViewModel;
  * @Author: 肖邦
  * @CreateDate: 2021/9/27 5:42 PM
  */
-public class CustomViewModel extends ViewModel {
+public class CustomViewModel extends AndroidViewModel {
 
   String TAG = this.getClass().getSimpleName();
   private MutableLiveData<Integer> mutableLiveData;
   private Thread thread;
 
+  public CustomViewModel(@NonNull Application application) {
+    super(application);
+  }
+
+
+  public LiveData<Integer> getcurrData() {
+
+    if (mutableLiveData == null) {
+      mutableLiveData = new MutableLiveData<>();
+    }
+
+    return mutableLiveData;
+  }
 
   @Override
   protected void onCleared() {
@@ -62,13 +79,4 @@ public class CustomViewModel extends ViewModel {
 
   }
 
-
-  public LiveData<Integer> getcurrData() {
-
-    if (mutableLiveData == null) {
-      mutableLiveData = new MutableLiveData<>();
-    }
-
-    return mutableLiveData;
-  }
 }

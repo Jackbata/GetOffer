@@ -1,5 +1,8 @@
 package com.libs.jetpacks.lifecycle;
 
+import android.annotation.SuppressLint;
+import androidx.lifecycle.GenericLifecycleObserver;
+import androidx.lifecycle.Lifecycle.Event;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import android.util.Log;
@@ -9,9 +12,15 @@ import android.util.Log;
  * @Author: 肖邦
  * @CreateDate: 2021/9/26 5:49 PM
  */
-public class Java8CustomLifecycle implements LifecycleObserver {
+@SuppressLint("RestrictedApi")
+public class Java8CustomLifecycle implements GenericLifecycleObserver {
 
   String TAG = this.getClass().getSimpleName();
+
+  @Override
+  public void onStateChanged(LifecycleOwner source, Event event) {
+
+  }
 
 //  @Override
 //  public void onCreate(LifecycleOwner owner) {

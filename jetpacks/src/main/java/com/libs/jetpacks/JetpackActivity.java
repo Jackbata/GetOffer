@@ -11,6 +11,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import com.libs.jetpacks.lifecycle.CustomLifecycle;
 import com.libs.jetpacks.lifecycle.Java8CustomLifecycle;
 import com.libs.jetpacks.viewmodel.CustomViewModel;
 
@@ -38,10 +39,14 @@ public class JetpackActivity extends AppCompatActivity  {
     Lifecycle();
     viewmodel();
   }
+//
+//  @Override
+//  public Object onRetainCustomNonConfigurationInstance() {
+//    return "22";
+//  }
 
   private void viewmodel() {
     CustomViewModel customViewModel = new ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(CustomViewModel.class);
-
     LiveData<Integer> integerLiveData = customViewModel.getcurrData();
     integerLiveData.observe(this, new Observer<Integer>() {
       @Override
@@ -54,8 +59,8 @@ public class JetpackActivity extends AppCompatActivity  {
   }
 
   private void Lifecycle() {
-//    getLifecycle().addObserver(new CustomLifecycle());
-    getLifecycle().addObserver(new Java8CustomLifecycle());
+    getLifecycle().addObserver(new CustomLifecycle());
+//    getLifecycle().addObserver(new Java8CustomLifecycle());
 
   }
 
