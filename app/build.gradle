@@ -21,6 +21,8 @@ android {
         }
     }
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidbuildToolsVersion
+
     defaultConfig {
         applicationId "com.up.lhm.getoffer"
         minSdkVersion rootProject.ext.androidMinSdkVersion

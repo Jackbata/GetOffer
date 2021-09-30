@@ -1,10 +1,13 @@
 ext {
+
+    androidCompileSdkVersion = 30
+    androidbuildToolsVersion = "30.0.3"
+
     androidMinSdkVersion = 21
-    androidTargetSdkVersion = 28
-    androidCompileSdkVersion = 28
+    androidTargetSdkVersion = 30
+
     versionCode =2
     versionName ="1.1"
-
 
     supportLibraryVersion = '28.0.0'
     lhmtoolsVersion='1.0.3.4'
