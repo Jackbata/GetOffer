@@ -120,7 +120,6 @@ dependencies {
     //walle
     implementation 'com.meituan.android.walle:library:1.1.6'
 
-    implementation 'org.greenrobot:eventbus:3.1.1'
 
 
 

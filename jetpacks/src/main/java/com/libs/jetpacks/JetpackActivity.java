@@ -20,6 +20,7 @@ import com.libs.jetpacks.databinding.ActivityJetpackBinding;
 import com.libs.jetpacks.databinding.viewmodel.DataViewmodel;
 import com.libs.jetpacks.lifecycle.CustomLifecycle;
 import com.libs.jetpacks.viewmodel.CustomViewModel;
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * @Description:
@@ -47,6 +48,7 @@ public class JetpackActivity extends AppCompatActivity {
     Lifecycle();
     viewmodel();
     databind();
+    EventBus.getDefault().register(this);
   }
 
   private void databind() {
