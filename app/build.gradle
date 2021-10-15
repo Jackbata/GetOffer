@@ -75,6 +75,7 @@ walle {
     channelFile = new File("${project.getProjectDir()}/channel")
 }
 dependencies {
+    implementation project(path: ':mathlib')
     def android = rootProject.ext.android
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.0.0'

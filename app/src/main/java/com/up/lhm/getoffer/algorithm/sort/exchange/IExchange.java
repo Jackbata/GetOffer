@@ -6,6 +6,6 @@ package com.up.lhm.getoffer.algorithm.sort.exchange;
  * @function 交换排序
  */
 
-public interface IExchange {
+public interface IExchange{
     int[] sort(int[] arr);
 }

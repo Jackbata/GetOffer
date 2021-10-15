@@ -87,6 +87,11 @@ public class EventDispatchActivity extends AppCompatActivity {
 //        });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
     /**
      * 1.dispatchTouchEvent返回的是onTouchEvent是否消费的结果
      */

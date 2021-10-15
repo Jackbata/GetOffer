@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:text="send"
         tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="41dp" />
+        tools:layout_editor_absoluteY="41dp"
+      tools:ignore="MissingConstraints" />
 
     <Button
         app:layout_constraintTop_toBottomOf="@+id/send"
@@ -21,7 +22,8 @@
         android:layout_height="wrap_content"
         android:text="get"
         tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="136dp" />
+        tools:layout_editor_absoluteY="136dp"
+      tools:ignore="MissingConstraints" />
     <Button
         app:layout_constraintTop_toBottomOf="@+id/get"
         android:id="@+id/custom"
@@ -29,7 +31,8 @@
         android:layout_height="wrap_content"
         android:text="获取服务器自定义数据"
         tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="136dp" />
+        tools:layout_editor_absoluteY="136dp"
+      tools:ignore="MissingConstraints" />
     <Button
     app:layout_constraintTop_toBottomOf="@+id/custom"
     android:id="@+id/sendcustom"
@@ -37,5 +40,42 @@
     android:layout_height="wrap_content"
     android:text="发送自定义数据"
     tools:layout_editor_absoluteX="57dp"
-    tools:layout_editor_absoluteY="136dp" />
+    tools:layout_editor_absoluteY="136dp"
+      tools:ignore="MissingConstraints" />
+    <Button
+      app:layout_constraintTop_toBottomOf="@+id/sendcustom"
+      android:id="@+id/startsetvice1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="开启服务"
+      tools:layout_editor_absoluteX="57dp"
+      tools:layout_editor_absoluteY="136dp"
+      tools:ignore="MissingConstraints" />
+    <Button
+      app:layout_constraintTop_toBottomOf="@+id/startsetvice1"
+      android:id="@+id/destroy1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="销毁服务"
+      tools:layout_editor_absoluteX="57dp"
+      tools:layout_editor_absoluteY="136dp"
+      tools:ignore="MissingConstraints" />
+    <Button
+      app:layout_constraintTop_toBottomOf="@+id/destroy1"
+      android:id="@+id/callmethod1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="bind"
+      tools:layout_editor_absoluteX="57dp"
+      tools:layout_editor_absoluteY="136dp"
+      tools:ignore="MissingConstraints" />
+    <Button
+      app:layout_constraintTop_toBottomOf="@+id/callmethod1"
+      android:id="@+id/destroy2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="unbind"
+      tools:layout_editor_absoluteX="57dp"
+      tools:layout_editor_absoluteY="136dp"
+      tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,6 +26,10 @@ public class App extends Application {
     private ApplicationComponent mActivityComponent;
     private static DaoSession mDaoSession;
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+    }
 
     @Override
     public void onCreate() {

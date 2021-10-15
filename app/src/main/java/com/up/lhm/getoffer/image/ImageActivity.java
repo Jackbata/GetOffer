@@ -16,6 +16,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicStampedReference;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -58,6 +60,11 @@ public class ImageActivity extends BaseActivity {
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
         EventBus.getDefault().register(this);
+        AtomicInteger atomicInteger = new AtomicInteger();
+//        AtomicStampedReference atomicIntger = new AtomicStampedReference();
+        atomicInteger.getAndIncrement();
+        atomicInteger.set(2);
+        atomicInteger.get();
     }
 
     @Override

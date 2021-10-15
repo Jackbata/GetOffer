@@ -10,6 +10,7 @@ import android.os.RemoteException;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.Nullable;
 import com.up.lhm.client.Book;
 import com.up.lhm.client.Person;
 import com.up.lhm.getoffer.R;
@@ -21,6 +22,7 @@ import com.up.lhm.myapplication.aidl.IMyAidlInterface.Stub;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author barry
@@ -34,11 +36,13 @@ public class AIDLActivity extends BaseActivity {
     @BindView(R.id.get)
     Button mGet;
     private IMyAidlInterface mIMyAidlInterface;
+    private ServiceConnection serviceConnection;
 
     public static void start(Context context, boolean finishSelf) {
         Bundle args = new Bundle();
         IntentUtil.redirect(context, AIDLActivity.class, finishSelf, args);
     }
+
 
     @Override
     protected int getLayoutId() {
@@ -66,9 +70,10 @@ public class AIDLActivity extends BaseActivity {
 
             }
         }, BIND_AUTO_CREATE);
+        serviceConnection = getConn();
     }
 
-    @OnClick({R.id.send, R.id.get,R.id.custom,R.id.sendcustom})
+    @OnClick({R.id.send, R.id.get,R.id.custom,R.id.sendcustom, R.id.startsetvice1,R.id.destroy1,R.id.callmethod1,R.id.destroy2})
     public void onViewClicked(View view)  {
         switch (view.getId()) {
             case R.id.send:
@@ -100,23 +105,56 @@ public class AIDLActivity extends BaseActivity {
                 }
                 break;
             case R.id.sendcustom:
-                try {
-                    Person person = new Person();
-                    person.setPlace("北京");
-                    person.setTime(1258);
-                    Log.d("AidlService","客户端发送perdon"+ person.toString());
+//                try {
+//                    Person person = new Person();
+//                    person.setPlace("北京");
+//                    person.setTime(1258);
+//                    Log.d("AidlService","客户端发送perdon"+ person.toString());
+//
+//                     mIMyAidlInterface.setPerson(person);
+//                    Log.d("AidlService","客户端收到perdon"+ person.toString());
+//                    person.setPlace("tia");
+//                    Log.d("AidlService","客户端收到perdon"+ person.toString());
+//
+//                } catch (RemoteException e) {
+//                    e.printStackTrace();
+//                }
+                Intent intent4 = new Intent(this, StartDestoryService.class);
+                bindService(intent4,getConn(),BIND_AUTO_CREATE);
+                break;
+            case R.id.startsetvice1:
+                Intent intent = new Intent(this, StartDestoryService.class);
+                startService(intent);
 
-                     mIMyAidlInterface.setPerson(person);
-                    Log.d("AidlService","客户端收到perdon"+ person.toString());
-                    person.setPlace("tia");
-                    Log.d("AidlService","客户端收到perdon"+ person.toString());
-
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
+                break;
+            case R.id.destroy1:
+                Intent intent2 = new Intent(this, StartDestoryService.class);
+                stopService(intent2);
+                break;
+          case R.id.destroy2:
+               unbindService(serviceConnection);
+                break;
+                case R.id.callmethod1:
+                    Intent intent3 = new Intent(this, StartDestoryService.class);
+                    bindService(intent3, serviceConnection,BIND_AUTO_CREATE);
                 break;
             default:
                 break;
         }
+    }
+
+    @NotNull
+    private ServiceConnection getConn() {
+        return new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                Log.d("StartDestoryService", "onServiceConnected: ");
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+                Log.d("StartDestoryService", "onServiceDisconnected: ");
+            }
+        };
     }
 }

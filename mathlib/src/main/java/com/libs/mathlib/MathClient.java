@@ -1,6 +1,7 @@
 package com.libs.mathlib;
 
 import com.libs.mathlib.check.Check2;
+import com.libs.mathlib.order.swap.Bubbing;
 
 /**
  * @Description:
@@ -15,8 +16,8 @@ public class MathClient {
 
 
 //    //1.冒泡
-//    Bubbing baseOrder = new Bubbing();
-//    baseOrder.startOrder(arr);
+    Bubbing baseOrder = new Bubbing();
+    baseOrder.startOrder(arr);
 
     //2.快排序
 //    Quick quick = new Quick();
@@ -37,8 +38,8 @@ public class MathClient {
 //    xierSert.startOrder(arr);
 
     //7.二分查找
-    Check2 check2 = new Check2();
-    int index = check2.getIndex(arr, 9);
-    System.out.println("Check2---"+index);
+//    Check2 check2 = new Check2();
+//    int index = check2.getIndex(arr, 9);
+//    System.out.println("Check2---"+index);
   }
 }

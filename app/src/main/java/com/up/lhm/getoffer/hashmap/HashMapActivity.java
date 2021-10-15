@@ -76,6 +76,8 @@ findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
          stringSparseArray.put(4,"555");
          stringSparseArray.put(3,"355");
          stringSparseArray.put(6,"655");
+         String k="";
+         k.hashCode();
         int i4 = stringSparseArray.indexOfKey(4);
         int i3 = stringSparseArray.indexOfKey(3);
         int i6 = stringSparseArray.indexOfKey(6);

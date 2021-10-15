@@ -9,20 +9,45 @@ package com.up.lhm.getoffer.kotlin
  */
  
 fun main(args:Array<String>){
-    val get = Ted().get("e")
-    println(get);
+//    val get = Ted().get("e")
+//    println(get);
 //    val sd: Int = test()//数字字面栈下划线
 //    println(sd);
-var aws =12
-    when(aws){
-        23-> println("23")
-        12-> println("333")
-    }
+//var aws =12
+//    when(aws){
+//        23-> println("23")
+//        12-> println("333")
+//    }
+    val a: Int = 100
+    val boxedA: Int? = a
+    val anotherBoxedA: Int? = a
+
+    val b: Int = 10000
+    val boxedB: Int? = b
+    val anotherBoxedB: Int? = b
+
+    println(boxedA === anotherBoxedA) // true
+    println(boxedB === anotherBoxedB) // false
+    println(boxedB == anotherBoxedB) // true
 }
 
 private fun test(): Int {
     var a: IntArray = intArrayOf(3, 2, 3)
     a[1] = 3
+//    val array2 = arrayOfNulls<Int>(4)
+//    val array2 = arrayOf("3","3",3)
+//    val array2 = Array<String>(2) { it -> "$it" }
+    val string1 = Array(3){it->it.toInt()}//创建固定长度数组
+    val string = arrayOfNulls<String>(3)//创建固定长度空数组
+    val int = IntArray(2) //创建基本类型数组
+    val int1 = intArrayOf(2,4,5) //创建基本类型数组
+
+    val long = LongArray(2) //创建基本类型数组
+
+    val string2 = arrayOf("3","4")//创建固定元素数组
+    var size =  string.size//获取数组长度
+    string[1]="33"
+    string[2]=3.toString()
     var arr = IntArray(3) { it * 4 }
     println("" + arr[0] + "--" + arr[2])
 

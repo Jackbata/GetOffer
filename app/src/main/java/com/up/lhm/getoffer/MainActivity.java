@@ -1,5 +1,6 @@
 package com.up.lhm.getoffer;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.libs.jetpacks.JetpackActivity;
+import com.libs.mathlib.off.XIaoHingShu;
 import com.up.lhm.annotationlibs.BindVieww;
 import com.up.lhm.getoffer.MyAdapter.OnItemClickListener;
 import com.up.lhm.getoffer.aidl.AIDLActivity;
@@ -104,6 +106,7 @@ public class MainActivity extends BaseActivity {
     }
   }
 
+  @SuppressLint("WrongConstant")
   private void initRv() {
     GridLayoutManager linearLayoutManager = new GridLayoutManager(this, 3);
     linearLayoutManager.setOrientation(OrientationHelper.VERTICAL);
@@ -111,6 +114,7 @@ public class MainActivity extends BaseActivity {
     mAdapter = new MyAdapter(mList);
     mRv.setAdapter(mAdapter);
     mRv.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+//    tvtext.getViewTreeObserver().addOnDrawListener(null);
   }
 
   private void setListener() {
@@ -186,6 +190,7 @@ public class MainActivity extends BaseActivity {
             break;
           case 22:
             JetpackActivity.start(MainActivity.this, false);
+//            new XIaoHingShu().testxhs();
             break;
           default:
             break;

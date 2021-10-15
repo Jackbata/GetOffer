@@ -23,7 +23,7 @@ import com.up.lhm.hmtools.system.IntentUtil;
  * @function
  */
 
-public class AntimatorsActivity extends BaseActivity {
+public class AntimatorsActivity extends BaseActivity{
 
     private TextView mTextView;
 
