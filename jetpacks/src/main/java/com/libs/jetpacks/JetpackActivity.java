@@ -85,6 +85,9 @@ public class JetpackActivity extends AppCompatActivity {
   }
 
   private void Lifecycle() {
+    String d="";
+    d.length();
+    d.charAt(1);
     getLifecycle().addObserver(new CustomLifecycle());
 //    getLifecycle().addObserver(new Java8CustomLifecycle());
 

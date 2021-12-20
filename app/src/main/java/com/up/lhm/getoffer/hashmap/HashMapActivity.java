@@ -21,7 +21,9 @@ import com.up.lhm.getoffer.test.Ae;
 import com.up.lhm.getoffer.test.Be;
 import com.up.lhm.hmtools.system.IntentUtil;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -29,8 +31,10 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.Stack;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -72,7 +76,11 @@ findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
     public void onClick(View v) {
         SparseArray<String> stringSparseArray = new SparseArray<>();
         int[] mKeys = new int[10];
-        int i2 = binarySearch2(mKeys, mKeys.length, 4);
+
+      int length = mKeys.length;
+      Arrays.asList(mKeys);
+
+      int i2 = binarySearch2(mKeys, mKeys.length, 4);
          stringSparseArray.put(4,"555");
          stringSparseArray.put(3,"355");
          stringSparseArray.put(6,"655");
@@ -112,7 +120,7 @@ findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
 
     private void testData() {
 
-
+    int a,d,f,e;
         //set
         HashSet<Object> hashSet = new HashSet<>();
         LinkedHashSet<String> strings1 = new LinkedHashSet<>();
@@ -132,8 +140,14 @@ findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
         list.add("2");
         list.get(1);
         list.remove(1);
+      ArrayList first = new ArrayList<Integer>();
 
-        //map
+      List<ArrayList<Integer>> listw  = new  ArrayList<>();
+      ArrayList<Integer> listch =  new ArrayList<>();
+      listw.add(listch);
+
+      Object[] objects = first.toArray();
+      //map
         HashMap<String, Integer> hm1 = new HashMap<>();
         Set<String> strings = hm1.keySet();
         HashMap<String, Integer> hm = new HashMap<>(1);
@@ -149,7 +163,7 @@ findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
         map.put(1, "q");
         map.get("3");
         map.remove("3");
-
+       HashMap<Integer,Integer> mapwe =  new HashMap<Integer,Integer>();
         //  public final Iterator<Map.Entry<K,V>> iterator() {
         //            return new LinkedEntryIterator();
         //        }
@@ -158,10 +172,7 @@ findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
         ConcurrentHashMap<String, String> concurrentHashMap = new ConcurrentHashMap<>();
         concurrentHashMap.put("q", "q");
         concurrentHashMap.get("3");
-
-
-
-        Hashtable<String, String> stringStringHashtable = new Hashtable<>();
+      Hashtable<String, String> stringStringHashtable = new Hashtable<>();
         stringStringHashtable.put("q", "q");
         stringStringHashtable.get("q");
 
@@ -173,8 +184,8 @@ findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
         HashMap<String, Ae> stringAeHashMap = new HashMap<>();
         stringAeHashMap.put("1", new Be());
         stringAeHashMap.put("1", new Ae());
+      stringAeHashMap.get("3");
         stringAeHashMap.remove("1");
-
         SparseArray<String> stringSparseArray = new SparseArray<>();
         stringSparseArray.put(1, "e");
 
@@ -221,8 +232,10 @@ findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
     private void listExpection() {
 
         ArrayList<Integer> list = new ArrayList<>();
-
-        for (Integer item:list) {
+      int[] ints = new int[list.size()];
+      int[] ints1 =new  int[] {1, 2};
+      list.toArray(new int[][]{ints});
+      for (Integer item:list) {
             if (item==3){
                 list.remove(item);
             }
@@ -281,8 +294,9 @@ findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
             }
         }
 
-
-
+      String str=new String("abc");
+      WeakReference<String> abcWeakRef = new WeakReference<String>(str);
+      String s = abcWeakRef.get();
     }
 
 }

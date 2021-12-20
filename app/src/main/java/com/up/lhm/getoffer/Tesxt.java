@@ -2,6 +2,8 @@ package com.up.lhm.getoffer;
 
 import com.up.lhm.getoffer.test.Be;
 import com.up.lhm.getoffer.test.Ce;
+import java.util.LinkedList;
+import java.util.*;
 
 /**
  * @author lianghaimiao
@@ -25,7 +27,8 @@ public class Tesxt {
 
         be.setName("dd");
         String name = ce.getName();
-        System.out.println(name);
+        System.out.println(Double.MIN_VALUE);
+        Queue<String> queue =new LinkedList<>();
 
     }
 

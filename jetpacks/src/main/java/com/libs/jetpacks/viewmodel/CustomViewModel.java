@@ -45,7 +45,7 @@ public class CustomViewModel extends AndroidViewModel {
 
   public int data = 1;
 
-  public void getData() {
+  public void getData() { ;
     thread = new Thread(new Runnable() {
       @Override
       public void run() {

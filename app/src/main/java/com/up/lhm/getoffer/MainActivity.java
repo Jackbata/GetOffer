@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.libs.jetpacks.JetpackActivity;
 import com.libs.mathlib.off.XIaoHingShu;
+import com.libs.screenadapter.screen.util.ScreenAdapterUtils;
 import com.up.lhm.annotationlibs.BindVieww;
 import com.up.lhm.getoffer.MyAdapter.OnItemClickListener;
 import com.up.lhm.getoffer.aidl.AIDLActivity;
@@ -33,6 +34,7 @@ import com.up.lhm.getoffer.notes.GetUrl;
 import com.up.lhm.getoffer.notes.TestAnnotate;
 import com.up.lhm.getoffer.recycle.RecyclerviewActivity;
 import com.up.lhm.getoffer.rxjava.RxjavaActivity;
+import com.up.lhm.getoffer.screen.ScreenAdapterActivity;
 import com.up.lhm.getoffer.systemview.SystemViewActivity;
 import com.up.lhm.getoffer.threadpool.ThreadPoolsActivity;
 import com.up.lhm.getoffer.touchevent.EventDispatchActivity;
@@ -66,12 +68,14 @@ public class MainActivity extends BaseActivity {
   private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP", "Arouter",
       "dragger2",
       "greendao", "jsbridage", "图片框架", "rxjava", "okhttp", "跳转第三方应用", "webview", "图片适配",
-      "AIDL", "系统组件", "recycleview", "APM性能监测", "前后摄像头", "前后摄像头2", "jetpack","可继续填充"};
+      "AIDL", "系统组件", "recycleview", "APM性能监测", "前后摄像头", "前后摄像头2", "jetpack","屏幕适配","可继续填充"};
   private MyAdapter mAdapter;
 
 
   @Override
   protected int getLayoutId() {
+    ScreenAdapterUtils.setCustomDensity(this,getApplication(),1366);
+
     return R.layout.activity_main;
   }
 
@@ -192,6 +196,8 @@ public class MainActivity extends BaseActivity {
             JetpackActivity.start(MainActivity.this, false);
 //            new XIaoHingShu().testxhs();
             break;
+          case 23:
+            ScreenAdapterActivity.start(MainActivity.this, false);
           default:
             break;
         }

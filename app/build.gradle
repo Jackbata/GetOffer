@@ -76,6 +76,10 @@ walle {
 }
 dependencies {
     implementation project(path: ':mathlib')
+    implementation project(path: ':screenAdapter')
+    implementation project(':jetpacks')
+
+
     def android = rootProject.ext.android
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.0.0'
@@ -124,7 +128,6 @@ dependencies {
 
 
 
-    implementation project(':jetpacks')
 
 }
 repositories {

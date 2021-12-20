@@ -24,7 +24,7 @@ public class Merge1  extends BaseOrder {
   private void startSort(int begin, int end) {
 
     if (end-begin<2) return;
-     int mid = (end-begin)>>>1;
+     int mid = (end+begin)>>>1;
      //[begin,end)
      startSort(begin,mid);
      //[mid,end)

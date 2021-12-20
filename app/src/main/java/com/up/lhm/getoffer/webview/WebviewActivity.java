@@ -45,6 +45,11 @@ public class WebviewActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public void initData() {
 
         mWebview.loadUrl(BaseUrl.WEBVIEW_URL);
