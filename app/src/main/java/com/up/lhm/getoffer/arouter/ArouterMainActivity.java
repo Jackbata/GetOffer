@@ -123,6 +123,7 @@ public class ArouterMainActivity extends AppCompatActivity {
             case R.id.failNav3:
                 break;
             case R.id.activity_main:
+
                 break;
             default:
                 break;

@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity {
 
   @Override
   protected int getLayoutId() {
-    ScreenAdapterUtils.setCustomDensity(this,getApplication(),1366);
+//    ScreenAdapterUtils.setCustomDensity(this,getApplication(),1366);
 
     return R.layout.activity_main;
   }

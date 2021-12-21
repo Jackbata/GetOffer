@@ -61,7 +61,7 @@ public class CustomViewModel extends AndroidViewModel {
 
             data = i;
             Log.d(TAG, "run: data=" + data);
-            mutableLiveData.setValue(data);
+            mutableLiveData.postValue(data);
             if (mutableLiveData==null){
               getcurrData();
             }

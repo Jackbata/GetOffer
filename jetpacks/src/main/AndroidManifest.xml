@@ -4,6 +4,9 @@
 
   <application>
     <activity android:name=".JetpackActivity"></activity>
+    <activity android:name=".ArouterJetbackActivity"
+      android:launchMode="singleTask"
+      />
   </application>
 
 </manifest>

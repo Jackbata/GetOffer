@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,10 @@ import androidx.databinding.ObservableField;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import com.alibaba.android.arouter.facade.Postcard;
+import com.alibaba.android.arouter.facade.callback.NavCallback;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.libs.commonlib.BaseService;
 import com.libs.jetpacks.databinding.bean.Books;
 import com.libs.jetpacks.databinding.callback.EventCallback;
 import com.libs.jetpacks.databinding.ActivityJetpackBinding;
@@ -48,7 +54,20 @@ public class JetpackActivity extends AppCompatActivity {
     Lifecycle();
     viewmodel();
     databind();
-    EventBus.getDefault().register(this);
+//    EventBus.getDefault().register(this);
+
+    findViewById(R.id.btn_Arouter).setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+//        ARouter.getInstance().build("/screen/ArouterScreenActivity")
+//            .withString("jetdata","from JetpackActivity")
+//            .navigation();
+        BaseService navigation = (BaseService) ARouter.getInstance().build("/screen/ScreeService")
+            .navigation();
+        Toast.makeText(JetpackActivity.this, ""+navigation.getDa(), Toast.LENGTH_SHORT).show();
+      }
+    });
+
   }
 
   private void databind() {
@@ -85,9 +104,9 @@ public class JetpackActivity extends AppCompatActivity {
   }
 
   private void Lifecycle() {
-    String d="";
-    d.length();
-    d.charAt(1);
+//    String d="";
+//    d.length();
+//    d.charAt(1);
     getLifecycle().addObserver(new CustomLifecycle());
 //    getLifecycle().addObserver(new Java8CustomLifecycle());
 

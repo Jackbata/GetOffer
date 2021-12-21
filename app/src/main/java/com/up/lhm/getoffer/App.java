@@ -7,9 +7,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import android.os.Bundle;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.up.lhm.getoffer.dragger.component.ApplicationComponent;
 import com.up.lhm.getoffer.dragger.component.DaggerApplicationComponent;
+import com.up.lhm.getoffer.dragger.component.DaggerApplicationComponent.Builder;
 import com.up.lhm.getoffer.greendao.MyOpenHelper;
 import com.up.lhm.getoffer.greendao.bean.DaoMaster;
 import com.up.lhm.getoffer.greendao.bean.DaoSession;
@@ -34,6 +36,12 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        if (BuildConfig.DEBUG) {
+            ARouter.openLog();
+            ARouter.openDebug();
+        }
+        ARouter.init(this);
         getComponet();
         initGreenDao();
         Fresco.initialize(getApplicationContext());
