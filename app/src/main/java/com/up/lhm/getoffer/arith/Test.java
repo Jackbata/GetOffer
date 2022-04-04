@@ -23,14 +23,18 @@ public class Test {
 //        testnode();
 //
         String s="dd";
-        getd(s);
+//        getd(s);
 
-        ArrayList<String> strings = new ArrayList<>();
-        strings.add(2,"w");
-        LinkedList<String> LinkedList = new LinkedList<>();
-        LinkedList.add("s");
-        LinkedList.add(1,"s");
-        LinkedList.get(1);
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(2);
+        list.add(3);
+        list.get(1);
+        int[] ints = list.stream().mapToInt(Integer::intValue).toArray();
+        System.out.println(ints);
+//        LinkedList<String> LinkedList = new LinkedList<>();
+//        LinkedList.add("s");
+//        LinkedList.add(1,"s");
+//        LinkedList.get(1);
 //
 //        ArrayMap<String, String> arrayMap = new ArrayMap<>();
 //        arrayMap.put("test", "aa");

@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.SparseBooleanArray;
 import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.ArrayMap;
@@ -24,6 +25,7 @@ import com.up.lhm.hmtools.system.IntentUtil;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -68,6 +70,7 @@ public class HashMapActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_hashmap);
         ButterKnife.bind(this);
+
 //        initview();
 //        testData();
 //        initData();
@@ -187,6 +190,7 @@ findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
       stringAeHashMap.get("3");
         stringAeHashMap.remove("1");
         SparseArray<String> stringSparseArray = new SparseArray<>();
+        stringSparseArray.put(1, "e");
         stringSparseArray.put(1, "e");
 
         ThreadLocal<String> threadLocal = new ThreadLocal<>();

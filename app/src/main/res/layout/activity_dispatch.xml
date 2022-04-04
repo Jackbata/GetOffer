@@ -1,56 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/rl"
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-    >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/rl"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
 
-    <com.up.lhm.getoffer.touchevent.CustomViewGroup
-        android:visibility="gone"
-        android:background="@color/colorPrimary"
-        android:id="@+id/cg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+  <Button
+    android:id="@+id/btn_hotfix"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 
-        <com.up.lhm.getoffer.touchevent.Customview
-            android:background="@color/colorAccent"
-            android:id="@+id/cv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="50dp"
-            />
+  <Button
+    android:id="@+id/btn_hotfix2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="50dp"
+    android:layout_toRightOf="@+id/btn_hotfix"
+    android:text="修复" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="点击"/>
+  <com.up.lhm.getoffer.touchevent.CustomViewGroup
+    android:id="@+id/cg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:visibility="gone">
 
-    </com.up.lhm.getoffer.touchevent.CustomViewGroup>
-    <com.up.lhm.getoffer.touchevent.Cd
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:layout_centerInParent="true"
-       android:id="@+id/cd"
-        android:layout_width="300dp"
-        android:layout_height="300dp">
+    <com.up.lhm.getoffer.touchevent.Customview
+      android:id="@+id/cv"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="50dp"
+      android:background="@color/colorAccent" />
+
+    <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="20dp"
+      android:text="点击" />
+
+  </com.up.lhm.getoffer.touchevent.CustomViewGroup>
+
+  <com.up.lhm.getoffer.touchevent.Cd
+    android:id="@+id/cd"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:layout_centerInParent="true"
+    android:background="@color/colorPrimary"
+    android:gravity="center">
+
     <com.up.lhm.getoffer.touchevent.Cd2
-        android:background="#44db5e"
-        android:gravity="center"
-        android:layout_centerInParent="true"
-        android:id="@+id/cd2"
-        android:layout_width="200dp"
-        android:layout_height="200dp">
-<com.up.lhm.getoffer.touchevent.Bt
-  android:clickable="true"
-    android:id="@+id/btn1"
-    android:background="@color/colorAccent"
-    android:layout_width="100dp"
-    android:layout_height="100dp"/>
+      android:id="@+id/cd2"
+      android:layout_width="200dp"
+      android:layout_height="200dp"
+      android:layout_centerInParent="true"
+      android:background="#44db5e"
+      android:gravity="center">
+
+      <com.up.lhm.getoffer.touchevent.Bt
+        android:id="@+id/btn1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/colorAccent"
+        android:clickable="true" />
 
 
     </com.up.lhm.getoffer.touchevent.Cd2>
-    </com.up.lhm.getoffer.touchevent.Cd>
+  </com.up.lhm.getoffer.touchevent.Cd>
 
 </RelativeLayout>

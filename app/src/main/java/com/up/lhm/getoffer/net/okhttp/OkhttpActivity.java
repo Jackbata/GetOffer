@@ -2,12 +2,14 @@ package com.up.lhm.getoffer.net.okhttp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -51,6 +53,9 @@ public class OkhttpActivity extends BaseActivity implements OkhttpView {
 
     public static void start(Context context, boolean b) {
         Bundle args = new Bundle();
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        intent.putExtra("",bundle);
         IntentUtil.redirect(context, OkhttpActivity.class, b, args);
     }
 
@@ -74,8 +79,18 @@ public class OkhttpActivity extends BaseActivity implements OkhttpView {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.get:
+//              this.runOnUiThread();
                 mOkhttpPresent.getRequst();
-                break;
+//                ViewTreeObserver viewTreeObserver = view.getViewTreeObserver();
+//                viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//                    @Override
+//                    public void onGlobalLayout() {
+//                        view.removeOnLayoutChangeListener(this);
+//                        int width = view.getMeasuredWidth();
+//                        int height = view.getMeasuredHeight();
+//                    }
+//                });
+//                break;
             case R.id.post:
                 mOkhttpPresent.postRequst();
                 break;

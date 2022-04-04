@@ -1,8 +1,12 @@
 package com.up.lhm.getoffer;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.OrientationHelper;
@@ -24,6 +28,7 @@ import com.up.lhm.getoffer.dragger.DraggerActivity;
 import com.up.lhm.getoffer.glide.GlideActivity;
 import com.up.lhm.getoffer.greendao.GreendaoActivity;
 import com.up.lhm.getoffer.hashmap.HashMapActivity;
+import com.up.lhm.getoffer.hotfix.HotFixUtil;
 import com.up.lhm.getoffer.image.ImageActivity;
 import com.up.lhm.getoffer.ipc.IpcActivity;
 import com.up.lhm.getoffer.jsbridge.JSActivity;
@@ -44,6 +49,8 @@ import com.up.lhm.getoffer.webview.WebviewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * @author lianghaimiao
@@ -83,13 +90,50 @@ public class MainActivity extends BaseActivity {
   @GetUrl(url = "https://www.baidu.com/s?i")
   private void initView() {
     mRv = findViewById(R.id.rv);
+   TextView  tvtext1 = findViewById(R.id.tvtext);
+//    tvtext1.setOnClickListener();
+//    tvtext1.setOnLongClickListener();
+//    tvtext1.getParent().requestDisallowInterceptTouchEvent();
+    tvtext1.post(new Runnable() {
+      @Override
+      public void run() {
+        Log.d("BaseActivity", "run: main");
+      }
+    });
+    Thread bay = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        boolean baseActivity = tvtext1.post(new Runnable() {
+          @Override
+          public void run() {
+            android.util.Log.d("BaseActivity", "run: chilid11");
+          }
+        });
+        android.util.Log.d("BaseActivity", "run: baseActivityqq  = "+baseActivity);
+
+      }
+    });
+    bay.start();
+  }
+  @Override
+  protected void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
+    Log.d("MainActivity", "onNewIntent: ");
+  }
+
+  @Override
+  public void onAttachedToWindow() {
+    super.onAttachedToWindow();
   }
 
   @Override
   public void initData() {
     initView();
+    Log.d("MainActivity", "initData: ");
 
     initrvdata();
+
+    HotFixUtil.hotFix(getApplicationContext(),"hot.dex");
 
     initRv();
     setListener();
@@ -97,6 +141,17 @@ public class MainActivity extends BaseActivity {
     int getDisplayWidth = ScreenDisplayUtil.INSTANCE.getDisplayWidth(this);
     Log.d("MainActivity","displayHeight= "+displayHeight+",getDisplayWidth"+getDisplayWidth);
  }
+
+  @Override
+  public void onSaveInstanceState(@NonNull Bundle outState,
+      @NonNull PersistableBundle outPersistentState) {
+    super.onSaveInstanceState(outState, outPersistentState);
+  }
+
+  @Override
+  protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+    super.onRestoreInstanceState(savedInstanceState);
+  }
 
   private void initrvdata() {
     for (int i = 0; i < mDataList.length; i++) {
@@ -235,10 +290,8 @@ public class MainActivity extends BaseActivity {
     //featch第6次提交远程分支
     //featch第7次提交远程分支
     //featch第8次提交远程分支
-
     return "";
   }
-
   public void fix() {
     System.out.println("错误代码");
   }

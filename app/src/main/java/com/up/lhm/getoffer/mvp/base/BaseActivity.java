@@ -1,6 +1,7 @@
 package com.up.lhm.getoffer.mvp.base;
 
 import android.os.Bundle;
+import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -18,6 +19,9 @@ import com.up.lhm.getoffer.mvp.observer.ObserverMan;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * @author lianghaimiao
@@ -54,6 +58,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IObverLi
          *注册
          */
         mObserverMan = new ObserverMan();
+//      EventBus.getDefault().register(this);
         initBaseView();
         initData();
         mObserverMan.onCreade();
@@ -88,8 +93,10 @@ public abstract class BaseActivity extends AppCompatActivity implements IObverLi
     protected void onDestroy() {
         super.onDestroy();
         mObserverMan.onDestory();
+      System.runFinalization();
+      System.gc();
+//      EventBus.getDefault().unregister(this);
     }
-
     @Override
     public void addListener(IObserver listener) {
         mObserverMan.addListener(listener);

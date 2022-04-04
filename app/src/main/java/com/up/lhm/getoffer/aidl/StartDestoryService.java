@@ -7,6 +7,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 import androidx.annotation.Nullable;
+import com.up.lhm.getoffer.MainActivity;
+import com.up.lhm.getoffer.greendao.GreendaoActivity;
 
 /**
  * @Description:
@@ -56,6 +58,9 @@ String TAG=this.getClass().getSimpleName();
 
     public void callMethod1() {
       Log.d(TAG, "callMethod1: ");
+      Intent intent = new Intent(getApplication(), MainActivity.class);
+      intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      getApplication().startActivity(intent);
     }
 
     public void callMethod2() {

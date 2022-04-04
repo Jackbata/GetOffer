@@ -6,6 +6,7 @@ import android.content.ComponentCallbacks;
 import android.content.res.Configuration;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 
@@ -42,7 +43,6 @@ public class ScreenAdapterUtils {
         }
         @Override
         public void onLowMemory() {
-
         }
       });
     }

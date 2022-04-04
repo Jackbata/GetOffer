@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.view.View;
@@ -52,11 +53,13 @@ public class AIDLActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+//       System.gc();
 //        unbindService();
     }
 
     @Override
     public void initData() {
+//        ServiceManager.addService("MYSERVICE", new MyService());
         Intent intent = new Intent("com.up.lhm.myapplication.AidlService");
         intent.setPackage("com.up.lhm.myapplication");
         bindService(intent, new ServiceConnection() {
@@ -134,7 +137,7 @@ public class AIDLActivity extends BaseActivity {
           case R.id.destroy2:
                unbindService(serviceConnection);
                 break;
-                case R.id.callmethod1:
+          case R.id.callmethod1:
                     Intent intent3 = new Intent(this, StartDestoryService.class);
                     bindService(intent3, serviceConnection,BIND_AUTO_CREATE);
                 break;
@@ -149,6 +152,14 @@ public class AIDLActivity extends BaseActivity {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
                 Log.d("StartDestoryService", "onServiceConnected: ");
+                StartDestoryService.MyBinder binder = (StartDestoryService.MyBinder)service;
+               new Handler().postDelayed(new Runnable() {
+                   @Override
+                   public void run() {
+                       binder.callMethod1();
+                   }
+               },2000);
+
             }
 
             @Override

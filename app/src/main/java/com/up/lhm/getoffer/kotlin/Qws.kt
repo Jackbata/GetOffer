@@ -13,6 +13,6 @@ package com.up.lhm.getoffer.kotlin
          return field
      }
     set(value){
-        field=field+value
+        field += value
     }
 }

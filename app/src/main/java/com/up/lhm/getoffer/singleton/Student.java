@@ -10,10 +10,15 @@ import java.util.ArrayList;
 
 public  class Student {
 
+  public final Student a;
 
-    public final ArrayList<String> list = new ArrayList<>();
+  public final ArrayList<String> list = new ArrayList<>();
 
     public String name;
+
+    public Student() {
+        this.a = new Student();
+    }
 
     private void setName(int sex, Student stu) {
         sex = 20;

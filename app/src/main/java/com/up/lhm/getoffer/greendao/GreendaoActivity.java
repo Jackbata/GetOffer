@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.up.lhm.getoffer.R;
+import com.up.lhm.getoffer.aidl.AIDLActivity;
 import com.up.lhm.getoffer.greendao.adapter.ShopListAdapter;
 import com.up.lhm.getoffer.greendao.bean.Shop;
 import com.up.lhm.getoffer.greendao.dao.ShopDao;
@@ -68,6 +69,20 @@ public class GreendaoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_greendao);
         ButterKnife.bind(this);
         initData();
+        Thread bay = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                boolean baseActivity = mBtnAdd.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        android.util.Log.d("BaseActivity", "run: chilidGreendaoActivity");
+                    }
+                });
+                android.util.Log.d("BaseActivity", "run: baseActivityGreendaoActivity  = "+baseActivity);
+
+            }
+        });
+        bay.start();
 //        executorService = Executors.newCachedThreadPool();
         executorService = Executors.newSingleThreadExecutor();
 //        executorService = Executors.newFixedThreadPool(2);
@@ -97,10 +112,11 @@ public class GreendaoActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btn_delete:
-                if (!shops.isEmpty()) {
-                    mShopDao.deleteShop(shops.get(0).getId());
-                    initData();
-                }
+//                if (!shops.isEmpty()) {
+//                    mShopDao.deleteShop(shops.get(0).getId());
+//                    initData();
+//                }
+                AIDLActivity.start(this,false);
                 break;
             case R.id.btn_edit:
                 if (!shops.isEmpty()) {

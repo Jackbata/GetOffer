@@ -3,6 +3,7 @@ package com.up.lhm.getoffer.net.okhttp;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import androidx.annotation.NonNull;
 import com.google.gson.Gson;
 import com.up.lhm.getoffer.mvp.base.BasePresenter;
 import com.up.lhm.getoffer.net.url.BaseUrl;
@@ -11,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import okhttp3.Call;
@@ -32,16 +34,14 @@ import org.jetbrains.annotations.NotNull;
 public class OkhttpPresent extends BasePresenter<OkhttpActivity> implements Contract.OkhttpPresent {
 
   private final OkHttpClient mOkHttpClient;
-  private android.os.Handler mHandler = new Handler(new Handler.Callback() {
-//        WeakReference<OkhttpActivity> mWeakReference= new WeakReference<OkhttpActivity>;
+  private   Handler mHandler = new myHandler(mview);
 
-    @Override
-    public boolean handleMessage(Message msg) {
-      for (; ; ) {
-//                Log.d("handlerdelay","what="+msg.what);
-      }
+
+ static  class  myHandler  extends Handler{
+    public myHandler(OkhttpActivity activity){
+      WeakReference<OkhttpActivity> mWeakReference= new WeakReference<OkhttpActivity>(activity);
     }
-  });
+  }
 
   public OkhttpPresent(OkhttpActivity view) {
     super(view);

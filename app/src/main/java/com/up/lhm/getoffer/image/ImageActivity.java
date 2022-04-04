@@ -2,7 +2,12 @@ package com.up.lhm.getoffer.image;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.SparseArray;
+import android.util.SparseBooleanArray;
+import android.util.SparseIntArray;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -41,8 +46,11 @@ public class ImageActivity extends BaseActivity {
         return R.layout.activity_image;
     }
 
+
+
     @Override
     public void initData() {
+        
         List<Integer> mlist = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             mlist.add(R.drawable.timg);

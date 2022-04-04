@@ -24,6 +24,7 @@ buildscript {
         classpath 'com.meituan.android.walle:plugin:1.1.6'
 
         classpath "gradle.plugin.com.jsik.component-register:cc-register:1.1.2"
+//        classpath 'com.google.guava:guava:27.0.1-jre'
 
         //添加
         // NOTE: Do not place your application dependencies here; they belong

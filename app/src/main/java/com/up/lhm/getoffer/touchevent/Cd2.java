@@ -31,6 +31,7 @@ public class Cd2 extends RelativeLayout {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         List<List<Integer>> list =   new ArrayList();
+
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 Log.d("事件分发", "Cd2---》dispatchTouchEvent事件分发: ACTION_DOWN");

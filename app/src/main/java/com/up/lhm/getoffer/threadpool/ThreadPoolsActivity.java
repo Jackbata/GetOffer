@@ -26,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -85,11 +86,17 @@ public class ThreadPoolsActivity extends Activity {
         threadLocal();
 
         lock();
-
+       cas();
       }
+
+
     });
   }
-
+  private void cas() {
+    AtomicInteger atomicInteger = new AtomicInteger();
+    atomicInteger.set(23);
+    atomicInteger.getAndIncrement();
+  }
   private void lock() {
     ReentrantLock reentrantLock = new ReentrantLock();
     reentrantLock.lock();

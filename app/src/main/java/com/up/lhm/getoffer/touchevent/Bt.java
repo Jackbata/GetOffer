@@ -34,11 +34,11 @@ public class Bt extends View {
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 Log.d("事件分发", "Bt---》dispatchTouchEvent事件分发: ACTION_DOWN");
-                break;
+                return true;
+
             case MotionEvent.ACTION_MOVE:
                 Log.d("事件分发", "Bt---》dispatchTouchEvent事件分发: ACTION_MOVE");
-
-                break;
+                return false;
             case MotionEvent.ACTION_UP:
                 Log.d("事件分发", "Bt---》dispatchTouchEvent事件分发: ACTION_UP");
                 break;

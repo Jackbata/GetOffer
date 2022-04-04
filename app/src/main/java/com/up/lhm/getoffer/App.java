@@ -7,6 +7,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import android.os.Bundle;
+import android.util.Log;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.up.lhm.getoffer.dragger.component.ApplicationComponent;
@@ -15,6 +16,12 @@ import com.up.lhm.getoffer.dragger.component.DaggerApplicationComponent.Builder;
 import com.up.lhm.getoffer.greendao.MyOpenHelper;
 import com.up.lhm.getoffer.greendao.bean.DaoMaster;
 import com.up.lhm.getoffer.greendao.bean.DaoSession;
+import dalvik.system.BaseDexClassLoader;
+import dalvik.system.DexClassLoader;
+import dalvik.system.PathClassLoader;
+import java.io.File;
+import java.lang.reflect.Array;
+import java.lang.reflect.Field;
 
 
 /**
@@ -83,6 +90,8 @@ public class App extends Application {
            }
        };
     }
+
+
 
     private void getComponet() {
         mActivityComponent = DaggerApplicationComponent

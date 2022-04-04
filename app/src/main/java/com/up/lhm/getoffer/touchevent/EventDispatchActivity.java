@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.MotionEvent;
@@ -13,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 
 import com.up.lhm.getoffer.R;
+import com.up.lhm.getoffer.hotfix.HotfixTest;
 import com.up.lhm.hmtools.system.Log;
 
 /**
@@ -43,9 +45,21 @@ public class EventDispatchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable   Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_dispatch);
         mRl = findViewById(R.id.rl);
         mBtn = findViewById(R.id.btn1);
+        Button btnHotfix = findViewById(R.id.btn_hotfix);
+        btnHotfix.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String staticText = HotfixTest.getStaticText();
+                String text = new HotfixTest().getText();
+                android.util.Log.d("hotfix", "staticText: "+staticText+";text "+text);
+                btnHotfix.setText(staticText+text);
+            }
+        });
+
         mBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
