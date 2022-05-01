@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.up.lhm.getoffer.apm.apmutil.FPSUtil;
 import com.up.lhm.getoffer.dragger.component.ApplicationComponent;
 import com.up.lhm.getoffer.dragger.component.DaggerApplicationComponent;
 import com.up.lhm.getoffer.dragger.component.DaggerApplicationComponent.Builder;
@@ -32,100 +33,100 @@ import java.lang.reflect.Field;
 
 public class App extends Application {
 
-    private ApplicationComponent mActivityComponent;
-    private static DaoSession mDaoSession;
+  private ApplicationComponent mActivityComponent;
+  private static DaoSession mDaoSession;
 
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
+  @Override
+  protected void attachBaseContext(Context base) {
+    super.attachBaseContext(base);
+  }
+
+  @Override
+  public void onCreate() {
+    super.onCreate();
+
+    if (BuildConfig.DEBUG) {
+      ARouter.openLog();
+      ARouter.openDebug();
     }
+    FPSUtil.init();
+    ARouter.init(this);
+    getComponet();
+    initGreenDao();
+    Fresco.initialize(getApplicationContext());
+    new Application.ActivityLifecycleCallbacks() {
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
+      @Override
+      public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
 
-        if (BuildConfig.DEBUG) {
-            ARouter.openLog();
-            ARouter.openDebug();
-        }
-        ARouter.init(this);
-        getComponet();
-        initGreenDao();
-        Fresco.initialize(getApplicationContext());
-       new Application.ActivityLifecycleCallbacks(){
+      }
 
-           @Override
-           public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+      @Override
+      public void onActivityStarted(Activity activity) {
 
-           }
+      }
 
-           @Override
-           public void onActivityStarted(Activity activity) {
+      @Override
+      public void onActivityResumed(Activity activity) {
 
-           }
+      }
 
-           @Override
-           public void onActivityResumed(Activity activity) {
+      @Override
+      public void onActivityPaused(Activity activity) {
 
-           }
+      }
 
-           @Override
-           public void onActivityPaused(Activity activity) {
+      @Override
+      public void onActivityStopped(Activity activity) {
 
-           }
+      }
 
-           @Override
-           public void onActivityStopped(Activity activity) {
+      @Override
+      public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
 
-           }
+      }
 
-           @Override
-           public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+      @Override
+      public void onActivityDestroyed(Activity activity) {
 
-           }
-
-           @Override
-           public void onActivityDestroyed(Activity activity) {
-
-           }
-       };
-    }
+      }
+    };
+  }
 
 
+  private void getComponet() {
+    mActivityComponent = DaggerApplicationComponent
+        .builder()
+        .build();
+  }
 
-    private void getComponet() {
-        mActivityComponent = DaggerApplicationComponent
-                .builder()
-                .build();
-    }
 
+  public static App getComponent(Context context) {
+    return (App) context.getApplicationContext();
+  }
 
-    public static App getComponent(Context context) {
-        return (App) context.getApplicationContext();
-    }
+  public ApplicationComponent getActivityComponen() {
+    return mActivityComponent;
+  }
 
-    public ApplicationComponent getActivityComponen() {
-        return mActivityComponent;
-    }
+  private void initGreenDao() {
+    MyOpenHelper helper = new MyOpenHelper(this, "shop.db", null);
+    SQLiteDatabase db = helper.getWritableDatabase();
+    DaoMaster daoMaster = new DaoMaster(db);
+    mDaoSession = daoMaster.newSession();
+  }
 
-    private void initGreenDao() {
-        MyOpenHelper helper = new MyOpenHelper(this, "shop.db", null);
-        SQLiteDatabase db = helper.getWritableDatabase();
-        DaoMaster daoMaster = new DaoMaster(db);
-        mDaoSession = daoMaster.newSession();
-    }
+  public static DaoSession getDaoInstant() {
+    return mDaoSession;
+  }
 
-    public static DaoSession getDaoInstant() {
-        return mDaoSession;
-    }
+  @Override
+  public void onTerminate() {
+    super.onTerminate();
+  }
 
-    @Override
-    public void onTerminate() {
-        super.onTerminate();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-    }
+  @Override
+  public void onLowMemory() {
+    super.onLowMemory();
+  }
 }

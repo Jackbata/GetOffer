@@ -61,6 +61,7 @@
         <activity android:name=".apm.ApmActivity"/>
         <activity android:name=".camera.CameraActivity"/>
         <activity android:name=".camera.CameraActivity2"/>
+        <activity android:name=".touchevent.ViewDrawActivity"/>
         <activity android:name=".screen.ScreenAdapterActivity"
           android:theme="@style/Theme.AppCompat.Light.NoActionBar"
           android:screenOrientation="landscape"

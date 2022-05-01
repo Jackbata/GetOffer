@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
 
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -43,6 +44,7 @@ import com.up.lhm.getoffer.screen.ScreenAdapterActivity;
 import com.up.lhm.getoffer.systemview.SystemViewActivity;
 import com.up.lhm.getoffer.threadpool.ThreadPoolsActivity;
 import com.up.lhm.getoffer.touchevent.EventDispatchActivity;
+import com.up.lhm.getoffer.touchevent.ViewDrawActivity;
 import com.up.lhm.getoffer.utils.ScreenDisplayUtil;
 import com.up.lhm.getoffer.viewscoller.ViewScollerActivity;
 import com.up.lhm.getoffer.webview.WebviewActivity;
@@ -75,7 +77,7 @@ public class MainActivity extends BaseActivity {
   private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP", "Arouter",
       "dragger2",
       "greendao", "jsbridage", "图片框架", "rxjava", "okhttp", "跳转第三方应用", "webview", "图片适配",
-      "AIDL", "系统组件", "recycleview", "APM性能监测", "前后摄像头", "前后摄像头2", "jetpack","屏幕适配","可继续填充"};
+      "AIDL", "系统组件", "recycleview", "APM性能监测", "前后摄像头", "前后摄像头2", "jetpack","屏幕适配","view绘制流程","可继续填充"};
   private MyAdapter mAdapter;
 
 
@@ -111,6 +113,7 @@ public class MainActivity extends BaseActivity {
         });
         android.util.Log.d("BaseActivity", "run: baseActivityqq  = "+baseActivity);
 
+
       }
     });
     bay.start();
@@ -130,6 +133,7 @@ public class MainActivity extends BaseActivity {
   public void initData() {
     initView();
     Log.d("MainActivity", "initData: ");
+//    Toast.makeText(this,"dd",Toast.LENGTH_SHORT).show();
 
     initrvdata();
 
@@ -253,6 +257,8 @@ public class MainActivity extends BaseActivity {
             break;
           case 23:
             ScreenAdapterActivity.start(MainActivity.this, false);
+          case 24:
+            ViewDrawActivity.start(MainActivity.this, false);
           default:
             break;
         }

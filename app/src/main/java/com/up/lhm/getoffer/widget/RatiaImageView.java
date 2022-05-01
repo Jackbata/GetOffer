@@ -1,6 +1,7 @@
 package com.up.lhm.getoffer.widget;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
@@ -23,7 +24,6 @@ public class RatiaImageView extends ImageView {
 		if (drawable != null) {
 			int pictureRealWidth = drawable.getMinimumWidth();	// 获取图片真实的宽
 			int pictureRealHeight = drawable.getMinimumHeight();// 获取图片真实的高
-			
 			// 比例 = 真实图片高 / 真实图片宽
 			float scale = (float) pictureRealHeight / pictureRealWidth;	// 两个int相除是不会有小数点的
 

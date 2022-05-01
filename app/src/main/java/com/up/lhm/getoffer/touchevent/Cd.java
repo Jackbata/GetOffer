@@ -100,8 +100,8 @@ public class Cd extends RelativeLayout {
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {        Log.d("事件分发", "Cd---》onDraw");
-
+    protected void onDraw(Canvas canvas) {
+        Log.d("事件分发", "Cd---》onDraw");
         super.onDraw(canvas);
     }
 

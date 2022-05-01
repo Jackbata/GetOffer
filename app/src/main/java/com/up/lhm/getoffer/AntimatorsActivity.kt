@@ -4,10 +4,13 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View
 import android.view.animation.*
+import android.widget.Toast
 import com.up.lhm.getoffer.mvp.base.BaseActivity
 import com.up.lhm.hmtools.system.IntentUtil
+import com.up.lhm.hmtools.system.ToastUtils
 import kotlinx.android.synthetic.main.animator_layout.*
 
 /**
@@ -23,12 +26,15 @@ class AntimatorsActivity : BaseActivity() {
             IntentUtil.redirect(context, AntimatorsActivity::class.java, finishSelf, args)
         }
     }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+    }
     override fun getLayoutId(): Int {
         return R.layout.animator_layout
     }
 
     override fun initData() {
-
     }
 
     override fun setLinister() {
