@@ -38,7 +38,7 @@
         <activity android:name=".hashmap.HashMapActivity" />
         <activity android:name=".mvp.activity.ViewActivity" />
         <activity android:name=".threadpool.ThreadPoolsActivity" />
-        <activity android:name=".AntimatorsActivity" />
+        <activity android:name=".animator.AntimatorsActivity" />
         <activity android:name=".viewscoller.ViewScollerActivity" />
         <activity android:name=".dragger.DraggerActivity"></activity>
         <activity android:name=".dragger.TwoActivity"></activity>
@@ -70,6 +70,8 @@
         <service android:name=".aidl.StartDestoryService"
           />
 
+        <activity android:name=".customview.CustomViewActivity"/>
+        <activity android:name=".animator.recycleview.AnReaycleActivity"/>
     </application>
 
 </manifest>
