@@ -1,4 +1,4 @@
-package com.up.lhm.getoffer
+package com.up.lhm.getoffer.animator
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -7,10 +7,9 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.View
 import android.view.animation.*
-import android.widget.Toast
+import com.up.lhm.getoffer.R
 import com.up.lhm.getoffer.mvp.base.BaseActivity
 import com.up.lhm.hmtools.system.IntentUtil
-import com.up.lhm.hmtools.system.ToastUtils
 import kotlinx.android.synthetic.main.animator_layout.*
 
 /**

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
 
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -15,11 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.libs.jetpacks.JetpackActivity;
-import com.libs.mathlib.off.XIaoHingShu;
-import com.libs.screenadapter.screen.util.ScreenAdapterUtils;
 import com.up.lhm.annotationlibs.BindVieww;
 import com.up.lhm.getoffer.MyAdapter.OnItemClickListener;
 import com.up.lhm.getoffer.aidl.AIDLActivity;
+import com.up.lhm.getoffer.animator.AntimatorsActivity;
 import com.up.lhm.getoffer.apm.ApmActivity;
 import com.up.lhm.getoffer.arouter.ArouterMainActivity;
 import com.up.lhm.getoffer.bean.DataList;
@@ -51,8 +49,6 @@ import com.up.lhm.getoffer.webview.WebviewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * @author lianghaimiao
