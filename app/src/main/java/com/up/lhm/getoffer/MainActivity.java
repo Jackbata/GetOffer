@@ -23,6 +23,7 @@ import com.up.lhm.getoffer.arouter.ArouterMainActivity;
 import com.up.lhm.getoffer.bean.DataList;
 import com.up.lhm.getoffer.camera.CameraActivity;
 import com.up.lhm.getoffer.camera.CameraActivity2;
+import com.up.lhm.getoffer.customview.CustomViewActivity;
 import com.up.lhm.getoffer.dragger.DraggerActivity;
 import com.up.lhm.getoffer.glide.GlideActivity;
 import com.up.lhm.getoffer.greendao.GreendaoActivity;
@@ -73,7 +74,7 @@ public class MainActivity extends BaseActivity {
   private String[] mDataList = {"事件分发机制", "HashMap原理", "线程池", "动画原理", "view滑动", "MVP", "Arouter",
       "dragger2",
       "greendao", "jsbridage", "图片框架", "rxjava", "okhttp", "跳转第三方应用", "webview", "图片适配",
-      "AIDL", "系统组件", "recycleview", "APM性能监测", "前后摄像头", "前后摄像头2", "jetpack","屏幕适配","view绘制流程","可继续填充"};
+      "AIDL", "系统组件", "recycleview", "APM性能监测", "前后摄像头", "前后摄像头2", "jetpack","屏幕适配","view绘制流程","customview","可继续填充"};
   private MyAdapter mAdapter;
 
 
@@ -253,8 +254,13 @@ public class MainActivity extends BaseActivity {
             break;
           case 23:
             ScreenAdapterActivity.start(MainActivity.this, false);
+            break;
           case 24:
             ViewDrawActivity.start(MainActivity.this, false);
+            break;
+          case 25:
+            CustomViewActivity.start(MainActivity.this, false);
+            break;
           default:
             break;
         }
