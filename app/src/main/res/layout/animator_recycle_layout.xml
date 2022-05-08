@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-    <TextView
-        android:textColor="@color/colorPrimaryDark"
-        android:padding="10dp"
-        android:background="@color/colorPrimary"
-        android:layout_margin="20dp"
-        android:text="测试"
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
 
+  <TextView
+    android:id="@+id/tv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="@color/colorPrimary"
+    android:padding="10dp"
+    android:text="测试"
+    android:textColor="@color/colorPrimaryDark" />
+
+  <LinearLayout
+    android:id="@+id/ll_night"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/tv"
+    android:orientation="horizontal">
+
+    <Button
+      android:id="@+id/bt_night_start"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="开始" />
+  </LinearLayout>
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rv_night"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/ll_night" />
 </RelativeLayout>

@@ -8,7 +8,9 @@ import android.os.PersistableBundle
 import android.view.View
 import android.view.animation.*
 import com.up.lhm.getoffer.R
+import com.up.lhm.getoffer.animator.recycleview.AnReaycleActivity
 import com.up.lhm.getoffer.mvp.base.BaseActivity
+import com.up.lhm.getoffer.threadpool.ThreadPoolsActivity
 import com.up.lhm.hmtools.system.IntentUtil
 import kotlinx.android.synthetic.main.animator_layout.*
 
@@ -40,18 +42,22 @@ class AntimatorsActivity : BaseActivity() {
         bt_red.setOnClickListener {
             startRed()
         }
+        an_btn?.setOnClickListener {
+            AnReaycleActivity.start(this@AntimatorsActivity, false)
+
+        }
     }
 
     private fun startRed() {
                 iv_red.visibility=View.VISIBLE
 
-        val rotationY = ObjectAnimator.ofFloat(iv_red, "rotationY", -90f,0f)
+        val rotationY = ObjectAnimator.ofFloat(iv_red, "rotationY", -90f, 0f)
 
-        val objectAnimator1: ObjectAnimator = ObjectAnimator.ofFloat(iv_red, "scaleX", 1f, 1.1f,1f)
+        val objectAnimator1: ObjectAnimator = ObjectAnimator.ofFloat(iv_red, "scaleX", 1f, 1.1f, 1f)
         objectAnimator1.interpolator= BounceInterpolator()
 
-        val objectAnimator2: ObjectAnimator = ObjectAnimator.ofFloat(iv_red1, "scaleX", 1.3f, 1f,1.2f,1f)
-        val objectAnimator3: ObjectAnimator = ObjectAnimator.ofFloat(iv_red1, "scaleY", 1.3f, 1f,1.2f,1f)
+        val objectAnimator2: ObjectAnimator = ObjectAnimator.ofFloat(iv_red1, "scaleX", 1.3f, 1f, 1.2f, 1f)
+        val objectAnimator3: ObjectAnimator = ObjectAnimator.ofFloat(iv_red1, "scaleY", 1.3f, 1f, 1.2f, 1f)
         objectAnimator3.duration=500
         objectAnimator2.duration=500
 //        objectAnimator1.duration=200
