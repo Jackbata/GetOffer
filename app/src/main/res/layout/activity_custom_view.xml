@@ -63,4 +63,20 @@
       android:layout_width="80dp"
       android:layout_height="80dp"/>
   </RelativeLayout>
+  <LinearLayout
+    android:id="@+id/ll_cv_bole2"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_below="@+id/fl_bole"
+    android:animateLayoutChanges="true"
+    android:gravity="right|center_vertical"
+    android:orientation="horizontal" />
+  <com.up.lhm.getoffer.customview.wiget.CustomRelative
+    android:background="@color/color_222222"
+    android:gravity="right|center_vertical"
+    android:id="@+id/fl_bole_cus"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_below="@+id/ll_cv_bole2"
+    />
 </RelativeLayout>
