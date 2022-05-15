@@ -61,7 +61,7 @@ public class CustomViewActivity extends BaseActivity {
         fl_bole_cus = findViewById(R.id.fl_bole_cus);
 //         addCicle();
 //         addChangeView(ll_cv_bole);
-//         addChangeView2(ll_cv_bole2);
+         addChangeView(ll_cv_bole2);
 
 
     }
@@ -85,19 +85,20 @@ public class CustomViewActivity extends BaseActivity {
         view.setLayoutTransition(mTransitioner);
 
     }
+
     int invout=33;
     @Override
     protected void setLinister() {
         add.setOnClickListener(v -> {
-                fl_bole_cus.addView(this,80,60,(invout++)+"",5,new Runnable(){
-
-                    @Override
-                    public void run() {
-                        add.performClick();
-                    }
-                });
+//                fl_bole_cus.addView(this,80,60,(invout++)+"",5,new Runnable(){
+//
+//                    @Override
+//                    public void run() {
+//                        add.performClick();
+//                    }
+//                });
 //                bole1();
-//                 scalview();
+                 scalview();
 
             }
         );
@@ -107,12 +108,22 @@ public class CustomViewActivity extends BaseActivity {
     }
 
     private void scalview() {
+        int childCount = ll_cv_bole2.getChildCount();
+        if (childCount>=4){
+            ll_cv_bole2.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ll_cv_bole2.removeViewAt(0);
+                }
+            }, 1000);
+
+        }
         if (ll_cv_bole2.getChildCount() > 0) {
             View childAt = ll_cv_bole2.getChildAt(ll_cv_bole2.getChildCount()-1);
             ValueAnimator valueAnimator = new ValueAnimator().ofInt(
                 ScreenDisplayUtil.INSTANCE.dip2px(CustomViewActivity.this,80),
                 ScreenDisplayUtil.INSTANCE.dip2px(CustomViewActivity.this,40));
-            valueAnimator.setDuration(1000);
+            valueAnimator.setDuration(100);
             valueAnimator.addUpdateListener(new AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
@@ -124,19 +135,15 @@ public class CustomViewActivity extends BaseActivity {
             });
             valueAnimator.start();
         }
-            Button button2 = getButton(80);
-            ll_cv_bole2.addView(button2);
-            int childCount = ll_cv_bole2.getChildCount();
-            if (childCount>=4){
-                ll_cv_bole2.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        ll_cv_bole2.removeViewAt(3);
-
-                    }
-                }, 1000);
-
+        ll_cv_bole2.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Button button2 = getButton(80);
+                ll_cv_bole2.addView(button2);
             }
+        },1000);
+
+
         }
 
 
